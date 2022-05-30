@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_30_163041) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_30_231245) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -49,10 +49,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_30_163041) do
   end
 
   create_table "games", force: :cascade do |t|
-    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_games_on_user_id"
+    t.bigint "character_id", null: false
+    t.index ["character_id"], name: "index_games_on_character_id"
   end
 
   create_table "journeys", force: :cascade do |t|
@@ -102,7 +102,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_30_163041) do
   end
 
   add_foreign_key "enemies", "disorders"
-  add_foreign_key "games", "users"
+  add_foreign_key "games", "characters"
   add_foreign_key "journeys", "disorders"
   add_foreign_key "rooms", "enemies"
   add_foreign_key "rooms", "journeys"
