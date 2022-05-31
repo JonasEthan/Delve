@@ -4,6 +4,14 @@ class RoomsController < ApplicationController
 
   def show
     @room = Room.find(params[:id])
-    # @enemy = Enemy.find()
+    # @enemy = Enemy.find() -- Don't need this because of nested routes?
   end
+
+
+
+  # def edit
+  # end
+
+  # def update
+  # end
 end
