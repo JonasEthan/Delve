@@ -14,4 +14,9 @@ Rails.application.routes.draw do
     resources :runs, only: [:create]
   end
                       # edit & update ?
+
+
+  resources :rooms do
+    resources :enemies # do we need this ???????
+  end
 end
