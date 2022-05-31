@@ -9,4 +9,8 @@ Rails.application.routes.draw do
   resources :characters do
     resources :games, only: [:create]
   end
+
+  resources :games do
+    resources :runs
+  end
 end
