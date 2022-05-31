@@ -18,11 +18,18 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
-  <body><%= render "shared/navbar" %>
-    <%= render "shared/flashes" %>
+  <body>
+    <div class="page-container">
+        <div class="navbar-container">
+          <%= render "shared/navbar" %>
+        </div>
+    <div class="content-container">
+      <%= yield %>
+      <%= render "shared/flashes" %>
+    </div>
+    <div class="footer-container">
+      <%= render "shared/footer" %>
+    </div>
 
-    <%= yield %>
-
-    <%= render "shared/footer" %>
   </body>
 </html>
