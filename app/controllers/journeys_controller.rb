@@ -1,7 +1,8 @@
 class JourneysController < ApplicationController
   def index
     @journeys = Journey.all
-    @room = Room.new          # room hier schon "automatisch" erstellt
-    # authorize @journey
+    @run = Run.new          # room hier schon "automatisch" erstellt
+
   end
+
 end

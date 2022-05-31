@@ -6,3 +6,7 @@
 # --> index action: Run.new
 # + run params = 3 journey_id's selected in the form here that make up this run
 # --> submit button triggers create action in runs controller
+
+<% @journeys.each do |journey| %>
+  <%= journey.title %>
+<% end %>
