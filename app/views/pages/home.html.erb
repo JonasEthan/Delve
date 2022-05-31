@@ -1,2 +1,11 @@
 <h1>Pages#home</h1>
 <p>Find me in app/views/pages/home.html.erb</p>
+
+
+<%= simple_form_for [@game], data: { turbo: false } do |f| %>
+  <%# <% if current_user == @artifact.user %>
+  <%# <% elsif user_signed_in? %>
+  <%= f.submit "Start Game", class: 'btn btn-gradient' %>
+<% else %>
+
+<%= link_to "Start Game", game_path, class: "btn btn-gradient" %>
