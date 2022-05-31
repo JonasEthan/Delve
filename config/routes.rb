@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   end
 
   resources :games do
-    resources :runs
+    resources :runs, only: [:create]
   end
+                      # edit & update ?
 end
