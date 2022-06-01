@@ -1,10 +1,6 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
-<div class="container">
- <div class="nes-container is-dark with-title">
-    <p class="title">Delve</p>
-    <p><span data-controller="typed-js"></span></p>
-  </div>
+<div class="container mt-3 mb-3">
+  <h1 class="mb-3">Delve</h1>
+  <p><span data-controller="typed-js"></span></p>
 </div>
 <%= form_for @game do |f| %>
   <%= f.submit "Start Game", class: "btn btn-gradient" %>
