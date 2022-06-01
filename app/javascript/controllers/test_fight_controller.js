@@ -8,12 +8,12 @@ export default class extends Controller {
   }
 
   attackPlayer(){
-    this.playerHealthTarget.innerText -= this.enemyValue.attack_damage;
+    this.playerHealthTarget.innerText -= (this.enemyValue.attack_damage + Math.floor(Math.random() * 3));
   }
 
   attackEnemy(){
     if (Number(this.enemyHealthTarget.innerText) > 0 ){
-      this.enemyHealthTarget.innerText -= this.playerValue.attack_damage;
+      this.enemyHealthTarget.innerText -= (this.playerValue.attack_damage + Math.floor(Math.random() * 6));
       this.attackPlayer();
     }
   }
