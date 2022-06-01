@@ -1,0 +1,72 @@
+.hline {
+  color: $third-gray;
+  display: block;
+  border-style: inset;
+  border-width: 1px;
+  width: 300px;
+  position: relative;
+}
+
+.fa-diamond {
+  color: $ocean;
+}
+
+.blobs-container {
+  display: flex;
+}
+
+.blob {
+  position: absolute;
+  top: -17px;
+  left: 10px;
+  background: $ocean;
+  box-shadow: 0 0 0 0 $ocean;
+  border-radius: 50%;
+  margin: 10px;
+  height: 15px;
+  width: 15px;
+  transform: scale(1);
+  // offset-position: 1cm 2cm;
+  animation: pulse-black 2s infinite;
+}
+
+@keyframes pulse-black {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(183, 232, 235, 0.7) ;
+  }
+
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 10px rgba(183, 232, 235, 0);
+  }
+
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(183, 232, 235, 0);
+  }
+}
+
+
+// .blob.blue {
+//   background: rgba(52, 172, 224, 1);
+//   box-shadow: 0 0 0 0 rgba(52, 172, 224, 1);
+//   animation: pulse-blue 2s infinite;
+// }
+
+// @keyframes pulse-blue {
+//   0% {
+//     transform: scale(0.95);
+//     box-shadow: 0 0 0 0 rgba(52, 172, 224, 0.7);
+//   }
+
+//   70% {
+//     transform: scale(1);
+//     box-shadow: 0 0 0 10px rgba(52, 172, 224, 0);
+//   }
+
+//   100% {
+//     transform: scale(0.95);
+//     box-shadow: 0 0 0 0 rgba(52, 172, 224, 0);
+//   }
+// }
