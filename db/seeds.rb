@@ -6,32 +6,108 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-Character.create(
-  health: 100,
-  energy: 50,
-  attack_damage: 5
+# Character.create(
+#   health: 100,
+#   energy: 50,
+#   attack_damage: 5
+# )
+
+# User.create(
+#   username: "TestDummy",
+#   email: "test@dummy.com",
+#   password: "123456",
+#   character_id: 1
+# )
+
+puts "Paranoia"
+
+# Disorder.create(
+#   name: "Depression",
+#   description: "Lorem Ipsum",
+#   success_text: "You have overcome a step of your Journey",
+#   meltdown_text: "Do not give up, take a break in an save enviorment"
+# )
+
+# puts "Paranoia Enemy"
+
+# Enemy.create(
+#   name: "The Witness",
+#   health: 50,
+#   energy: 15,
+#   attack_damage: 5,
+#   disorder_id: 1,
+#   boss: false
+# )
+
+Enemy.create(
+  name: "The Stalker",
+  health: 75,
+  energy: 40,
+  attack_damage: 10,
+  disorder_id: 1,
+  boss: true
 )
 
-User.create(
-  username: "TestDummy",
-  email: "test@dummy.com",
-  password: "123456",
-  character_id: 1
-)
+puts "Paranoia done"
+
+puts "Depression"
 
 Disorder.create(
-  name: "Paranoia",
+  name: "Depression",
   description: "Lorem Ipsum",
   success_text: "You have overcome a step of your Journey",
-  meltdown_text: "Do not give, take a break in an save enviorment"
+  meltdown_text: "Do not give up, take a break in an save enviorment"
+)
+
+puts "Depression Enemy"
+
+Enemy.create(
+  name: "The Chain",
+  health: 50,
+  energy: 15,
+  attack_damage: 5,
+  disorder_id: 2,
+  boss: false
 )
 
 Enemy.create(
-  name: "The Witness",
+  name: "The Abyss",
+  health: 75,
+  energy: 40,
+  attack_damage: 10,
+  disorder_id: 2,
+  boss: true
+)
+
+puts "Depression done"
+
+puts "Imposter Sydrom"
+
+Disorder.create(
+  name: "Imposter Syndrom",
+  description: "Lorem Ipsum",
+  success_text: "You have overcome a step of your Journey",
+  meltdown_text: "Do not give up, take a break in an save enviorment"
+)
+
+puts "Imposter Syndrom Enemy"
+
+Enemy.create(
+  name: "The Prosecutor",
   health: 50,
   energy: 20,
   attack_damage: 5,
-  disorder_id: 1,
-  boss: false,
-  img_url: "../app/assets/images/Witness.svg"
+  disorder_id: 3,
+  boss: false
 )
+
+Enemy.create(
+  name: "The Mask",
+  health: 75,
+  energy: 40,
+  attack_damage: 10,
+  disorder_id: 3,
+  boss: true
+)
+
+puts "Imposter Syndrom done"
