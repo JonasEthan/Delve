@@ -11,4 +11,13 @@ class PagesController < ApplicationController
     @enemy.energy += rand(-5..5)
     @character = Character.first
   end
+
+  def about
+  end
+
+  def team
+  end
+
+  def donate
+  end
 end
