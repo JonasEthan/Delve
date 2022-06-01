@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
 
+  get '/test-fight', to: 'pages#test_fight'
+
   resources :characters
 
   resources :journeys, only: [:index]
