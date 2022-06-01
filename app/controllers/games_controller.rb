@@ -5,7 +5,7 @@ class GamesController < ApplicationController
     @character = Character.find(1) # Seeded character with ID = 1
     @game.character = @character
     @game.save
-    # @journey_run = JourneyRun.new
+    @run = Run.new
     redirect_to journeys_path
   end
 end

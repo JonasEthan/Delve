@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   resources :games, only: [:create] do
     resources :runs, only: [:create]
+    resources 
   end
                       # edit & update ?
 

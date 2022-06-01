@@ -4,6 +4,7 @@ class JourneysController < ApplicationController
 
   def index
     @journeys = Journey.all
+    @run = Run.new
     @journey_run = JourneyRun.new
   end
 
