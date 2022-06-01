@@ -1,4 +1,4 @@
 class Run < ApplicationRecord
-  belongs_to :journey
   belongs_to :game
+  has_many :journey_runs
 end

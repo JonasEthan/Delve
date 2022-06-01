@@ -1,5 +1,6 @@
 class RunsController < ApplicationController
   def create
+    @run = Run.new
     @run = Run.create(run_params)
     @game = Game.find(params[:game_id])
     @run.game = @game

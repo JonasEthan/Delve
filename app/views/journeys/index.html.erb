@@ -1,15 +1,20 @@
 
-# Stimulus actions
-# --> listen to user clicking buttons of journey options
-# --> journeys/menu view page gets created with options chosen here
 
-# --> index action: Run.new
+<%# # --> runs controller: Run.new
 # + run params = 3 journey_id's selected in the form here that make up this run
-# --> submit button triggers create action in runs controller
+# --> submit button triggers create action in runs controller %>
+
+<%= form_for @journey_run do |f| %>
+  <%# [FORM TEMPLATE WITH BUTTONS ??] %>
+  <%= f.submit "Let's go", class: "btn btn-gradient" %>
+<% end %>
+
+
+
 
 <% @journeys.each do |journey| %>
   <%= journey.title %>
 <% end %>
-# --> needs to be made into form with buttons
-# SOMEHOW SUBMIT BUTTON AS LINK TO MENU ???
+<%# # --> needs to be made into form with buttons
+# SOMEHOW SUBMIT BUTTON AS LINK TO MENU ??? %>
 <a href="./journeys/menu">Let's go!</a>
