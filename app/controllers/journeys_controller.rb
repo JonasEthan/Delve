@@ -8,14 +8,13 @@ class JourneysController < ApplicationController
   end
 
   def menu
-    @journeys = Journey.find()
   end
 
-  # def completed
-  # end
+  def completed
+  end
 
-  # def repeat
-  # end
+  def repeat
+  end
 
   ###
 
