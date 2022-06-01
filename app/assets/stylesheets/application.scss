@@ -6,7 +6,9 @@
 // External libraries
 @import "bootstrap/scss/bootstrap";
 @import "font-awesome";
+@import "nes.css/css/nes.css";
 
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+@import "nes/index";
