@@ -7,6 +7,8 @@ class PagesController < ApplicationController
 
   def test_fight
     @enemy = Enemy.first
+    @enemy.health += rand(-10..10)
+    @enemy.energy += rand(-5..5)
     @character = Character.first
   end
 end
