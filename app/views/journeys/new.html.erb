@@ -3,6 +3,6 @@
 
 
 <%= simple_form_for @journey do |f| %>
-  <%= f.input :journey, collection: @disorders.name, as: :check_boxes %>
+  <%= f.input :journey, collection: @disorders.each { |disorder| disorder.name }, as: :check_boxes %>
   <%= f.submit "Let's go", class: "btn btn-gradient" %>
 <% end %>

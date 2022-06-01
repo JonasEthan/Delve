@@ -6,14 +6,6 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%# 8bit stylesheet %>
-    <link rel="stylesheet" href="./node_modules/nes.css/css/nes.min.css">
-
-    <%# Google fonts %>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
@@ -23,7 +15,7 @@
         <div class="navbar-container">
           <%= render "shared/navbar" %>
         </div>
-    <div class="content-container">
+    <div class="content-container ">
       <%= yield %>
       <%= render "shared/flashes" %>
     </div>

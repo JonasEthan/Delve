@@ -1,9 +1,19 @@
 // Import Google fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito:400,700|Work+Sans:400,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Electrolize&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Glitch&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap');
 
 // Define fonts for body and headers
-$body-font: "Press Start 2P";
-$headers-font: "Press Start 2P";
+$body-font: "Electrolize", sans-serif;
+$headers-font: "Ubuntu", sans-serif;
+
+.special-title {
+  color: white;
+  font-size: 34px;
+  font-family: "Rubik Glitch", sans-serif;
+}
 
 // To use a font file (.woff) uncomment following lines
 // @font-face {

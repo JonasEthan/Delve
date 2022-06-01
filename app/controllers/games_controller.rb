@@ -6,12 +6,6 @@ class GamesController < ApplicationController
     @game.character = @character
     @game.save
 
-    # @run = Run.new
-    # @journey_run = JourneyRun.new
-    @journey = Journey.new
-
-    @disorders = Disorder.all
-
     redirect_to new_journey_path
   end
 end
