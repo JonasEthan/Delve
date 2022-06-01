@@ -3,6 +3,8 @@ class PagesController < ApplicationController
 
   def home
     @game = Game.new
+    @disorders = Disorder.all
+    @journey = Journey.new
   end
 
   def test_fight

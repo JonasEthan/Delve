@@ -6,16 +6,21 @@ class JourneysController < ApplicationController
   end
 
   def create
+    raise
+    @disorders = Disorder.all
     @run = Run.new
     @run.game = Game.last #
     @run.save ###
 
-
-    [array of journeys].each do |journey_choice|
+    array = []
+    params[:journey][:title] # = this is an array (?)
+    params[:journey][:title].each { |title| array << title }
+    #
+    params[:journey][:title].each do |journey_choice_title|
       @journey = Journey.new
-      case journey_choice.title
-      when "Paranoia" then @journey.disorder = @disorders[1] && @journey.title = "Paranoia"
-      when "Depression" then @journey.disorder = @disorders[2] && @journey.title = "Depression"
+      case journey_choice_title # @disorders accessible within this method?
+      when @disorders[1].name then @journey.disorder = @disorders[1].id && @journey.title = @disorders[1].name # ACTUALLY NOT
+      when @disorders[2].name then @journey.disorder = @disorders[2].id && @journey.title = @disorders[2].name
       end
       @journey.save
 
