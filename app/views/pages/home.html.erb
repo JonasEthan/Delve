@@ -6,7 +6,7 @@
     <p><span data-controller="typed-js"></span></p>
   </div>
 </div>
-<%= form_for @game do |f| %>
+<%= simple_form_for @game do |f| %>
   <%= f.submit "Start Game", class: "btn btn-gradient" %>
 <% end %>
-<%# <%= button_to "Start Game", games_path, method: :post, class: "btn btn-gradient" %> 
+<%# <%= button_to "Start Game", games_path, method: :post, class: "btn btn-gradient" %>

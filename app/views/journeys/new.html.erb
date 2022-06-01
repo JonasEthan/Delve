@@ -1,0 +1,8 @@
+<h1>Your Journey begins</h1>
+<p>Select the journeys you want to embark on...</p>
+
+
+<%= simple_form_for @journey do |f| %>
+  <%= f.input :journey, collection: @disorders.name, as: :check_boxes %>
+  <%= f.submit "Let's go", class: "btn btn-gradient" %>
+<% end %>

@@ -4,11 +4,11 @@ Rails.application.routes.draw do
 
   resources :characters
 
-  resources :journeys, only: [:index]
+  resources :journeys, only: [:new, :create]
 
   resources :games, only: [:create] do
     resources :runs, only: [:create]
-    resources 
+    resources :journey_runs, only: [:create]
   end
                       # edit & update ?
 
