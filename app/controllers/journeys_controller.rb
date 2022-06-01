@@ -4,6 +4,7 @@ class JourneysController < ApplicationController
 
   def index
     @journeys = Journey.all
+    @journey_run = JourneyRun.new
   end
 
   def menu
