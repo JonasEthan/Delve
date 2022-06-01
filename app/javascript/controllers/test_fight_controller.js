@@ -3,7 +3,7 @@ import { Controller } from "@hotwired/stimulus"
 // Connects to data-controller="test-fight"
 export default class extends Controller {
   static values = { enemy: Object, player: Object}
-  static targets = ["enemyHealth", "playerHealth"]
+  static targets = ["enemyHealth", "playerHealth", "playerEnergy"]
   connect() {
   }
 
