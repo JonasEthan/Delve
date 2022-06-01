@@ -1,13 +1,14 @@
 <h1>Test Fight</h1>
 
-<h3><%= @enemy.name %></h3>
-<h4>Health</h4>
-<h5 id="enemyHealth"><%= @enemy.health %></h5>
-<br>
-<h3>Player</h3>
-<h4>Health</h4>
-<h5 id="playerHealth"><%= @character.health %></h5>
-<h4>Energy</h4>
-<h5><%= @character.energy %></h5>
-
-<button id="attack">Attack</button>
+<div class="controller" data-controller="test-fight" data-test-fight-enemy-value="<%= @enemy.to_json %>" data-test-fight-player-value="<%= @character.to_json %>">
+  <h3><%= @enemy.name %></h3>
+  <h4>Health</h4>
+  <h5 data-test-fight-target="enemyHealth"><%= @enemy.health %></h5>
+  <br>
+  <h3>Player</h3>
+  <h4>Health</h4>
+  <h5 data-test-fight-target="playerHealth"><%= @character.health %></h5>
+  <h4>Energy</h4>
+  <h5><%= @character.energy %></h5>
+  <button data-action="click->test-fight#attackEnemy">Attack</button>
+</div>
