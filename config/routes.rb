@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   root to: "pages#home"
 
   get '/test-fight', to: 'pages#test_fight'
+  get '/about', to: 'pages#about'
+  get '/team', to: 'pages#team'
+  get '/donate', to: 'pages#donate'
 
   resources :characters
 
