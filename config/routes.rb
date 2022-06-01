@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
 
+  get '/test-fight', to: 'pages#test_fight'
+
   resources :characters
 
   resources :games, only: [:create] do
