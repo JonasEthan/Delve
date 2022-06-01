@@ -4,4 +4,9 @@ class PagesController < ApplicationController
   def home
     @game = Game.new
   end
+
+  def test_fight
+    @enemy = Enemy.first
+    @character = Character.first
+  end
 end
