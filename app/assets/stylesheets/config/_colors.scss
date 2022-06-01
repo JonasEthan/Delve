@@ -8,3 +8,36 @@ $orange: #E67E22;
 $green: #1EDD88;
 $gray: #0E0000;
 $light-gray: #F4F4F4;
+
+
+// DELVE PROJECT COLORS
+// Background color
+$background: #42475B;
+$background-hover: #303442;
+
+// Accentuation colors
+$melon: #F8AD9D;
+$melon-hover: #DE9B8C;
+$melon-shadow: #B88074;
+
+$light-blue: #C4D4EB;
+$light-blue-hover: #AEBCD1;
+$light-blue-shadow: #8E9AAB;
+
+$ocean: #B7E8EB;
+$ocean-hover: #A3CFD1;
+$ocean-shadow: #85A9AB;
+
+// Grayscale colors
+$first-gray: #F5F5F6;
+// $first-gray-hover:
+// $first-gray-shadow:
+
+// $second-gray:
+// $second-gray-hover:
+// $second-gray-shadow:
+
+$disabled-colors: (
+  normal: #d3d3d3,
+  shadow: #adafbc
+) !default;
