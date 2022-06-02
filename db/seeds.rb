@@ -12,12 +12,12 @@
 #   attack_damage: 5
 # )
 
-# User.create(
-#   username: "TestDummy",
-#   email: "test@dummy.com",
-#   password: "123456",
-#   character_id: 1
-# )
+User.create(
+  username: "TestDummy",
+  email: "test@dummy.com",
+  password: "123456",
+  character_id: 1
+)
 
 puts "Paranoia"
 

@@ -4,6 +4,10 @@ Rails.application.routes.draw do
 
   get '/test-fight', to: 'pages#test_fight'
   get '/menu', to: 'journeys#menu'
+  get '/about', to: 'pages#about'
+  get '/team', to: 'pages#team'
+  get '/donate', to: 'pages#donate'
+
   resources :characters
 
   resources :journeys, only: [:new, :create]
