@@ -2,10 +2,17 @@ class RoomsController < ApplicationController
 
   def new
     @room = Room.new
-    @run = Run.find(game: Game.last)
-    @journey_runs = JourneyRun.where(run_id: @run.id) # =array
+    @run = Run.find(Game.last.id)
+    @journey_runs = JourneyRun.where(run_id: @run.id) # = array !!!
     # @journeys = @journey_runs.each { |jr| return jr.journey_id } # =array of journey IDs ?
-    @journeys = Journey.where(id: @journey_runs.first.journey_id)
+
+    @journeys = []
+    @journey_runs.each do |journey_run|
+      journey_id = journey_run.journey_id
+      journey = Journey.find(journey_id)
+      @journeys << journey
+    end
+
   end
 
   def create

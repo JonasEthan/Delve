@@ -17,7 +17,7 @@ class JourneysController < ApplicationController
       @journey_run.journey = @journey
       @journey_run.save
     end
-    redirect_to 
+    redirect_to new_room_path
   end
 
   def menu
