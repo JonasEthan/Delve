@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: "pages#home"
 
   get '/test-fight', to: 'pages#test_fight'
-
+  get '/menu', to: 'journeys#menu'
   resources :characters
 
   resources :journeys, only: [:new, :create]
@@ -16,7 +16,7 @@ Rails.application.routes.draw do
                       # edit & update ?
 
 
-                      
+
   get 'journeys/menu', to: 'journeys#menu'
   get 'journeys/completed', to: 'journeys#completed'
   get 'journeys/repeat', to: 'journeys#repeat'

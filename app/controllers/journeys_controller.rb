@@ -6,34 +6,28 @@ class JourneysController < ApplicationController
   end
 
   def create
-    raise
-    @disorders = Disorder.all
     @run = Run.new
     @run.game = Game.last #
     @run.save ###
 
-    array = []
-    params[:journey][:title] # = this is an array (?)
-    params[:journey][:title].each { |title| array << title }
-    #
-    params[:journey][:title].each do |journey_choice_title|
-      @journey = Journey.new
-      case journey_choice_title # @disorders accessible within this method?
-      when @disorders[1].name then @journey.disorder = @disorders[1].id && @journey.title = @disorders[1].name # ACTUALLY NOT
-      when @disorders[2].name then @journey.disorder = @disorders[2].id && @journey.title = @disorders[2].name
-      end
+
+    params[:journey][:title].each do |disorder_id|
+      @journey = Journey.new(disorder_id: disorder_id, title: Disorder.find(disorder_id).name)
       @journey.save
 
       @journey_run = JourneyRun.new
       @journey_run.run = @run #
       @journey_run.journey = @journey #
       @journey_run.save ###
+      raise
     end
+
 
 
   end
 
   def menu
+    raise
   end
 
   def completed
@@ -50,7 +44,8 @@ class JourneysController < ApplicationController
 
   private
 
-  def params
+  def journey_params
+    params.require(:journey).permit(:title)
   end
 
 end
