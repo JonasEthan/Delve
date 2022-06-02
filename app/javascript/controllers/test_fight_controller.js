@@ -32,10 +32,12 @@ export default class extends Controller {
         this.attackPlayer();
       }
     }
+    console.log(Math.floor(Math.random() * 101) % 20)
   }
 
   updateView() {
     this.playerHealthTarget.innerText = this.player.health;
+    this.playerEnergyTarget.innerText = this.player.energy;
     this.enemyHealthTarget.innerText = this.enemy.health;
   }
 }
