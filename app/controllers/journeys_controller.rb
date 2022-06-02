@@ -9,7 +9,7 @@ class JourneysController < ApplicationController
     @run = Run.new
     @run.game = Game.last
     @run.save
-    params[:journey][:disorder_id].each do |disorder_id|
+    params[:journey][:title].each do |disorder_id|
       @journey = Journey.new(disorder_id: disorder_id, title: Disorder.find(disorder_id).name)
       @journey.save
       @journey_run = JourneyRun.new
@@ -29,7 +29,7 @@ class JourneysController < ApplicationController
   def repeat
   end
 
-  # def edit
+  # def edit 
   # end
 
   # def update
@@ -38,6 +38,6 @@ class JourneysController < ApplicationController
   private
 
   def journey_params
-    params.require(:journey).permit(:disorder_id)
+    params.require(:journey).permit(:title)
   end
 end
