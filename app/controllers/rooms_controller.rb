@@ -17,7 +17,7 @@ class RoomsController < ApplicationController
 
   def create
     @journey = Journey.find(params[:room][:journey_id])
-    @enemies = Enemy.where(disorder_id: @journey.disorder_id) # => array (possibly) because of "where"
+    @enemies = Enemy.where(disorder_id: @journey.disorder_id) # => array because of "where"
 
     @array_of_journey_rooms = []
     @enemies.each do |enemy|
@@ -25,7 +25,7 @@ class RoomsController < ApplicationController
       @room.save
       @array_of_journey_rooms << @room
     end
-    redirect_to room_path(@array_of_journey_rooms[1][:id])
+    redirect_to room_path(@array_of_journey_rooms[0][:id])
     # .sort to make sure last room/enemy is always boss etc.
   end
 
