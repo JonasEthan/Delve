@@ -7,6 +7,9 @@ import { application } from "./application"
 import HelloController from "./hello_controller.js"
 application.register("hello", HelloController)
 
+import SweetAlertController from "./sweet_alert_controller.js"
+application.register("sweet-alert", SweetAlertController)
+
 import TestFightController from "./test_fight_controller.js"
 application.register("test-fight", TestFightController)
 
