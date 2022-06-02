@@ -1,4 +1,4 @@
 class JourneyRun < ApplicationRecord
-  belongs_to :runs
-  belongs_to :journeys
+  belongs_to :run
+  belongs_to :journey
 end

@@ -84,7 +84,7 @@ puts "Depression done"
 puts "Imposter Sydrom"
 
 Disorder.create(
-  name: "Imposter Syndrom",
+  name: "Imposter Syndrome",
   description: "Lorem Ipsum",
   success_text: "You have overcome a step of your Journey",
   meltdown_text: "Do not give up, take a break in an save enviorment"
@@ -111,3 +111,14 @@ Enemy.create(
 )
 
 puts "Imposter Syndrom done"
+
+puts "Character"
+
+Character.create(
+  energy: 10,
+  health: 10,
+  attack_damage: 10,
+  xp: 10,
+  level: 10,
+  energy_cost: 10
+)

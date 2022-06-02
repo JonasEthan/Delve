@@ -1,4 +1,4 @@
 class Disorder < ApplicationRecord
-  has_many :enemies
-  has_many :journeys
+  has_many :enemies, dependent: :destroy
+  has_many :journeys, dependent: :destroy
 end

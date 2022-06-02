@@ -1,13 +1,33 @@
 class JourneysController < ApplicationController
 
-  # Journeys are seeded - no need to create new one
+  def new
+    @disorders = Disorder.all
+    @journey = Journey.new
+  end
 
-  def index
-    @journeys = Journey.all
-    @journey_run = JourneyRun.new
+  def create
+    @run = Run.new
+    @run.game = Game.last #
+    @run.save ###
+
+
+    params[:journey][:title].each do |disorder_id|
+      @journey = Journey.new(disorder_id: disorder_id, title: Disorder.find(disorder_id).name)
+      @journey.save
+
+      @journey_run = JourneyRun.new
+      @journey_run.run = @run #
+      @journey_run.journey = @journey #
+      @journey_run.save ###
+      raise
+    end
+
+
+
   end
 
   def menu
+    raise
   end
 
   def completed
@@ -16,12 +36,16 @@ class JourneysController < ApplicationController
   def repeat
   end
 
-  ###
-
   # def edit
   # end
 
   # def update
   # end
+
+  private
+
+  def journey_params
+    params.require(:journey).permit(:title)
+  end
 
 end
