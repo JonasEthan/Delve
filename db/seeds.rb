@@ -6,11 +6,13 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-# Character.create(
-#   health: 100,
-#   energy: 50,
-#   attack_damage: 5
-# )
+# Please drop the data base and then create, migrate and seed anew
+
+Character.create(
+  health: 100,
+  energy: 50,
+  attack_damage: 5
+)
 
 User.create(
   username: "TestDummy",
@@ -21,29 +23,29 @@ User.create(
 
 puts "Paranoia"
 
-# Disorder.create(
-#   name: "Depression",
-#   description: "Lorem Ipsum",
-#   success_text: "You have overcome a step of your Journey",
-#   meltdown_text: "Do not give up, take a break in an save enviorment"
-# )
+Disorder.create(
+  name: "Paranoia",
+  description: "Lorem Ipsum",
+  success_text: "You have overcome a step of your Journey",
+  meltdown_text: "Do not give up, take a break in an save enviorment"
+)
 
-# puts "Paranoia Enemy"
+puts "Paranoia Enemy"
 
-# Enemy.create(
-#   name: "The Witness",
-#   health: 50,
-#   energy: 15,
-#   attack_damage: 5,
-#   disorder_id: 1,
-#   boss: false
-# )
+Enemy.create(
+  name: "The Witness",
+  health: 50,
+  energy: 15,
+  attack_damage: 5,
+  disorder_id: 1,
+  boss: false
+)
 
 Enemy.create(
   name: "The Stalker",
   health: 75,
   energy: 40,
-  attack_damage: 10,
+  attack_damage: 5,
   disorder_id: 1,
   boss: true
 )
@@ -74,7 +76,7 @@ Enemy.create(
   name: "The Abyss",
   health: 75,
   energy: 40,
-  attack_damage: 10,
+  attack_damage: 5,
   disorder_id: 2,
   boss: true
 )
@@ -105,20 +107,29 @@ Enemy.create(
   name: "The Mask",
   health: 75,
   energy: 40,
-  attack_damage: 10,
+  attack_damage: 5,
   disorder_id: 3,
   boss: true
 )
 
 puts "Imposter Syndrom done"
 
-puts "Character"
+puts "Hysteria is now invited"
 
-Character.create(
-  energy: 10,
-  health: 10,
-  attack_damage: 10,
-  xp: 10,
-  level: 10,
-  energy_cost: 10
+Disorder.create(
+  name: "Testing",
+  description: "Lorem Ipsum",
+  success_text: "You have overcome a step of your Journey",
+  meltdown_text: "Do not give up, take a break in an save enviorment"
 )
+
+Enemy.create(
+  name: "Hysteria",
+  health: 50,
+  energy: 50,
+  attack_damage: 5,
+  disorder_id: 4,
+  boss: false
+)
+
+puts "Hysteria joined the Party"
