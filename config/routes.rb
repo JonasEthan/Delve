@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   end
                       # edit & update ?
 
-
+  resources :rooms, only: [:new, :create, :show]
 
   get 'journeys/menu', to: 'journeys#menu'
   get 'journeys/completed', to: 'journeys#completed'
