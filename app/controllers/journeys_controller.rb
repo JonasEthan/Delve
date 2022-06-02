@@ -7,15 +7,15 @@ class JourneysController < ApplicationController
   end
 
   def create
-    @run = Run.new
-    @run.game = Game.last
+    raise
+    game_array = Game.where(character_id: current_user.character_id)
+
+    @run = Run.new(game_id: Game.find(@game_id).id)
     @run.save
     params[:journey][:title].each do |disorder_id|
       @journey = Journey.new(disorder_id: disorder_id, title: Disorder.find(disorder_id).name)
       @journey.save
-      @journey_run = JourneyRun.new
-      @journey_run.run = @run
-      @journey_run.journey = @journey
+      @journey_run = JourneyRun.new(run_id: @run.id, journey_id: @journey.id)
       @journey_run.save
     end
     redirect_to new_room_path
@@ -30,7 +30,7 @@ class JourneysController < ApplicationController
   def repeat
   end
 
-  # def edit 
+  # def edit
   # end
 
   # def update

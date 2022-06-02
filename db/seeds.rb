@@ -9,13 +9,13 @@
 # ! Please drop the data base and then create, migrate and seed anew
 # ! rails db:drop db:create db:migrate db:seed
 
-puts "Create character..."
-Character.create(
-  health: 100,
-  energy: 50,
-  attack_damage: 5
-)
-puts "1 character created"
+# puts "Create character..."
+# Character.create(
+#   health: 100,
+#   energy: 50,
+#   attack_damage: 5
+# )
+# puts "1 character created"
 
 puts "Create users..."
 User.create(
@@ -24,25 +24,26 @@ User.create(
   password: "123456",
   character_id: 1
 )
-User.create(
-  username: "Jonas",
-  email: "jonas@dummy.com",
-  password: "password",
-  character_id: 1
-)
-User.create(
-  username: "Lena",
-  email: "lena@dummy.com",
-  password: "password",
-  character_id: 1
-)
-User.create(
-  username: "Lukas",
-  email: "lukas@dummy.com",
-  password: "password",
-  character_id: 1
-)
-puts "4 users created"
+# User.create(
+#   username: "Jonas",
+#   email: "jonas@dummy.com",
+#   password: "password",
+#   character_id: 1
+# )
+# User.create(
+#   username: "Lena",
+#   email: "lena@dummy.com",
+#   password: "password",
+#   character_id: 1
+# )
+# User.create(
+#   username: "Lukas",
+#   email: "lukas@dummy.com",
+#   password: "password",
+#   character_id: 1
+# )
+# puts "4 users created"
+puts "1 user created"
 
 puts "Paranoia"
 

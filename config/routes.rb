@@ -2,6 +2,10 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
 
+  get '/', to: 'pages#home'
+  post '/', to: 'pages#home'
+  post '/', to: 'games#create'
+
   get '/test-fight', to: 'pages#test_fight'
   get '/menu', to: 'journeys#menu'
   get '/about', to: 'pages#about'
