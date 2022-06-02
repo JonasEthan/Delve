@@ -1,0 +1,10 @@
+#enemyPicture {
+  height: 530px;
+  width: 525px;
+}
+
+#enemyPicture svg{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}

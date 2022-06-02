@@ -7,7 +7,7 @@
       <h4>Health</h4>
       <h5 data-test-fight-target="enemyHealth"><%= @enemy.health %></h5>
     </div>
-    <div>
+    <div id="enemyPicture">
       <% def svg(name) %>
         <% file_path = "#{Rails.root}/app/assets/images/#{name}.svg"  %>
         <% return File.read(file_path).html_safe if File.exists?(file_path)  %>
