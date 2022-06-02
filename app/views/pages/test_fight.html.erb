@@ -16,7 +16,7 @@
     <%= svg(@enemy.name) %>
     </div>
     <div class="m-2">
-      <h3>Player</h3>
+      <h3><%= current_user ? current_user.username : "Player" %></h3>
       <h4>Health</h4>
       <h5 data-test-fight-target="playerHealth"><%= @character.health %></h5>
       <h4>Energy</h4>
