@@ -10,7 +10,9 @@ export default class extends Controller {
   connect() {
   }
 
-  disclaimerStart() {
+  disclaimerStart(e) {
+    e.preventDefault()
+    
     Swal.fire({
       title: '<strong>DISCLAIMER</strong>',
       icon: 'info',
@@ -22,7 +24,7 @@ export default class extends Controller {
       confirmButtonClass: "btn-ocean",
     }).then((inputValue) => {
       if(inputValue.isConfirmed)
-        window.location = this.urlNewValue
+        window.location = this.urlStartValue
     })
 }
   disclaimerLoad() {
