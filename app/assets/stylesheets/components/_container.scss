@@ -4,3 +4,8 @@
   grid-template-rows: auto 1fr auto;
   background-color: $background;
 }
+
+.center-container {
+  display: flex;
+  justify-content: center;
+}

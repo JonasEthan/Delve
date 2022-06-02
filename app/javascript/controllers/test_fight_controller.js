@@ -1,44 +1,43 @@
 import { Controller } from "@hotwired/stimulus"
+import PlayerStatus  from "../utils/player_status"
+import EnemyStatus from "../utils/enemy_status";
 
 // Connects to data-controller="test-fight"
 export default class extends Controller {
   static values = { enemy: Object, player: Object, disorder: Object}
   static targets = ["enemyHealth", "playerHealth", "playerEnergy"]
   connect() {
-  }
-
-  journeyPartText(){
-    if(this.enemyValue.boss){
-      alert("A powerfull Foe has appeared this seems to be the final guard of this Journey")
-    }else{
-      alert("Out of the surounding Chaos a figure emerges blocking your way")
-    }
-  }
-
-  playerLose(){
-    alert(this.disorderValue.meltdown_text);
+   this.player = new PlayerStatus(this.playerValue.health, this.playerValue.energy, this.playerValue.attack_damage);
+   this.enemy = new EnemyStatus(this.enemyValue.name, this.enemyValue.health, this.enemyValue.energy, this.enemyValue.attack_damage, this.enemyValue.boss);
   }
 
   attackPlayer(){
     if(this.enemyValue.boss){
-      this.playerHealthTarget.innerText -= (this.enemyValue.attack_damage + Math.floor(Math.random() * 6));
+      this.player.enemyAttack((this.enemyValue.attack_damage + Math.floor(Math.random() * 6)));
+      this.updateView();
+      this.player.checkHealth(this.disorderValue.meltdown_text);
     }else{
-      this.playerHealthTarget.innerText -= (this.enemyValue.attack_damage + Math.floor(Math.random() * 3));
+      this.player.enemyAttack(this.enemyValue.attack_damage + Math.floor(Math.random() * 3));
+      this.updateView();
+      this.player.checkHealth(this.disorderValue.meltdown_text);
     }
   }
 
   attackEnemy(){
-    if (Number(this.enemyHealthTarget.innerText) > 0 ){
-      this.enemyHealthTarget.innerText -= (this.playerValue.attack_damage + Math.floor(Math.random() * 6));
-      if (Number(this.enemyHealthTarget.innerText) > 0 ){
+    if (this.enemy.health > 0 && this.player.health > 0){
+      this.enemy.playerAttack(this.player.damage + Math.floor(Math.random() * 6));
+      this.updateView();
+      this.enemy.checkHealth();
+      if (this.enemy.health > 0 ){
         this.attackPlayer();
-      }else if (Number(this.playerHealthTarget.innerText) <= 0) {
-        this.playerLose();
-      }else{
-        alert(`You have overcome ${this.enemyValue.name}`);
       }
-    }else{
-      alert(`You have overcome ${this.enemyValue.name}`);
     }
+    console.log(Math.floor(Math.random() * 101) % 20)
+  }
+
+  updateView() {
+    this.playerHealthTarget.innerText = this.player.health;
+    this.playerEnergyTarget.innerText = this.player.energy;
+    this.enemyHealthTarget.innerText = this.enemy.health;
   }
 }
