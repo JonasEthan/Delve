@@ -7,6 +7,14 @@ export default class extends Controller {
   connect() {
   }
 
+  journeyPartText(){
+    if(this.enemyValue.boss){
+      alert("A powerfull Foe has appeared this seems to be the final guard of this Journey")
+    }else{
+      alert("Out of the surounding Chaos a figure emerges blocking your way")
+    }
+  }
+
   playerLose(){
     alert(this.disorderValue.meltdown_text);
   }
