@@ -36,8 +36,8 @@ export default class extends Controller {
   }
 
   updateView() {
-    this.playerHealthTarget.innerText = this.player.health;
-    this.playerEnergyTarget.innerText = this.player.energy;
-    this.enemyHealthTarget.innerText = this.enemy.health;
+    this.playerHealthTarget.value = this.player.health;
+    this.playerEnergyTarget.value = this.player.energy;
+    this.enemyHealthTarget.value = this.enemy.health;
   }
 }
