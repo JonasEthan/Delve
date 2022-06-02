@@ -10,7 +10,7 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
-  <body>
+  <body <%= request.path == test_fight_path ? "data-controller=test-fight data-action=load@window->test-fight#journeyPartText" : "" %>>
     <div class="page-container">
         <div class="navbar-container">
           <%= render "shared/navbar" %>
