@@ -3,7 +3,7 @@
   display: block;
   border-style: inset;
   border-width: 1px;
-  width: 300px;
+  width: 500px;
   position: relative;
 }
 
@@ -18,7 +18,7 @@
 .blob {
   position: absolute;
   top: -17px;
-  left: 10px;
+  left: 430px;
   background: $ocean;
   box-shadow: 0 0 0 0 $ocean;
   border-radius: 50%;
