@@ -1,5 +1,13 @@
 <div class="container mt-3 mb-3">
-  <h1>Donate now</h1>
-  <p>Support mental health by donating ...</p>
-  <a href="" alt="Donate now" class="btn btn-melon">Donate now</a>
+  <p><%= link_to request.referer.present? ? request.referer : root_path do %>
+    <i class="fa-solid fa-backward"></i> Back
+  <% end %></p>
+  <div class="center-container">
+    <div class="container-content">
+      <h1>Donate now</h1>
+      <%= render "shared/underline" %>
+      <p class="mt-3">Support mental health by donating ...</p>
+      <a href="" alt="Donate now" class="btn btn-melon">Donate now</a>
+    </div>
+  </div>
 </div>
