@@ -2,14 +2,18 @@
   <%= image_tag"Delve Logo.gif", class: "logo text-center" %>
   <h2><span data-controller="typed-js"></span></h2>
 
-  <div class="start-buttons d-flex flex-row justify-content-center">
-    <div class="p-2">
-      <%= form_for @game do |f| %>
-        <%= f.submit "Start new game", class: "btn btn-ocean" %>
-      <% end %>
-    </div>
-    <div class="p-2">
-      <%= link_to "Load my game", games_path, method: :post, class: "btn btn-blue" %>
+  <div data-controller="sweet-alert"
+        data-sweet-alert-url-start-value='<%= team_path %>'
+        data-sweet-alert-url-load-value='<%= about_path %>'>
+    <div class="start-buttons d-flex flex-row justify-content-center">
+      <div class="p-2">
+        <%= form_for @game do |f| %>
+          <%= f.submit "Start new game", id: "btn-confirm", class: "btn btn-ocean", data: { action: "click->sweet-alert.disclaimerStart" } %>
+        <% end %>
+      </div>
+      <div class="p-2">
+        <p class="btn btn-blue" data-action="click->sweet-alert#disclaimerLoad">Load my game</p>
+      </div>
     </div>
   </div>
 </div>
