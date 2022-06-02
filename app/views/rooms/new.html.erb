@@ -1,0 +1,14 @@
+<h1>Amygd's Crossing</h1>
+
+<%= simple_form_for @room do |f| %>
+  <%= f.input :journey_id, collection: @journeys.each { |journey_id| journey_id }, as: :radio_buttons, include_hidden: false %>
+  <%= f.submit "Delve in", class: "btn btn-gradient" %>
+<% end %>
+
+<%# <% @journeys.each do |journey| %>
+  <%# <%= button_to journey.title, rooms_path, method: :post %>
+<%# <% end %>
+
+
+<%# <%= button_to "Button", journeys_path, method: :post %>
+<%# <%= link_to "Menu", menu_path %>

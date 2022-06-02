@@ -7,27 +7,20 @@ class JourneysController < ApplicationController
 
   def create
     @run = Run.new
-    @run.game = Game.last #
-    @run.save ###
-
-
-    params[:journey][:title].each do |disorder_id|
+    @run.game = Game.last
+    @run.save
+    params[:journey][:disorder_id].each do |disorder_id|
       @journey = Journey.new(disorder_id: disorder_id, title: Disorder.find(disorder_id).name)
       @journey.save
-
       @journey_run = JourneyRun.new
-      @journey_run.run = @run #
-      @journey_run.journey = @journey #
-      @journey_run.save ###
-      raise
+      @journey_run.run = @run
+      @journey_run.journey = @journey
+      @journey_run.save
     end
-
-
-
+    redirect_to new_room_path
   end
 
   def menu
-    raise
   end
 
   def completed
@@ -45,7 +38,6 @@ class JourneysController < ApplicationController
   private
 
   def journey_params
-    params.require(:journey).permit(:title)
+    params.require(:journey).permit(:disorder_id)
   end
-
 end
