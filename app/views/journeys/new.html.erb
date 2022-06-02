@@ -1,7 +1,7 @@
 <h1>Your Journey begins</h1>
 <p>Select the journeys you want to embark on...</p>
 
-<%= simple_form_for @journey do |f| %>
+<%= simple_form_for(@journey) do |f| %>
   <%= f.input :disorder_id, collection: @disorders.each { |disorder| disorder.name }, as: :check_boxes, include_hidden: false %>
   <%= f.submit "Let's go", class: "btn btn-gradient" %>
 <% end %>

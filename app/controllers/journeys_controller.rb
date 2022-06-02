@@ -17,11 +17,10 @@ class JourneysController < ApplicationController
       @journey_run.journey = @journey
       @journey_run.save
     end
-    raise
+    redirect_to 
   end
 
   def menu
-    raise
   end
 
   def completed
