@@ -1,4 +1,4 @@
-.btn-ocean {
+.btn-ocean, .swal-button--confirm {
   background: $ocean;
   color: $background;
   padding: 8px 20px;
@@ -13,7 +13,7 @@
   box-shadow: 0px 0px 10px 4px $ocean-shadow;
 }
 
-.btn-blue {
+.btn-blue, .swal-button {
   background: $light-blue;
   color: $background;
   padding: 8px 20px;
