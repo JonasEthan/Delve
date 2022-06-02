@@ -1,4 +1,5 @@
 class RoomsController < ApplicationController
+  skip_before_action :authenticate_user!
 
   def new
     @room = Room.new
@@ -10,24 +11,27 @@ class RoomsController < ApplicationController
     @journey_runs.each do |journey_run|
       journey_id = journey_run.journey_id
       journey = Journey.find(journey_id)
-      @journeys << journey
+      @journeys << journey # => array of 2 journeys !!!
     end
-
   end
 
   def create
     @journey = Journey.find(params[:room][:journey_id])
-    @enemy = Enemy.where(disorder_id: @journey.disorder_id) # => array (possibly) because of "where"
-    @room = Room.new(journey_id: @journey.id, enemy_id: @enemy.id)
-    @room.save
-    redirect_to room_path(@room)
+    @enemies = Enemy.where(disorder_id: @journey.disorder_id) # => array (possibly) because of "where"
+
+    @array_of_journey_rooms = []
+    @enemies.each do |enemy|
+      @room = Room.new(journey_id: @journey.id, enemy_id: enemy.id)
+      @room.save
+      @array_of_journey_rooms << @room
+    end
+    redirect_to room_path(@array_of_journey_rooms[1][:id])
+    # .sort to make sure last room/enemy is always boss etc.
   end
 
   def show
     # @room = Room.find(params[:id])
-    # @enemy = Enemy.find() -- Don't need this because of nested routes?
   end
-
 
   # def edit
   # end
