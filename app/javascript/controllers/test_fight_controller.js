@@ -45,7 +45,9 @@ export default class extends Controller {
       // checks if the enemy is still alive or not
       if (this.enemy.health > 0 ){
         // Attacks the player if the previous condition is true
-        this.attackPlayer();
+        setTimeout(() => {
+          this.attackPlayer();
+        }, 1000);
       }
     }
     console.log(Math.floor(Math.random() * 101) % 20)
