@@ -5,7 +5,9 @@ export default class PlayerStatus {
     this.damage = damage;
   }
 
+  // This is the attack of the Enemy so This here reduces the Health of the player
   enemyAttack(attackDamage) {
+    // This statement is to see if the Enemy crits
     if((Math.floor(Math.random() * 101)) % 20 === 0){
       // alert("Enemy CRIT!");
       return this.health -= Math.floor(attackDamage * 1.5);
@@ -14,12 +16,14 @@ export default class PlayerStatus {
     }
   }
 
+  // This is run to check if the health of the player is above 0 the massage given to it is the disorder meltdown_text
   checkHealth(message){
     if(this.health <= 0) {
       alert(message);
     }
   }
 
+  // This will check if the Energy of the Player is enough for a ability. (Just structure for now, not used yet)
   checkEnergy(energy){
     if(this.energy <= energy){
       return true;
