@@ -47,7 +47,7 @@ export default class extends Controller {
         // Attacks the player if the previous condition is true
         setTimeout(() => {
           this.attackPlayer();
-        }, 1000);
+        }, 750);
       }
     }
     console.log(Math.floor(Math.random() * 101) % 20)
