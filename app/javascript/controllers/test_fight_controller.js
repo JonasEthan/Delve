@@ -1,6 +1,7 @@
 import { Controller } from "@hotwired/stimulus"
 import PlayerStatus  from "../utils/player_status"
 import EnemyStatus from "../utils/enemy_status";
+import AdventuringText from "../utils/adventuring_text";
 
 // importing the JS Classes From Utils Folder for our Player and Enemy
 
@@ -12,6 +13,8 @@ export default class extends Controller {
     // creates the instances of our Player and Enemy for JS with the given Object parameters
    this.player = new PlayerStatus(this.playerValue.health, this.playerValue.energy, this.playerValue.attack_damage);
    this.enemy = new EnemyStatus(this.enemyValue.name, this.enemyValue.health, this.enemyValue.energy, this.enemyValue.attack_damage, this.enemyValue.boss);
+   this.narrator = new AdventuringText;
+   this.narrator.checkDialog(this.enemy.name);
   }
 
   // Handels the attack on the player
@@ -47,7 +50,7 @@ export default class extends Controller {
         // Attacks the player if the previous condition is true
         setTimeout(() => {
           this.attackPlayer();
-        }, 750);
+        }, 500);
       }
     }
     console.log(Math.floor(Math.random() * 101) % 20)
