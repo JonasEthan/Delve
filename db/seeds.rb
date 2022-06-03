@@ -22,7 +22,7 @@ User.create(
   username: "Dummy",
   email: "test@dummy.com",
   password: "123456",
-  character_id: 1
+  # character_id: 1
 )
 # User.create(
 #   username: "Jonas",

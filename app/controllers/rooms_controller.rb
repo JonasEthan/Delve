@@ -3,12 +3,19 @@ class RoomsController < ApplicationController
 
   def new
     @room = Room.new
-    @run = Run.find(Game.last.id)
-    @journey_runs = JourneyRun.where(run_id: @run.id) # = array !!!
-    # @journeys = @journey_runs.each { |jr| return jr.journey_id } # =array of journey IDs ?
+
+    # ( ALMOST) SAME CODE AS IN JOURNEYS CONTROLLER
+    array_current_user_character = UserCharacter.where(user_id: current_user.id) #array of 1
+    current_user_character = array_current_user_character.first
+    game_array = Game.where(character_id: current_user_character.character_id) #array of 1
+    current_game = game_array.first
+    run_array = Run.where(game_id: current_game.id) #array of 1
+    current_run = run_array.first
+
+    journey_runs = JourneyRun.where(run_id: current_run.id) # = array OF SEVERAL !!!
 
     @journeys = []
-    @journey_runs.each do |journey_run|
+    journey_runs.each do |journey_run|
       journey_id = journey_run.journey_id
       journey = Journey.find(journey_id)
       @journeys << journey # => array of 2 journeys !!!

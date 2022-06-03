@@ -32,3 +32,4 @@ Rails.application.routes.draw do
   get '/about', to: 'pages#about'
   get '/team', to: 'pages#team'
 end
+ 
