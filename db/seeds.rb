@@ -21,7 +21,7 @@ puts "Create users..."
 User.create(
   username: "Dummy",
   email: "test@dummy.com",
-  password: "123456",
+  password: "123456"
   # character_id: 1
 )
 # User.create(
@@ -43,7 +43,7 @@ User.create(
 #   character_id: 1
 # )
 # puts "4 users created"
-puts "1 user created"
+puts User.first
 
 puts "Paranoia"
 
