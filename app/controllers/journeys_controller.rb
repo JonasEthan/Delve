@@ -17,13 +17,22 @@ class JourneysController < ApplicationController
     @run = Run.new(game_id: @current_game.id)
     @run.save
 
-    params[:journey][:title].each do |disorder_id|
-      @journey = Journey.new(disorder_id: disorder_id, title: Disorder.find(disorder_id).name)
-      @journey.save
-      @journey_run = JourneyRun.new(run_id: @run.id, journey_id: @journey.id)
-      @journey_run.save
+    unless params[:journey].nil?
+      params[:journey][:title].each do |disorder_id|
+        @journey = Journey.new(disorder_id: disorder_id, title: Disorder.find(disorder_id).name)
+        @journey.save
+        @journey_run = JourneyRun.new(run_id: @run.id, journey_id: @journey.id)
+        @journey_run.save
+      end
     end
-    redirect_to new_room_path
+    if @journey == Journey.last
+      redirect_to new_room_path
+    else
+      @journey = Journey.new
+      @disorders = Disorder.all
+      Run.last.delete
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def menu
