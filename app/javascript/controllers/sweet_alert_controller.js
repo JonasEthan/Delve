@@ -12,7 +12,7 @@ export default class extends Controller {
 
   disclaimerStart(e) {
     e.preventDefault()
-    
+
     Swal.fire({
       title: '<strong>DISCLAIMER</strong>',
       icon: 'info',
@@ -25,6 +25,8 @@ export default class extends Controller {
     }).then((inputValue) => {
       if(inputValue.isConfirmed)
         window.location = this.urlStartValue
+        // confirmButton.unbind('submit').submit()
+        // e.allowDefault() = true
     })
 }
   disclaimerLoad() {
