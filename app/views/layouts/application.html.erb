@@ -11,7 +11,7 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
-  <body <%= request.path == test_fight_path ? "data-controller=game-framework data-action=load@window->game-framework#journeyPartText" : "" %>>
+  <body>
     <div class="page-container">
         <div class="navbar-container">
           <%= render "shared/navbar" %>
