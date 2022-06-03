@@ -7,8 +7,7 @@
         data-sweet-alert-url-load-value='<%= test_fight_path %>'>
     <div class="start-buttons d-flex flex-row justify-content-center">
       <div class="p-2">
-        <%# <%= simple_form_for @game, data: { action: "submit->sweet-alert#disclaimerStart" } do |f| %>
-        <%= simple_form_for @game do |f| %>
+        <%= simple_form_for @game, data: { action: "submit->sweet-alert#disclaimerStart" } do |f| %>
           <%= f.submit "Start new game", id: "target", class: "btn btn-ocean" %>
         <% end %>
       </div>
@@ -18,4 +17,3 @@
     </div>
   </div>
 </div>
- 

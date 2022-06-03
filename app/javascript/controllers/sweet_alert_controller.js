@@ -32,8 +32,6 @@ export default class extends Controller {
         type: "post"
       })
       window.location = this.urlStartValue
-        // confirmButton.unbind('submit').submit()
-        // e.allowDefault() = true
     })
 }
   disclaimerLoad() {
