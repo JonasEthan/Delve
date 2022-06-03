@@ -6,7 +6,7 @@ class PagesController < ApplicationController
   end
 
   def test_fight
-    @enemy = Enemy.all.sample
+    @enemy = Enemy.find(params[:format])
     @enemy.health += rand(-10..10)
     @enemy.energy += rand(-5..5)
     @disorder = Disorder.find(@enemy.disorder_id)
