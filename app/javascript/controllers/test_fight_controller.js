@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 import PlayerStatus  from "../utils/player_status"
 import EnemyStatus from "../utils/enemy_status";
 
-// importing the JS Classes for our Player and Enemy
+// importing the JS Classes From Utils Folder for our Player and Enemy
 
 // Connects to data-controller="test-fight"
 export default class extends Controller {
@@ -32,7 +32,9 @@ export default class extends Controller {
     }
   }
 
-  // Is called when player clicks the Attack button on the view
+  //static attackTimeOut = setTimeout(this.attackPlayer(), 1000);
+
+  // Is called when player clicks the "Attack" button on the view
   attackEnemy(){
     // Checks if the win or loose conditions are met or not
     if (this.enemy.health > 0 && this.player.health > 0){
@@ -47,6 +49,11 @@ export default class extends Controller {
       }
     }
     console.log(Math.floor(Math.random() * 101) % 20)
+  }
+
+  // gets triggered when the player clicks the button "Opt Out"
+  playerOptOut(){
+    alert(this.disorderValue.meltdown_text);
   }
 
   // Updates the entire HTML so that the View is dynamic
