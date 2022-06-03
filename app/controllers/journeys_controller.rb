@@ -7,7 +7,6 @@ class JourneysController < ApplicationController
   end
 
   def create
-    raise
 
     array_current_user_character = UserCharacter.where(user_id: current_user.id) #array of 1
     current_user_character = array_current_user_character.first
