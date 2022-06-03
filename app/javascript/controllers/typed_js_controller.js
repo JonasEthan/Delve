@@ -5,10 +5,9 @@ import Typed from "typed.js"
 export default class extends Controller {
   connect() {
     new Typed(this.element, {
-      strings: ["Let us take you on a journey to discover the human mind..."],
+      strings: ["Embark on a journey to discover the human mind ..."],
       typeSpeed: 50,
-      loop: true,
-      loopCount: 2,
+      loop: false,
       showCursor: false
     })
   }
