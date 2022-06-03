@@ -16,13 +16,15 @@
       <h6>Health</h6>
       <progress class="health-bar" value="<%= @enemy.health %>" data-test-fight-target="enemyHealth" max="<%= @enemy.health %>"></progress>
     </div>
+    <div class="enemy-shake shake-constant">
     <div id="enemyPicture">
       <% def svg(name) %>
-        <% file_path = "#{Rails.root}/app/assets/images/#{name}.svg"  %>
+       <% file_path = "#{Rails.root}/app/assets/images/#{name}.svg" %>
         <% return File.read(file_path).html_safe if File.exists?(file_path)  %>
         <%  '(not found)' %>
       <% end %>
       <%= svg(@enemy.name) %>
+    </div>
     </div>
     <div class="m-2">
       <h3 class="mb-3"><%= current_user ? current_user.username : "Player" %></h3>
