@@ -1,5 +1,8 @@
 import { Controller } from "@hotwired/stimulus"
 import Swal from "sweetalert2"
+import Rails from "@rails/ujs"
+Rails.start()
+
 
 // Connects to data-controller="sweet-alert"
 export default class extends Controller {
@@ -24,7 +27,11 @@ export default class extends Controller {
       confirmButtonClass: "btn-ocean",
     }).then((inputValue) => {
       if(inputValue.isConfirmed)
-        window.location = this.urlStartValue
+      Rails.ajax({
+        url: "/games",
+        type: "post"
+      })
+      window.location = this.urlStartValue
         // confirmButton.unbind('submit').submit()
         // e.allowDefault() = true
     })
