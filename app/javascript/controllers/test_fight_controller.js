@@ -29,7 +29,7 @@ export default class extends Controller {
       this.updateView();
       // check the players health for loose conditon
       this.player.checkHealth(this.disorderValue.meltdown_text);
-    }
+    } 
   }
 
   //static attackTimeOut = setTimeout(this.attackPlayer(), 1000);

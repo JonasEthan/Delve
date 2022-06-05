@@ -4,7 +4,7 @@ class RoomsController < ApplicationController
   def new
     @room = Room.new
 
-    # ( ALMOST) SAME CODE AS IN JOURNEYS CONTROLLER
+    # (ALMOST) SAME CODE AS IN JOURNEYS CONTROLLER
     array_current_user_character = UserCharacter.where(user_id: current_user.id) #array of 1
     current_user_character = array_current_user_character.first
     game_array = Game.where(character_id: current_user_character.character_id) # array of 1

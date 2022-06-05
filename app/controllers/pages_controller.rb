@@ -13,6 +13,9 @@ class PagesController < ApplicationController
     @character = Character.first
   end
 
+  def loading
+  end
+
   def about
   end
 
