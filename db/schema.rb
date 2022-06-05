@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_06_03_090648) do
+ActiveRecord::Schema[7.0].define(version: 2022_06_05_131232) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -22,7 +22,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_03_090648) do
     t.integer "level"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "energy_cost"
   end
 
   create_table "disorders", force: :cascade do |t|
@@ -44,7 +43,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_03_090648) do
     t.bigint "disorder_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "energy_cost"
     t.string "img_url"
     t.index ["disorder_id"], name: "index_enemies_on_disorder_id"
   end
@@ -66,7 +64,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_03_090648) do
   end
 
   create_table "journeys", force: :cascade do |t|
-    t.boolean "completed"
+    t.boolean "completed", default: false
     t.bigint "disorder_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -75,9 +73,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_03_090648) do
   end
 
   create_table "rooms", force: :cascade do |t|
-    t.boolean "completed"
+    t.boolean "completed", default: false
     t.integer "position"
-    t.boolean "enemy_attacking"
     t.bigint "journey_id", null: false
     t.bigint "enemy_id", null: false
     t.datetime "created_at", null: false
@@ -88,7 +85,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_03_090648) do
 
   create_table "runs", force: :cascade do |t|
     t.bigint "game_id", null: false
-    t.boolean "completed"
+    t.boolean "completed", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["game_id"], name: "index_runs_on_game_id"
