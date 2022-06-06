@@ -2,25 +2,29 @@ import { Controller } from "@hotwired/stimulus"
 import PlayerStatus  from "../utils/player_status"
 import EnemyStatus from "../utils/enemy_status";
 import AdventuringText from "../utils/adventuring_text";
+import { SVG } from "@svgdotjs/svg.js";
 
 // importing the JS Classes From Utils Folder for our Player and Enemy
 
 // Connects to data-controller="test-fight"
 export default class extends Controller {
-  static values = { enemy: Array, player: Object, disorder: Object, special: Object}
-  static targets = ["enemyName", "enemyHealthPercent", "enemyHealth", "playerHealthPercent", "playerHealth", "playerEnergyPercent", "playerEnergy"]
+  static values = { enemy: Array, player: Object, disorder: Object, special: Object, pictures: Array}
+  static targets = ["enemyName", "enemyHealthPercent", "enemyHealth", "playerHealthPercent", "playerHealth", "playerEnergyPercent", "playerEnergy", "picture"]
   connect() {
     // creates the instances of our Player and Enemy for JS with the given Object parameters
     this.n = 0;
     this.player = new PlayerStatus(this.playerValue.health, this.playerValue.energy, this.playerValue.attack_damage);
     this.enemy = new EnemyStatus(this.enemyValue[this.n].name, this.enemyValue[this.n].health, this.enemyValue[this.n].energy, this.enemyValue[this.n].attack_damage, this.enemyValue[this.n].boss);
     // this is used for the healthbar of the enemys
+    this.picture = this.picturesValue[this.n];
     this.playerMaxHealth =  this.player.health;
     this.playerMaxEnergy = this.player.energy;
     this.enemyMaxhealth = this.enemy.health;
     this.updateView();
+    this.pictureDisplay(this.picture);
     this.narrator = new AdventuringText;
     this.narrator.checkDialog(this.enemy.name);
+    console.log(this);
   }
 
   // when the current enemy is defeated this reasigns the new enemy
@@ -33,8 +37,23 @@ export default class extends Controller {
       this.enemy.boss = this.enemyValue[this.n].boss;
       // reasigned to properly show the healthbar
       this.enemyMaxhealth = this.enemy.health;
+      this.picture = this.picturesValue[this.n];
+      // The updating of the picture does not work correctly as of yet For some reason JS does not want to delete the firstChild node correctly
+      this.pictureTarget.innerText = this.pictureDisplay(this.picture);
       this.updateView();
       this.narrator.checkDialog(this.enemy.name);
+    }
+  }
+
+  pictureDisplay(picture) {
+    const target = this.pictureTarget;
+    var draw = SVG();
+    var ajax = new XMLHttpRequest();
+    ajax.open('GET', picture, true);
+    ajax.send();
+    console.log(target);
+    ajax.onload = function() {
+      target.appendChild(draw.svg(ajax.responseText).node.firstChild);
     }
   }
 
@@ -71,10 +90,12 @@ export default class extends Controller {
           this.attackPlayer()
         }, 500);
       }else{
+        // this loads the next enemy of the array
         this.n += 1;
         this.do();
       }
     }else{
+      // this loasds the next enemy of the array
       this.n += 1;
       this.do();
     }
@@ -109,5 +130,7 @@ export default class extends Controller {
     this.enemyHealthPercentTarget.innerText = `${Math.floor((this.enemy.health * 100) /this.enemyMaxhealth)}%`;
     this.enemyHealthTarget.max = this.enemyMaxhealth;
     this.enemyHealthTarget.value = this.enemy.health;
+
+    // this.pictureTarget.innerText.remove();
   }
 }

@@ -10,7 +10,7 @@
   <div class="controller mt-4 mb-2"
       data-controller="test-fight"
       data-test-fight-enemy-value="<%= @enemys.to_json %>" data-test-fight-player-value="<%= @character.to_json %>" data-test-fight-disorder-value="<%= @disorder.to_json %>"
-      data-test-fight-special-value="<%= @player_ability.to_json %>"
+      data-test-fight-special-value="<%= @player_ability.to_json %>" data-test-fight-pictures-value="<%= @pictures.to_json %>"
       >
     <div class="d-flex justify-content-between">
       <div class="fight-stats mt-3">
@@ -23,13 +23,7 @@
       </div>
 
       <div class="enemy-shake shake-constant">
-        <div id="enemyPicture">
-          <% def svg(name) %>
-          <% file_path = "#{Rails.root}/app/assets/images/#{name}.svg" %>
-            <% return File.read(file_path).html_safe if File.exists?(file_path)  %>
-            <%  '(not found)' %>
-          <% end %>
-          <%= svg(@enemys[0].name) %>
+        <div id="enemyPicture" data-test-fight-target="picture">
         </div>
       </div>
 
@@ -48,6 +42,7 @@
         <progress class="energy-bar" value="<%= @character.energy %>" data-test-fight-target="playerEnergy" max="<%= @character.energy %>"></progress>
       </div>
     </div>
+
     <div class="game-info mt-3">
       <div class="game-controls">
         <p class="btn btn-melon" data-action="click->test-fight#attackEnemy">Attack</p>
