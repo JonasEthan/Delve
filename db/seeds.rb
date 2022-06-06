@@ -45,6 +45,23 @@ User.create(
 # puts "4 users created"
 puts User.first
 
+puts "Special Ability Nr. 1"
+
+PlayerAbility.create(
+  name: "Healing",
+  description: "This special ability heals you for the cost of 5 energy from 10 to 20 HP",
+  ability_cost: 5
+)
+
+puts "Ability created"
+
+UserAbility.create(
+  user_id: 1,
+  player_ability_id: 1
+)
+
+puts "Ability assigned"
+
 puts "Paranoia"
 
 Disorder.create(

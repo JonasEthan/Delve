@@ -32,7 +32,7 @@ class RoomsController < ApplicationController
       @room.save
       @array_of_journey_rooms << @room
     end
-    redirect_to test_fight_path(@room.enemy_id) # room_path(@array_of_journey_rooms[0][:id])
+    redirect_to test_fight_path(@array_of_journey_rooms) # room_path(@array_of_journey_rooms[0][:id])
     # .sort to make sure last room/enemy is always boss etc.
   end
 

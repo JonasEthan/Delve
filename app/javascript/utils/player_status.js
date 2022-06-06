@@ -23,6 +23,23 @@ export default class PlayerStatus {
     }
   }
 
+  abilityAction(abilityName){
+    switch (abilityName) {
+      case "Healing":
+        if(this.checkEnergy(this.energy)){
+          this.energy -= 5;
+          this.health += (10 + Math.floor(Math.random() * 11));
+        }else{
+          alert("Not enough energy");
+        }
+        break;
+
+      default:
+        alert("Something seems to have gone wrong");
+        break;
+    }
+  }
+
   // This will check if the Energy of the Player is enough for a ability. (Just structure for now, not used yet)
   checkEnergy(energy){
     if(this.energy <= energy){
