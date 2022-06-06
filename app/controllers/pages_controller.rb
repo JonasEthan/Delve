@@ -17,6 +17,7 @@ class PagesController < ApplicationController
     end
     @disorder = Disorder.find(@enemys[0].disorder_id)
     @character = Character.first
+    @player_ability = PlayerAbility.find(UserAbility.first.player_ability_id)
   end
 
   def about
