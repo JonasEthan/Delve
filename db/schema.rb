@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_06_06_084701) do
+ActiveRecord::Schema[7.0].define(version: 2022_06_06_152756) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -47,6 +47,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_06_084701) do
     t.integer "energy_cost"
     t.string "img_url"
     t.index ["disorder_id"], name: "index_enemies_on_disorder_id"
+  end
+
+  create_table "enemy_abilities", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.integer "ability_cost"
+    t.bigint "enemy_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["enemy_id"], name: "index_enemy_abilities_on_enemy_id"
   end
 
   create_table "games", force: :cascade do |t|
@@ -134,6 +144,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_06_084701) do
   end
 
   add_foreign_key "enemies", "disorders"
+  add_foreign_key "enemy_abilities", "enemies"
   add_foreign_key "games", "characters"
   add_foreign_key "journey_runs", "journeys"
   add_foreign_key "journey_runs", "runs"
