@@ -7,35 +7,55 @@ import AdventuringText from "../utils/adventuring_text";
 
 // Connects to data-controller="test-fight"
 export default class extends Controller {
-  static values = { enemy: Object, player: Object, disorder: Object}
-  static targets = ["enemyHealth", "playerHealth", "playerEnergy"]
+  static values = { enemy: Array, player: Object, disorder: Object}
+  static targets = ["enemyName", "enemyHealth", "playerHealth", "playerEnergy"]
   connect() {
     // creates the instances of our Player and Enemy for JS with the given Object parameters
-   this.player = new PlayerStatus(this.playerValue.health, this.playerValue.energy, this.playerValue.attack_damage);
-   this.enemy = new EnemyStatus(this.enemyValue.name, this.enemyValue.health, this.enemyValue.energy, this.enemyValue.attack_damage, this.enemyValue.boss);
-   this.narrator = new AdventuringText;
-   this.narrator.checkDialog(this.enemy.name);
+    this.n = 0;
+    this.player = new PlayerStatus(this.playerValue.health, this.playerValue.energy, this.playerValue.attack_damage);
+    this.enemy = new EnemyStatus(this.enemyValue[this.n].name, this.enemyValue[this.n].health, this.enemyValue[this.n].energy, this.enemyValue[this.n].attack_damage, this.enemyValue[this.n].boss);
+    // this is used for the healthbar of the enemys
+    this.maxhealth = this.enemy.health;
+    this.updateView();
+    this.narrator = new AdventuringText;
+    this.narrator.checkDialog(this.enemy.name);
+    console.log(this.enemy);
+  }
+
+  // when the current enemy is defeated this reasigns the new enemy
+  do(){
+    if(this.n > 0){
+      this.enemy.name = this.enemyValue[this.n].name;
+      this.enemy.health = this.enemyValue[this.n].health;
+      this.enemy.energy = this.enemyValue[this.n].energy;
+      this.enemy.damage = this.enemyValue[this.n].attack_damage;
+      this.enemy.boss = this.enemyValue[this.n].boss;
+      // reasigned to properly show the healthbar
+      this.maxhealth = this.enemy.health;
+      this.updateView();
+      this.narrator.checkDialog(this.enemy.name);
+    }
+    console.log(this.enemy);
   }
 
   // Handels the attack on the player
   attackPlayer(){
     // checks if our current enemy is a boss or not and then gives it a different damage range
-    if(this.enemyValue.boss){
+    if(this.enemy.boss){
       // Calls the PlayerStatus funtion for the player to take damage
-      this.player.enemyAttack((this.enemyValue.attack_damage + Math.floor(Math.random() * 6)));
+      this.player.enemyAttack((this.enemy.damage + Math.floor(Math.random() * 6)));
       this.updateView();
       // check the players health for loose conditon
       this.player.checkHealth(this.disorderValue.meltdown_text);
     }else{
       // Calls the PlayerStatus funtion for the player to take damage
-      this.player.enemyAttack(this.enemyValue.attack_damage + Math.floor(Math.random() * 3));
+      this.player.enemyAttack((this.enemy.damage + Math.floor(Math.random() * 3)));
       this.updateView();
       // check the players health for loose conditon
       this.player.checkHealth(this.disorderValue.meltdown_text);
     }
   }
 
-  //static attackTimeOut = setTimeout(this.attackPlayer(), 1000);
 
   // Is called when player clicks the "Attack" button on the view
   attackEnemy(){
@@ -49,11 +69,16 @@ export default class extends Controller {
       if (this.enemy.health > 0 ){
         // Attacks the player if the previous condition is true
         setTimeout(() => {
-          this.attackPlayer();
+          this.attackPlayer()
         }, 500);
+      }else{
+        this.n += 1;
+        this.do();
       }
+    }else{
+      this.n += 1;
+      this.do();
     }
-    console.log(Math.floor(Math.random() * 101) % 20)
   }
 
   // gets triggered when the player clicks the button "Opt Out"
@@ -63,8 +88,10 @@ export default class extends Controller {
 
   // Updates the entire HTML so that the View is dynamic
   updateView() {
+    this.enemyNameTarget.innerText = this.enemy.name
     this.playerHealthTarget.value = this.player.health;
     this.playerEnergyTarget.value = this.player.energy;
+    this.enemyHealthTarget.max = this.maxhealth;
     this.enemyHealthTarget.value = this.enemy.health;
   }
 }
