@@ -13,6 +13,9 @@ application.register("hello", HelloController)
 import LoadingController from "./loading_controller.js"
 application.register("loading", LoadingController)
 
+import LoadingTypedJsController from "./loading_typed_js_controller.js"
+application.register("loading-typed-js", LoadingTypedJsController)
+
 import SweetAlertController from "./sweet_alert_controller.js"
 application.register("sweet-alert", SweetAlertController)
 

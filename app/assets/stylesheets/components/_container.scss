@@ -11,8 +11,8 @@
 }
 
 .blur {
-  filter: blur(10px);
-  transition: 10s;
+  filter: blur(50px);
+  transition: 10s !important;
 }
 
 .center-screen {
@@ -22,7 +22,3 @@
   text-align: center;
   min-height: 70vh;
 }
-
-// .loading-page {
-//   align-items: center !important;
-// }

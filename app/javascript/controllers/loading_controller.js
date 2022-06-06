@@ -2,6 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="loading"
 export default class extends Controller {
+
   connect() {
   }
 
@@ -12,4 +13,5 @@ export default class extends Controller {
   unblur() {
     this.element.classList.remove("blur")
   }
+
 }

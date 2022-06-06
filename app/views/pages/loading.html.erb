@@ -1,12 +1,11 @@
+
 <div class="center-screen">
 
-  <div data-controller="loading">
-    <div data-action="mouseover->loading#blur mouseout->loading#unblur">
+  <button class="btn btn-ocean" data-controller="loading" data-action="mouseover->loading#blur mouseout->loading#unblur">
+    <h2>Delve in...</h2>
+  </button>
 
-        <p>Click to</p>
-        <h2>Delve in...</h2>
-
-    </div>
-  </div>
+  <h2><span data-controller="loading-typed-js"></span></h2>
+  <%= render "shared/underline" %>
 
 </div>
