@@ -4,7 +4,12 @@
 
   <div data-controller="sweet-alert"
         data-sweet-alert-url-start-value='<%= new_journey_path %>'
-        data-sweet-alert-url-load-value='<%= test_fight_path %>'>
+        data-sweet-alert-url-load-value='<%= test_fight_path %>'
+        data-sweet-alert-url-cancel-value='<%= root_path %>'
+        data-sweet-alert-url-fight-win-value='<%= journeys_completed_path %>'
+        data-sweet-alert-url-fight-loss-value='<%= journeys_repeat_path %>'
+        data-sweet-alert-url-fight-exit-value='<%= root_path %>'
+  >
     <div class="start-buttons d-flex flex-row justify-content-center">
       <div class="p-2">
         <%= simple_form_for @game, data: { action: "submit->sweet-alert#disclaimerStart" } do |f| %>
@@ -13,6 +18,18 @@
       </div>
       <div class="p-2">
         <p class="btn btn-blue" data-action="click->sweet-alert#disclaimerLoad">Load my game</p>
+      </div>
+       <div class="p-2">
+        <p class="btn btn-melon" data-action="click->sweet-alert#fightStart">Game start message</p>
+      </div>
+      <div class="p-2">
+        <p class="btn btn-melon" data-action="click->sweet-alert#fightWin">Win message</p>
+      </div>
+      <div class="p-2">
+        <p class="btn btn-melon" data-action="click->sweet-alert#fightLoss">Loss message</p>
+      </div>
+      <div class="p-2">
+        <p class="btn btn-melon" data-action="click->sweet-alert#fightExit">Exit game message</p>
       </div>
     </div>
   </div>
