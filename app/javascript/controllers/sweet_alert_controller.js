@@ -66,9 +66,9 @@ export default class extends Controller {
 
   // Alert for "Fight page" - uses Adventuring text based on enemy instance
   fightStart(name) {
-    this.narrator = new AdventuringText;
-    console.log(this.narrator)
-    this.narrator.checkDialog(this.enemy.name);
+    // this.narrator = new AdventuringText;
+    // console.log(this.narrator)
+    // this.narrator.checkDialog(this.enemy.name);
     Swal.fire({
       title: '<strong>Attention!</strong>',
       html: `${name}`,
