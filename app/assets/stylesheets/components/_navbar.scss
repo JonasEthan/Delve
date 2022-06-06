@@ -1,16 +1,31 @@
 .navbar-lewagon {
-  // background: $background-hover !important;
   justify-content: space-between;
-  color: rgba(0,0,0,0.3);
+  opacity: 0;
+  transition: 1s ease-in-out;
+}
 
+.navbar-lewagon:hover {
+  background: $background-hover;
+  opacity: 1;
 }
 
 .navbar-lewagon .navbar-collapse {
   flex-grow: 0;
 }
 
+.nav-item {
+  color: $first-gray;
+}
+
 .navbar-lewagon .navbar-brand img {
-  width: 80px;
+  width: 75px;
+  border: 2px solid;
+  border-radius: 2px;
+  border-image: linear-gradient(90deg, $ocean, $melon) 1;
+}
+
+.nav-link {
+  color: $first-gray !important;
 }
 
 .navbar-lewagon .nav-link:hover {
