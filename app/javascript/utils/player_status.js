@@ -1,6 +1,8 @@
 export default class PlayerStatus {
   constructor(health, energy, damage) {
+    this.maxHealth = health;
     this.health = health;
+    this.maxEnergy =  energy;
     this.energy = energy;
     this.damage = damage;
   }
@@ -33,7 +35,7 @@ export default class PlayerStatus {
           this.energy -= abilityCost;
           this.health += (10 + Math.floor(Math.random() * 11));
           // if the healing would result in more than 100 health it sets the health to 100. Currently hardcoded needs to be changed later
-          if(this.health > 100){
+          if(this.health > this.maxHealth){
             this.health = 100;
           }
         }else{

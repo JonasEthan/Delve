@@ -10,10 +10,12 @@ class PagesController < ApplicationController
     @rooms = []
     @room_ids.each { |id| @rooms << Room.find(id) }
     @enemys = []
+    @pictures = []
     @rooms.each { |room| @enemys << Enemy.find(room.enemy_id) }
     @enemys.map do |enemy|
       enemy.health += rand(-10..10)
       enemy.energy += rand(-5..5)
+      @pictures << ActionController::Base.helpers.image_url("#{enemy.name}.svg")
     end
     @disorder = Disorder.find(@enemys[0].disorder_id)
     @character = Character.first
