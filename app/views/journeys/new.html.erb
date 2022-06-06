@@ -18,10 +18,11 @@
                       item_wrapper_class: "tag-item",
                       class: "mt-2",
                       include_hidden: false %>
-          <%= f.submit "Let's go", class: "btn btn-ocean mt-2" %>
+          <div data-controller="loading" data-action="mouseover->loading#blur mouseout->loading#unblur">
+            <%= f.submit "Delve in...", class: "btn btn-ocean mt-2" %>
+          </div>
         <% end %>
       </div>
     </div>
   </div>
 </div>
-  
