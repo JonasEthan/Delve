@@ -2,10 +2,11 @@
   <p><%= link_to request.referer.present? ? request.referer : root_path do %>
     <i class="fa-solid fa-backward"></i> Back
   <% end %></p>
-  <div class="center-container">
+  <div class="center-container text-center">
     <div class="container-content">
-      <h1>Your Journey begins</h1>
+          <h1>Your Journey begins</h1>
       <%= render "shared/underline" %>
+
       <p class="mt-3">Select the routes you want to embark on ...</p>
 
       <div class="selection-form">
@@ -24,4 +25,3 @@
     </div>
   </div>
 </div>
- 

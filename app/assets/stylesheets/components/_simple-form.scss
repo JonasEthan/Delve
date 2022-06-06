@@ -1,3 +1,4 @@
+// Simple form for journeys/new
 .tag-item {
   display: inline-block;
 }
@@ -28,4 +29,51 @@
 .tag-selector:checked + label {
   background-color: $light-blue-hover;
   color: white;
+}
+
+
+// Simple form for rooms/new
+.category-wrapper {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.category-item {
+  flex: 0 0 30%;
+}
+
+.category-selector {
+  position: absolute;
+  transform: scale(0);
+}
+
+.category-selector + label {
+  font-family: "Rubik Glitch", sans-serif;
+  display: flex;
+  height: 40vh;
+  max-width: 100%;
+  justify-content: center !important;
+  color: $first-gray;
+  font-size: 25px;
+  cursor: pointer;
+  box-sizing: border-box;
+  width: 100%;
+  text-align: left;
+  padding: 10px 10px 30px 10px;
+  border: 1px solid $ocean;
+  border-radius: 2px;
+  margin-bottom: 20px;
+  background-image: url("https://images.unsplash.com/photo-1584304636322-7fc611989b45?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80");
+  opacity: 0.2;
+  background-size: cover;
+}
+
+.category-selector:hover + label {
+  opacity: 1;
+  box-shadow: 0px 0px 10px 4px $ocean-shadow;
+}
+
+.category-selector:checked + label {
+  opacity: 1;
 }
