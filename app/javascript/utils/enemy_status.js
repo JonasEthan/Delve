@@ -18,6 +18,23 @@ export default class EnemyStatus {
     }
   }
 
+  specialAbility(abilityName, abilityCost) {
+    switch (abilityName) {
+      case "Test":
+        if(checkEnergy(abilityCost)){
+          alert("Test works");
+          this.energy -= abilityCost;
+        }else{
+          alert("Not enough energy");
+        }
+        break;
+
+      default:
+        alert("Something went wrong");
+        break;
+    }
+  }
+
   // Checks for the health of the enemy and give the win reaction as soon it reaches 0 or less
   checkHealth(){
     if(this.health <= 0) {
@@ -27,7 +44,7 @@ export default class EnemyStatus {
 
   // This checks the energy from the enemy, and if there is enough (Not functioning yet, not used yet)
   checkEnergy(energy){
-    if(this.energy <= energy){
+    if(this.energy >= energy){
       return true;
     }else{
       return false;

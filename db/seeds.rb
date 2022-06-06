@@ -174,3 +174,15 @@ Enemy.create(
 )
 
 puts "Hysteria joined the Party"
+
+puts "Enemies are Special too"
+@i = 0
+7.times do
+  @i += 1
+  EnemyAbility.create(
+    name: "Test",
+    description: "This is just for test purposes",
+    ability_cost: 10,
+    enemy_id: @i
+  )
+end
