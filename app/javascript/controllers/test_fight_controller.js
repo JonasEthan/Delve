@@ -17,14 +17,19 @@ export default class extends Controller {
     this.enemy = new EnemyStatus(this.enemyValue[this.n].name, this.enemyValue[this.n].health, this.enemyValue[this.n].energy, this.enemyValue[this.n].attack_damage, this.enemyValue[this.n].boss);
     // this is used for the healthbar of the enemys
     this.picture = this.picturesValue[this.n];
-    this.playerMaxHealth =  this.player.health;
-    this.playerMaxEnergy = this.player.energy;
+    this.setPlayerMax();
     this.enemyMaxhealth = this.enemy.health;
     this.updateView();
-    this.pictureDisplay(this.picture);
+    // this.pictureDisplay(this.picture);
     this.narrator = new AdventuringText;
     this.narrator.checkDialog(this.enemy.name);
     console.log(this);
+  }
+
+  // sets the max for the energy and health bar for the player
+  setPlayerMax() {
+    this.playerMaxHealth =  this.player.health;
+    this.playerMaxEnergy = this.player.energy;
   }
 
   // when the current enemy is defeated this reasigns the new enemy
