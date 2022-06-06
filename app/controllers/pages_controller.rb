@@ -6,10 +6,16 @@ class PagesController < ApplicationController
   end
 
   def test_fight
-    @enemy = Enemy.find(params[:format])
-    @enemy.health += rand(-10..10)
-    @enemy.energy += rand(-5..5)
-    @disorder = Disorder.find(@enemy.disorder_id)
+    @room_ids = params[:format].split("/")
+    @rooms = []
+    @room_ids.each { |id| @rooms << Room.find(id) }
+    @enemys = []
+    @rooms.each { |room| @enemys << Enemy.find(room.enemy_id) }
+    @enemys.map do |enemy|
+      enemy.health += rand(-10..10)
+      enemy.energy += rand(-5..5)
+    end
+    @disorder = Disorder.find(@enemys[0].disorder_id)
     @character = Character.first
   end
 
