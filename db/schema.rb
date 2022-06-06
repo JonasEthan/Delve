@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_06_03_090648) do
+ActiveRecord::Schema[7.0].define(version: 2022_06_06_084701) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -74,6 +74,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_03_090648) do
     t.index ["disorder_id"], name: "index_journeys_on_disorder_id"
   end
 
+  create_table "player_abilities", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.integer "ability_cost"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "rooms", force: :cascade do |t|
     t.boolean "completed"
     t.integer "position"
@@ -92,6 +100,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_03_090648) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["game_id"], name: "index_runs_on_game_id"
+  end
+
+  create_table "user_abilities", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "player_ability_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["player_ability_id"], name: "index_user_abilities_on_player_ability_id"
+    t.index ["user_id"], name: "index_user_abilities_on_user_id"
   end
 
   create_table "user_characters", force: :cascade do |t|
@@ -124,6 +141,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_03_090648) do
   add_foreign_key "rooms", "enemies"
   add_foreign_key "rooms", "journeys"
   add_foreign_key "runs", "games"
+  add_foreign_key "user_abilities", "player_abilities"
+  add_foreign_key "user_abilities", "users"
   add_foreign_key "user_characters", "characters"
   add_foreign_key "user_characters", "users"
 end
