@@ -23,18 +23,27 @@ export default class PlayerStatus {
     }
   }
 
-  abilityAction(abilityName){
+  // This will be the collection of our Special Abilities for the player
+  abilityAction(abilityName, abilityCost){
+    // Checks the name and then does certain cases
     switch (abilityName) {
       case "Healing":
-        if(this.checkEnergy(this.energy)){
-          this.energy -= 5;
+        // checks if the energy is enough to use it
+        if(this.checkEnergy(abilityCost)){
+          this.energy -= abilityCost;
           this.health += (10 + Math.floor(Math.random() * 11));
+          // if the healing would result in more than 100 health it sets the health to 100. Currently hardcoded needs to be changed later
+          if(this.health > 100){
+            this.health = 100;
+          }
         }else{
+          // For testing purposes for now
           alert("Not enough energy");
         }
         break;
 
       default:
+        // if the action does not exists or is not being recognised. Check spelling!
         alert("Something seems to have gone wrong");
         break;
     }
@@ -42,7 +51,7 @@ export default class PlayerStatus {
 
   // This will check if the Energy of the Player is enough for a ability. (Just structure for now, not used yet)
   checkEnergy(energy){
-    if(this.energy <= energy){
+    if(this.energy >= energy){
       return true;
     }else{
       return false;
