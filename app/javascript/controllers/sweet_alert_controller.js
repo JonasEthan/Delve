@@ -13,10 +13,10 @@ export default class extends Controller {
     urlStart: String,
     urlLoad: String,
     urlCancel: String,
-    urlFightStart: String,
-    urlFightWin: String,
-    urlFightLoss: String,
-    urlFightExit: String
+    fightStart: String,
+    fightWin: String,
+    fightLoss: String,
+    fightExit: String
   }
   connect() {
   }
@@ -89,7 +89,7 @@ export default class extends Controller {
       confirmButtonText: 'Continue',
     }).then((inputValue) => {
       if(inputValue.isConfirmed)
-        window.location = this.urlFightWinValue
+        window.location = this.fightWinValue
     })
   }
 
@@ -103,7 +103,7 @@ export default class extends Controller {
       confirmButtonText: 'Continue',
     }).then((inputValue) => {
       if(inputValue.isConfirmed)
-        window.location = this.urlFightLossValue
+        window.location = this.fightLossValue
     })
   }
 
@@ -117,7 +117,7 @@ export default class extends Controller {
       confirmButtonText: 'Okay'
     }).then((inputValue) => {
       if(inputValue.isConfirmed)
-        window.location = this.urlFightExitValue
+        window.location = this.fightExitValue
     })
   }
 }
