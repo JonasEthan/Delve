@@ -6,10 +6,10 @@ export default class extends Controller {
   }
 
   blur() {
-    this.element.classList.add("d-none")
+    this.element.classList.add("blur")
   }
 
   unblur() {
-    this.element.classList.remove("d-none")
+    this.element.classList.remove("blur")
   }
 }

@@ -10,6 +10,19 @@
   justify-content: center;
 }
 
+.blur {
+  filter: blur(10px);
+  transition: 10s;
+}
+
+.center-screen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 70vh;
+}
+
 // .loading-page {
 //   align-items: center !important;
 // }
