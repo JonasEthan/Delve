@@ -11,4 +11,13 @@ export default class extends Controller {
       showCursor: false
     })
   }
+
+  // gameLog() {
+  //   new Typed(this.element, {
+  //     strings: ["You are encountering an enemy ..."],
+  //     typeSpeed: 50,
+  //     loop: false,
+  //     showCursor: false
+  //   })
+  // }
 }
