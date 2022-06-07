@@ -22,6 +22,7 @@ export default class EnemyStatus {
     }
   }
 
+  // Checks for the name of the enemy and then switches to the case to do the special attack.
   specialAbility(enemyName, player, number) {
     switch (enemyName) {
       case "The Witness":

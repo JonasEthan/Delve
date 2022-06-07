@@ -56,6 +56,7 @@ export default class PlayerStatus {
     }
   }
 
+  // this makes the Player lose a certain amount of their Energy
   loseEnergy(lostEnergy) {
     this.energy -= lostEnergy;
   }
