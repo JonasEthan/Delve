@@ -1,0 +1,70 @@
+<div class="container mt-3 mb-3 ml-5 mr-5 ">
+  <div class="center-container">
+    <div class="text-center">
+      <h1><%= @disorder.name %></h1>
+      <%= render "shared/underline" %>
+    </div>
+  </div>
+
+
+  <div class="controller mt-4 mb-2"
+      data-controller="test-fight sweet-alert"
+      data-test-fight-enemy-value="<%= @rooms.first.to_json %>" data-test-fight-player-value="<%= @character.to_json %>" data-test-fight-disorder-value="<%= @disorder.to_json %>"
+      data-test-fight-special-value="<%= @player_ability.to_json %>" data-test-fight-pictures-value="<%= @pictures.to_json %>" data-sweet-alert-enemy-value="<%= @rooms.first.to_json%>"
+      data-sweet-alert-fight-win-value='<%= journeys_completed_path %>'
+      data-sweet-alert-fight-loss-value='<%= journeys_repeat_path %>'
+      data-sweet-alert-fight-exit-value='<%= root_path %>'
+      >
+    <div class="d-flex justify-content-between">
+      <div class="fight-stats mt-3">
+        <h3 class="mb-4" data-test-fight-target="enemyName"><%= @rooms.first.name %></h3>
+        <div class="progress-labels">
+          <i class="fa-solid fa-heart-pulse"></i>
+          <p data-test-fight-target="enemyHealthPercent" class="m-0">100%</p>
+        </div>
+        <progress class="health-bar" value="" data-test-fight-target="enemyHealth" max="" data-sweet-alert-target="enemyHealth"></progress>
+      </div>
+
+      <div class="enemy-shake shake-constant">
+        <div>
+          <% def svg(name) %>
+            <% file_path = "#{Rails.root}/app/assets/images/#{name}.svg"  %>
+            <% return File.read(file_path).html_safe if File.exists?(file_path)  %>
+            <%  '(not found)'  %>
+          <% end %>
+          <div data-test-fight-target="firstPicture" class="enemyPicture"><%= svg(@rooms.first.name) %></div>
+        </div>
+      </div>
+
+      <div class="fight-stats mt-3">
+        <h3 class="mb-4"><%= current_user ? current_user.username : "Player" %></h3>
+        <div class="progress-labels">
+          <i class="fa-solid fa-heart-pulse"></i>
+          <p data-test-fight-target="playerHealthPercent" class="m-0">100%</p>
+        </div>
+        <progress class="health-bar" value="<%= @character.health %>" data-test-fight-target="playerHealth" max="<%= @character.health %>"></progress>
+
+        <div class="progress-labels">
+          <i class="fa-solid fa-bolt"></i>
+          <p data-test-fight-target="playerEnergyPercent" class="m-0">100%</p>
+        </div>
+        <progress class="energy-bar" value="<%= @character.energy %>" data-test-fight-target="playerEnergy" max="<%= @character.energy %>"></progress>
+      </div>
+    </div>
+
+    <div class="game-info mt-3">
+      <div class="game-controls">
+        <p class="btn btn-melon" data-action="click->test-fight#attackEnemy toggle->sweet-alert#checkState">Attack</p>
+        <p class="btn btn-ocean" data-action="click->test-fight#playerSpecial" data-action="click->sweet-alert#checkState">Special</p>
+        <p class="btn btn-blue" data-action="click->sweet-alert#fightExit">Exit game</p>
+        <%# <%= link_to "Exit game", root_path, class:"btn btn-gray", data: { action:"click->test-fight#playerOptOut" } %>
+      </div>
+
+      <div class="game-log">
+        <strong>Game log:</strong><br> Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum nemo maiores accusamus consequatur dolor dicta excepturi corporis, temporibus reprehenderit voluptas quae eum assumenda incidunt velit possimus labore laboriosam, eos quod!
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad, similique? Et soluta repellat, atque qui ipsam, saepe est aut, aspernatur fugit sed porro. Eveniet excepturi possimus pariatur corrupti quos ut.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus, laborum, ab ducimus obcaecati modi omnis iste nostrum necessitatibus vel, pariatur ullam. Minima quis earum repellat exercitationem facere cum laboriosam dolor.
+      </div>
+    </div>
+  </div>
+</div>

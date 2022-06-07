@@ -2,7 +2,7 @@ export default class AdventuringText {
   checkDialog(name) {
     switch(name){
       case "The Witness":
-        "You hear the flapping of wings in the distance closing nearer to you by the second. Its gaze seems to be always fixed on you";
+        return "You hear the flapping of wings in the distance closing nearer to you by the second. Its gaze seems to be always fixed on you";
       break;
       case "The Stalker":
         return "As you walk you feel a gaze upon you, seemingly from every direction. Out of the shadow steps something with its eyes fixed on you. This seems to be the last hurdle of this journey!";
