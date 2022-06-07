@@ -3,7 +3,7 @@ import PlayerStatus  from "../utils/player_status"
 import EnemyStatus from "../utils/enemy_status";
 import AdventuringText from "../utils/adventuring_text";
 import { SVG } from "@svgdotjs/svg.js";
-// !import { Controller } from "utils/sweet_alert";
+// import sweet_alert_controller from "./sweet_alert_controller";
 // !import { Controller } from "utils/typed_js";
 
 // importing the JS Classes From Utils Folder for our Player and Enemy
@@ -12,6 +12,7 @@ import { SVG } from "@svgdotjs/svg.js";
 export default class extends Controller {
   static values = { enemy: Array, player: Object, disorder: Object, special: Object, pictures: Array}
   static targets = ["enemyName", "enemyHealthPercent", "enemyHealth", "playerHealthPercent", "playerHealth", "playerEnergyPercent", "playerEnergy", "firstPicture", "secondPicture"]
+
   connect() {
     // creates the instances of our Player and Enemy for JS with the given Object parameters
     this.n = 0;
@@ -23,8 +24,7 @@ export default class extends Controller {
     this.updateView();
     // this.pictureDisplay(this.picture);
     this.narrator = new AdventuringText;
-    this.narrator.checkDialog(this.enemy.name);
-    console.log(this);
+    //this.narrator.checkDialog(this.enemy.name);
   }
 
   // when the current enemy is defeated this reassigns the new enemy

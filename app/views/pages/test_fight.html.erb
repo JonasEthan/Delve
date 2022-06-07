@@ -10,7 +10,7 @@
   <div class="controller mt-4 mb-2"
       data-controller="test-fight sweet-alert"
       data-test-fight-enemy-value="<%= @enemys.to_json %>" data-test-fight-player-value="<%= @character.to_json %>" data-test-fight-disorder-value="<%= @disorder.to_json %>"
-      data-test-fight-special-value="<%= @player_ability.to_json %>" data-test-fight-pictures-value="<%= @pictures.to_json %>"
+      data-test-fight-special-value="<%= @player_ability.to_json %>" data-test-fight-pictures-value="<%= @pictures.to_json %>" data-sweet-alert-enemy-value="<%= @enemys.to_json%>"
       data-sweet-alert-fight-win-value='<%= journeys_completed_path %>'
       data-sweet-alert-fight-loss-value='<%= journeys_repeat_path %>'
       data-sweet-alert-fight-exit-value='<%= root_path %>'
@@ -22,7 +22,7 @@
           <i class="fa-solid fa-heart-pulse"></i>
           <p data-test-fight-target="enemyHealthPercent" class="m-0">100%</p>
         </div>
-        <progress class="health-bar" value="" data-test-fight-target="enemyHealth" max=""></progress>
+        <progress class="health-bar" value="" data-test-fight-target="enemyHealth" max="" data-sweet-alert-target="enemyHealth"></progress>
       </div>
 
       <div class="enemy-shake shake-constant">
@@ -33,9 +33,6 @@
             <%  '(not found)'  %>
           <% end %>
           <div data-test-fight-target="firstPicture" class="enemyPicture"><%= svg(@enemys[0].name) %></div>
-          <% if(@enemys.length > 1) %>
-            <div data-test-fight-target="secondPicture" class="hidden enemyPicture"><%= svg(@enemys[1].name) %></div>
-          <% end %>
         </div>
       </div>
 
@@ -57,8 +54,8 @@
 
     <div class="game-info mt-3">
       <div class="game-controls">
-        <p class="btn btn-melon" data-action="click->test-fight#attackEnemy">Attack</p>
-        <p class="btn btn-ocean" data-action="click->test-fight#playerSpecial">Special</p>
+        <p class="btn btn-melon" data-action="click->test-fight#attackEnemy toggle->sweet-alert#checkState">Attack</p>
+        <p class="btn btn-ocean" data-action="click->test-fight#playerSpecial" data-action="click->sweet-alert#checkState">Special</p>
         <p class="btn btn-blue" data-action="click->sweet-alert#fightExit">Exit game</p>
         <%# <%= link_to "Exit game", root_path, class:"btn btn-gray", data: { action:"click->test-fight#playerOptOut" } %>
       </div>
@@ -70,5 +67,5 @@
       </div>
     </div>
   </div>
-
+ <% raise %>
 </div>

@@ -135,13 +135,16 @@ export default class EnemyStatus {
         break;
       case "Hysteria":
         if(this.checkEnergy(10)){
+          const selfHarm = (Math.floor(Math.random * 100));
           alert("Hysteric Explosion!");
           this.energy -= 10;
           player.enemyAttack((this.damage + (Math.floor(Math.random() * 6))));
-          console.log(player);
           player.enemyAttack((this.damage + (Math.floor(Math.random() * 6))));
           player.enemyAttack((this.damage + (Math.floor(Math.random() * 6))));
-          console.log(player);
+          if (selfHarm % 20 === 0) {
+            console.log("It seems to also have harmed itself");
+            this.health /= 2;
+          }
           }else{
             alert("Not enough energy")
           }
