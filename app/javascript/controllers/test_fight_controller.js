@@ -2,16 +2,16 @@ import { Controller } from "@hotwired/stimulus"
 import PlayerStatus  from "../utils/player_status"
 import EnemyStatus from "../utils/enemy_status";
 import AdventuringText from "../utils/adventuring_text";
+import GameLog from "../utils/game_log";
 import { SVG } from "@svgdotjs/svg.js";
 // import sweet_alert_controller from "./sweet_alert_controller";
-// !import { Controller } from "utils/typed_js";
 
 // importing the JS Classes From Utils Folder for our Player and Enemy
 
 // Connects to data-controller="test-fight"
 export default class extends Controller {
   static values = { enemy: Array, player: Object, disorder: Object, special: Object, pictures: Array}
-  static targets = ["enemyName", "enemyHealthPercent", "enemyHealth", "playerHealthPercent", "playerHealth", "playerEnergyPercent", "playerEnergy", "firstPicture", "secondPicture"]
+  static targets = ["enemyName", "enemyHealthPercent", "enemyHealth", "playerHealthPercent", "playerHealth", "playerEnergyPercent", "playerEnergy", "firstPicture", "secondPicture", "gameLog"]
 
   connect() {
     // creates the instances of our Player and Enemy for JS with the given Object parameters
@@ -19,16 +19,18 @@ export default class extends Controller {
     this.player = new PlayerStatus(this.playerValue.health, this.playerValue.energy, this.playerValue.attack_damage);
     this.enemy = new EnemyStatus(this.enemyValue[this.n].name, this.enemyValue[this.n].health, this.enemyValue[this.n].energy, this.enemyValue[this.n].attack_damage, this.enemyValue[this.n].boss);
     this.picture = this.picturesValue[this.n];
-    // this is used for the healthbar of the enemys
-    this.enemyMaxhealth = this.enemy.health;
-    this.updateView();
     // this.pictureDisplay(this.picture);
     this.narrator = new AdventuringText;
+    this.gameLog = new GameLog;
     //this.narrator.checkDialog(this.enemy.name);
+    // this is used for the healthbar of the enemys
+    this.enemyMaxhealth = this.enemy.health;
+    this.gameLogAction = this.gameLog.gameLogText('connect')
+    this.updateView();
   }
 
   // when the current enemy is defeated this reassigns the new enemy
-  do(){
+  do() {
     if(this.n > 0){
       this.enemy.name = this.enemyValue[this.n].name;
       this.enemy.health = this.enemyValue[this.n].health;
@@ -41,6 +43,7 @@ export default class extends Controller {
       // The updating of the picture does not work correctly as of yet For some reason JS does not want to delete the firstChild node correctly
       this.firstPictureTarget.classList.add("hidden");
       this.secondPictureTarget.classList.remove("hidden");
+
       this.updateView();
       this.narrator.checkDialog(this.enemy.name);
     }
@@ -67,6 +70,7 @@ export default class extends Controller {
         if(this.enemy.boss){
           // Calls the PlayerStatus funtion for the player to take damage
           this.player.enemyAttack((this.enemy.damage + Math.floor(Math.random() * 6)));
+          this.gameLogAction = this.gameLog.gameLogText('attack')
           this.updateView();
           // check the players health for loose conditon
           // !this.fightLoss()
@@ -74,6 +78,7 @@ export default class extends Controller {
         } else {
           // Calls the PlayerStatus funtion for the player to take damage
           this.player.enemyAttack((this.enemy.damage + Math.floor(Math.random() * 3)));
+          this.gameLogAction = this.gameLog.gameLogText('attack')
           this.updateView();
           // check the players health for loose conditon
           // !this.fightLoss()
@@ -85,9 +90,11 @@ export default class extends Controller {
         // checks if the enemy is a boss or not
           if(this.enemy.boss){
            this.enemy.specialAbility(this.enemy.name, this.player, Math.floor(Math.random() * 2));
+           this.gameLogAction = this.gameLog.gameLogText('attack')
            this.updateView();
           }else{
             this.enemy.specialAbility(this.enemy.name, this.player, Math.floor(Math.random() * 2));
+            this.gameLogAction = this.gameLog.gameLogText('special')
             this.updateView();
           }
         break;
@@ -104,6 +111,7 @@ export default class extends Controller {
     if (this.enemy.health > 0 && this.player.health > 0){
       // enemy takes damage
       this.enemy.playerAttack(this.player.damage + Math.floor(Math.random() * 6));
+      this.gameLogAction = this.gameLog.gameLogText('attack')
       this.updateView();
       // checks if the enemy is still alive or not
       if (this.enemy.health > 0 ){
@@ -126,6 +134,7 @@ export default class extends Controller {
 
   playerSpecial() {
     this.player.abilityAction(this.specialValue.name, this.specialValue.ability_cost);
+    this.gameLogAction = this.gameLog.gameLogText('special')
     this.updateView();
     if (this.enemy.health > 0 ){
       // Attacks the player if the previous condition is true
@@ -153,6 +162,7 @@ export default class extends Controller {
     this.enemyHealthPercentTarget.innerText = `${Math.floor((this.enemy.health * 100) /this.enemyMaxhealth)}%`;
     this.enemyHealthTarget.max = this.enemyMaxhealth;
     this.enemyHealthTarget.value = this.enemy.health;
+      this.gameLogTarget.insertAdjacentHTML("beforeend", this.gameLogAction)
 
     // this.pictureTarget.innerText.remove();
   }

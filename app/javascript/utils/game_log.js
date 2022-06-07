@@ -1,13 +1,13 @@
 // Text elements for Game Log box on fight page
 export default class GameLog {
-  logAttack(method) {
+  gameLogText(method) {
     switch(method) {
+      case "connect":
+        return "Connection test";
       case "attack":
-        "You attack and it hurts your conterpart";
-      break;
+        return "You attack and it hurts your conterpart";
       case "special":
-        "As you walk you feel a gaze upon you, seemingly from every direction. Out of the shadow steps something with its eyes fixed on you. This seems to be the last hurdle of this journey!";
-      break;
+        return "Special text!";
     }
   }
 }

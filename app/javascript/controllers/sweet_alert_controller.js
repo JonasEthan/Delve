@@ -78,7 +78,6 @@ export default class extends Controller {
 
   // Alert for "Fight page" - uses Adventuring text based on enemy instance
   fightStart(fightMessage) {
-    console.log(fightMessage);
     // this.narrator = new AdventuringText;
     // console.log(this.narrator)
     // this.narrator.checkDialog(this.enemy.name);
