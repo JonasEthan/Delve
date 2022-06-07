@@ -18,17 +18,16 @@ export default class EnemyStatus {
     }
   }
 
-  specialAbility(abilityName, abilityCost) {
-    switch (abilityName) {
-      case "Test":
-        if(checkEnergy(abilityCost)){
-          alert("Test works");
-          this.energy -= abilityCost;
-        }else{
-          alert("Not enough energy");
-        }
+  specialAbility(enemyName, number) {
+    switch (enemyName) {
+      case "The Witness":
+        alert("Horrible Gaze!");
+        this.energy -= 5;
         break;
-
+      case "The Stalker":
+        alert("Horrible Gaze!");
+        this.energy -= 5;
+        break;
       default:
         alert("Something went wrong");
         break;

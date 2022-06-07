@@ -11,27 +11,20 @@ import { SVG } from "@svgdotjs/svg.js";
 // Connects to data-controller="test-fight"
 export default class extends Controller {
   static values = { enemy: Array, player: Object, disorder: Object, special: Object, pictures: Array}
-  static targets = ["enemyName", "enemyHealthPercent", "enemyHealth", "playerHealthPercent", "playerHealth", "playerEnergyPercent", "playerEnergy", "picture"]
+  static targets = ["enemyName", "enemyHealthPercent", "enemyHealth", "playerHealthPercent", "playerHealth", "playerEnergyPercent", "playerEnergy", "firstPicture", "secondPicture"]
   connect() {
     // creates the instances of our Player and Enemy for JS with the given Object parameters
     this.n = 0;
     this.player = new PlayerStatus(this.playerValue.health, this.playerValue.energy, this.playerValue.attack_damage);
     this.enemy = new EnemyStatus(this.enemyValue[this.n].name, this.enemyValue[this.n].health, this.enemyValue[this.n].energy, this.enemyValue[this.n].attack_damage, this.enemyValue[this.n].boss);
-    // this is used for the healthbar of the enemys
     this.picture = this.picturesValue[this.n];
-    this.setPlayerMax();
+    // this is used for the healthbar of the enemys
     this.enemyMaxhealth = this.enemy.health;
     this.updateView();
     // this.pictureDisplay(this.picture);
     this.narrator = new AdventuringText;
     this.narrator.checkDialog(this.enemy.name);
     console.log(this);
-  }
-
-  // sets the max for the energy and health bar for the player
-  setPlayerMax() {
-    this.playerMaxHealth =  this.player.health;
-    this.playerMaxEnergy = this.player.energy;
   }
 
   // when the current enemy is defeated this reassigns the new enemy
@@ -46,41 +39,59 @@ export default class extends Controller {
       this.enemyMaxhealth = this.enemy.health;
       this.picture = this.picturesValue[this.n];
       // The updating of the picture does not work correctly as of yet For some reason JS does not want to delete the firstChild node correctly
-      this.pictureTarget.innerText = this.pictureDisplay(this.picture);
+      this.firstPictureTarget.classList.add("hidden");
+      this.secondPictureTarget.classList.remove("hidden");
       this.updateView();
       this.narrator.checkDialog(this.enemy.name);
     }
   }
 
+  // Loads the svg pictures of our enemies
   pictureDisplay(picture) {
-    const target = this.pictureTarget;
+    /*const target = this.pictureTarget;
     var draw = SVG();
     var ajax = new XMLHttpRequest();
     ajax.open('GET', picture, true);
     ajax.send();
     console.log(target);
-    ajax.onload = function() {
+    ajax.onload = function(_e) {
       target.appendChild(draw.svg(ajax.responseText).node.firstChild);
-    }
+    }*/
   }
 
   // Handles the attack on the player
   attackPlayer() {
     // checks if our current enemy is a boss or not and then gives it a different damage range
-    if(this.enemy.boss){
-      // Calls the PlayerStatus funtion for the player to take damage
-      this.player.enemyAttack((this.enemy.damage + Math.floor(Math.random() * 6)));
-      this.updateView();
-      // check the players health for loose conditon
-      // !this.fightLoss()
-      this.player.checkHealth(this.disorderValue.meltdown_text);
-    } else {
-      // Calls the PlayerStatus funtion for the player to take damage
-      this.player.enemyAttack((this.enemy.damage + Math.floor(Math.random() * 3)));
-      this.updateView();
-      // check the players health for loose conditon
-      // !this.fightLoss()
-      this.player.checkHealth(this.disorderValue.meltdown_text);
+    switch (Math.floor(Math.random() * 2)) {
+      case 0:
+        if(this.enemy.boss){
+          // Calls the PlayerStatus funtion for the player to take damage
+          this.player.enemyAttack((this.enemy.damage + Math.floor(Math.random() * 6)));
+          this.updateView();
+          // check the players health for loose conditon
+          // !this.fightLoss()
+          this.player.checkHealth(this.disorderValue.meltdown_text);
+        } else {
+          // Calls the PlayerStatus funtion for the player to take damage
+          this.player.enemyAttack((this.enemy.damage + Math.floor(Math.random() * 3)));
+          this.updateView();
+          // check the players health for loose conditon
+          // !this.fightLoss()
+          this.player.checkHealth(this.disorderValue.meltdown_text);
+        }
+        break;
+      // This will handle the event of an special attack being used by the enemy
+      case 1:
+        // checks if the enemy is a boss or not
+          if(this.enemy.boss){
+           this.enemy.specialAbility(this.enemy.name, Math.floor(Math.random() * 2));
+          }else{
+            this.enemy.specialAbility(this.enemy.name, Math.floor(Math.random() * 2));
+          }
+        break;
+      default:
+        alert("Something went wrong");
+        break;
     }
   }
 
@@ -133,9 +144,9 @@ export default class extends Controller {
   // Updates the entire HTML so that the View is dynamic
   updateView() {
     this.enemyNameTarget.innerText = this.enemy.name
-    this.playerHealthPercentTarget.innerText = `${((this.player.health * 100) / this.playerMaxHealth)}%`;
+    this.playerHealthPercentTarget.innerText = `${((this.player.health * 100) / this.player.maxHealth)}%`;
     this.playerHealthTarget.value = this.player.health;
-    this.playerEnergyPercentTarget.innerText = `${Math.floor((this.player.energy * 100) /this.playerMaxEnergy)}%`;
+    this.playerEnergyPercentTarget.innerText = `${Math.floor((this.player.energy * 100) /this.player.maxEnergy)}%`;
     this.playerEnergyTarget.value = this.player.energy;
     this.enemyHealthPercentTarget.innerText = `${Math.floor((this.enemy.health * 100) /this.enemyMaxhealth)}%`;
     this.enemyHealthTarget.max = this.enemyMaxhealth;
