@@ -8,16 +8,19 @@
 
 
   <div class="controller mt-4 mb-2"
-      data-controller="test-fight sweet-alert"
-      data-test-fight-enemy-value="<%= @rooms.first.to_json %>" data-test-fight-player-value="<%= @character.to_json %>" data-test-fight-disorder-value="<%= @disorder.to_json %>"
-      data-test-fight-special-value="<%= @player_ability.to_json %>" data-sweet-alert-enemy-value="<%= @rooms.first.to_json%>"
+      id="game-controller"
+      data-controller="sweet-alert test-fight"
+      data-test-fight-enemy-value="<%= @enemys.first.to_json %>" data-test-fight-player-value="<%= @character.to_json %>" data-test-fight-disorder-value="<%= @disorder.to_json %>"
+      data-test-fight-special-value="<%= @player_ability.to_json %>" data-sweet-alert-enemy-value="<%= @enemys.first.to_json%>"
       data-sweet-alert-fight-win-value='<%= journeys_completed_path %>'
+      data-test-fight-fight-win-value='<%= journeys_completed_path %>'
+      data-sweet-alert-room-win-value='<%= test_fight_path(rooms_id: @db_rooms.pluck(:id).drop(1)) %>'
       data-sweet-alert-fight-loss-value='<%= journeys_repeat_path %>'
       data-sweet-alert-fight-exit-value='<%= root_path %>'
       >
     <div class="d-flex justify-content-between">
       <div class="fight-stats mt-3">
-        <h3 class="mb-4" data-test-fight-target="enemyName"><%= @rooms.first.name %></h3>
+        <h3 class="mb-4" data-test-fight-target="enemyName"><%= @enemys.first.name %></h3>
         <div class="progress-labels">
           <i class="fa-solid fa-heart-pulse"></i>
           <p data-test-fight-target="enemyHealthPercent" class="m-0">100%</p>
@@ -32,7 +35,7 @@
             <% return File.read(file_path).html_safe if File.exists?(file_path)  %>
             <%  '(not found)'  %>
           <% end %>
-          <div data-test-fight-target="firstPicture" class="enemyPicture"><%= svg(@rooms.first.name) %></div>
+          <div data-test-fight-target="firstPicture" class="enemyPicture"><%= svg(@enemys.first.name) %></div>
         </div>
       </div>
 

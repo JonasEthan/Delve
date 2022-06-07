@@ -17,7 +17,8 @@ export default class extends Controller {
     fightWin: String,
     fightLoss: String,
     fightExit: String,
-    enemy: Object
+    enemy: Object,
+    roomWin: String,
   }
   static targets = ["enemyHealth"]
   connect() {
@@ -83,7 +84,7 @@ export default class extends Controller {
   }
 
   // Alert for "winning the fight" - redirects to journeys/completed path
-  fightWin() {
+  fightWin(options = {}) {
     Swal.fire({
       title: '<strong>Congratulations!</strong>',
       icon: 'success',
@@ -93,7 +94,7 @@ export default class extends Controller {
       confirmButtonText: 'Continue',
     }).then((inputValue) => {
       if(inputValue.isConfirmed)
-        window.location = this.fightWinValue
+        window.location = `${this.roomWinValue}&${new URLSearchParams(options.player).toString()}`
     })
   }
 
