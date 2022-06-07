@@ -51,6 +51,9 @@ class PagesController < ApplicationController
     # Character.update(@character)
   end
 
+  def loading
+  end
+
   def about
   end
 
