@@ -22,8 +22,7 @@ export default class extends Controller {
   static targets = ["enemyHealth"]
 
   connect() {
-    // this.narrator = new AdventuringText;
-    // this.fightStart(this.narrator.checkDialog(this.enemyValue.name));
+    this.narrator = new AdventuringText;
   }
 
   // Alert for "Start new game" button
@@ -71,8 +70,6 @@ export default class extends Controller {
 
   // Alert for "Fight page" - uses Adventuring text based on enemy instance
   fightStart(fightMessage) {
-    this.narrator = new AdventuringText;
-    this.narrator.checkDialog(this.enemyValue.name);
 
     Swal.fire({
       title: '<strong>Attention!</strong>',
