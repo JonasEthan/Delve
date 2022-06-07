@@ -17,20 +17,12 @@ export default class extends Controller {
     fightWin: String,
     fightLoss: String,
     fightExit: String,
-    enemy: Array
+    enemy: Object
   }
   static targets = ["enemyHealth"]
   connect() {
-    this.n = 0;
     this.narrator = new AdventuringText;
-    this.fightStart(this.narrator.checkDialog(this.enemyValue[this.n].name));
-  }
-
-  nextEnemy() {
-    this.n += 1;
-    if(this.n > 0){
-      this.fightStart(this.narrator.checkDialog(this.enemyValue[this.n].name));
-    }
+    this.fightStart(this.narrator.checkDialog(this.enemyValue.name));
   }
 
   // Alert for "Start new game" button
@@ -131,12 +123,5 @@ export default class extends Controller {
       if(inputValue.isConfirmed)
         window.location = this.fightExitValue
     })
-  }
-
-  checkState() {
-    if(this.enemyHealthTarget.value <= 0){
-      console.log("I am here");
-      this.nextEnemy();
-    }
   }
 }
