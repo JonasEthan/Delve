@@ -26,13 +26,14 @@
       </div>
 
       <div class="enemy-shake shake-constant">
-        <div id="enemyPicture" data-test-fight-target="picture">
+        <div>
           <% def svg(name) %>
             <% file_path = "#{Rails.root}/app/assets/images/#{name}.svg"  %>
             <% return File.read(file_path).html_safe if File.exists?(file_path)  %>
             <%  '(not found)'  %>
           <% end %>
-        <%= svg(@enemys[0].name) %>
+          <div data-test-fight-target="firstPicture" class="enemyPicture"><%= svg(@enemys[0].name) %></div>
+          <div data-test-fight-target="secondPicture" class="hidden enemyPicture"><%= svg(@enemys[1].name) %></div>
         </div>
       </div>
 
