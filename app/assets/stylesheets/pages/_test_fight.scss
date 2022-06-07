@@ -84,17 +84,19 @@
 //   50% { border-color: orange; }
 // }
 
-
-#enemyPicture {
+.enemyPicture {
   height: 45vh;
 }
 
-#enemyPicture svg {
+.enemyPicture svg {
   height: 100%;
   width: 100%;
   object-fit: cover;
 }
 
+.hidden {
+  display: none;
+}
 // #exit-button {
 //   text-decoration: none;
 //   color: black;
