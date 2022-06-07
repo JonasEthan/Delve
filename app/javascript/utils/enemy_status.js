@@ -30,10 +30,10 @@ export default class EnemyStatus {
           this.energy -= 5;
           player.loseEnergy(10);
           // alert("Horrible Gaze!");
-          return this.gameLogAction = this.gameLog.gameLogText('The Witness');
+          return this.gameLog.gameLogText('The Witness');
         } else {
           // alert("Not enough energy")
-          return this.gameLogAction = this.gameLog.gameLogText('energyLow')
+          return this.gameLog.gameLogText('energyLow')
         }
         break;
       case "The Stalker":
@@ -43,20 +43,20 @@ export default class EnemyStatus {
               // alert("Horrible Gaze!");
               this.energy -= 5;
               player.loseEnergy(10);
-              return this.gameLogAction = this.gameLog.gameLogText('The Stalker');
+              return this.gameLog.gameLogText('The Stalker');
               } else {
                 // alert("Not enough energy")
-                return this.gameLogAction = this.gameLog.gameLogText('energyLow')
+                return this.gameLog.gameLogText('energyLow')
               }
             break;
           case 1:
             if(this.checkEnergy(10)){
               // alert("Trailing Gaze!");
               this.energy -= 10;
-              return this.gameLogAction = this.gameLog.gameLogText('The Stalker');
+              return this.gameLog.gameLogText('The Stalker');
               } else {
                 // alert("Not enough energy")
-                return this.gameLogAction = this.gameLog.gameLogText('energyLow')
+                return this.gameLog.gameLogText('energyLow')
               }
             break;
           default:
@@ -69,10 +69,10 @@ export default class EnemyStatus {
           this.energy -= 10;
           player.enemyAttack((this.damage + (Math.floor(Math.random() * 11))));
           player.loseEnergy(5);
-          return this.gameLogAction = this.gameLog.gameLogText('The Chain');
+          return this.gameLog.gameLogText('The Chain');
           } else {
             // alert("Not enough energy")
-            return this.gameLogAction = this.gameLog.gameLogText('energyLow')
+            return this.gameLog.gameLogText('energyLow')
           }
         break;
       case "The Abyss":
@@ -83,10 +83,10 @@ export default class EnemyStatus {
               this.energy -= 10;
               player.enemyAttack((this.damage + (Math.floor(Math.random() * 11))));
               player.loseEnergy(5);
-              return this.gameLogAction = this.gameLog.gameLogText('The Abyss');
+              return this.gameLog.gameLogText('The Abyss');
               } else {
                 // alert("Not enough energy")
-                return this.gameLogAction = this.gameLog.gameLogText('energyLow')
+                return this.gameLog.gameLogText('energyLow')
               }
             break;
           case 1:
@@ -95,10 +95,10 @@ export default class EnemyStatus {
               const hautingDamage = (this.damage + (Math.floor(Math.random() * 11)));
               player.enemyAttack(hautingDamage);
               this.health += hautingDamage;
-              return this.gameLogAction = this.gameLog.gameLogText('The Abyss');
+              return this.gameLog.gameLogText('The Abyss');
               } else {
                 // alert("Not enough energy")
-                return this.gameLogAction = this.gameLog.gameLogText('energyLow')
+                return this.gameLog.gameLogText('energyLow')
               }
             break;
           default:
@@ -113,10 +113,10 @@ export default class EnemyStatus {
           const energyLost = (Math.floor(Math.random() * 11))
           player.loseEnergy(energyLost);
           this.energy += energyLost;
-          return this.gameLogAction = this.gameLog.gameLogText('The Prosecutor');
+          return this.gameLog.gameLogText('The Prosecutor');
           } else {
             // alert("Not enough energy")
-            return this.gameLogAction = this.gameLog.gameLogText('energyLow')
+            return this.gameLog.gameLogText('energyLow')
           }
         break;
       case "The Mask":
@@ -128,10 +128,10 @@ export default class EnemyStatus {
               player.loseEnergy(energyLost);
               this.energy += energyLost;
               // alert("Horrible Acusation!");
-              return this.gameLogAction = this.gameLog.gameLogText('The Mask')
+              return this.gameLog.gameLogText('The Mask')
               } else {
                 // alert("Not enough energy")
-                return this.gameLogAction = this.gameLog.gameLogText('energyLow')
+                return this.gameLog.gameLogText('energyLow')
               }
             break;
           case 1:
@@ -143,7 +143,7 @@ export default class EnemyStatus {
               this.health += leechDamage;
               } else {
                 // alert("Not enough energy")
-                return this.gameLogAction = this.gameLog.gameLogText('energyLow')
+                return this.gameLog.gameLogText('energyLow')
               }
             break;
           default:
@@ -162,11 +162,11 @@ export default class EnemyStatus {
           if (selfHarm % 20 === 0) {
             console.log("It seems to also have harmed itself");
             this.health /= 2;
-            return this.gameLogAction = this.gameLog.gameLogText('Hysteria');
+            return this.gameLog.gameLogText('Hysteria');
           }
         } else {
           // alert("Not enough energy")
-            return this.gameLogAction = this.gameLog.gameLogText('energyLow')
+            return this.gameLog.gameLogText('energyLow')
           }
         break;
       default:

@@ -32,6 +32,7 @@ class RoomsController < ApplicationController
     #   @room.save
     #   @array_of_journey_rooms << @room
     # end
+    # Hard coded needs to be improved!
     Room.create(journey_id: @journey.id, enemy_id: @enemies.first.id)
     Room.create(journey_id: @journey.id, enemy_id: 7)
     Room.create(journey_id: @journey.id, enemy_id: @enemies.last.id)

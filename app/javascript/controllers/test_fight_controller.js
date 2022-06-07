@@ -53,7 +53,7 @@ export default class extends Controller {
         if(this.enemy.boss){
           // Calls the PlayerStatus funtion for the player to take damage
           this.player.enemyAttack((this.enemy.damage + Math.floor(Math.random() * 6)));
-          this.gameLogAction = this.gameLog.gameLogText('attack')
+          this.gameLogAction = this.gameLog.gameLogText('enemyAttack')
           this.updateView();
           // check the players health for loose conditon
           // !this.fightLoss()
@@ -61,7 +61,7 @@ export default class extends Controller {
         } else {
           // Calls the PlayerStatus funtion for the player to take damage
           this.player.enemyAttack((this.enemy.damage + Math.floor(Math.random() * 3)));
-          this.gameLogAction = this.gameLog.gameLogText('attack')
+          this.gameLogAction = this.gameLog.gameLogText('enemyAttack')
           this.updateView();
           // check the players health for loose conditon
           // !this.fightLoss()
@@ -73,11 +73,11 @@ export default class extends Controller {
         // checks if the enemy is a boss or not
           if(this.enemy.boss){
            this.enemy.specialAbility(this.enemy.name, this.player, Math.floor(Math.random() * 2));
-           this.gameLogAction = this.gameLog.gameLogText('attack')
+           this.gameLogAction = this.gameLog.gameLogText('enemySpecial') // might need to change for better flavor text
            this.updateView();
           }else{
             this.enemy.specialAbility(this.enemy.name, this.player, Math.floor(Math.random() * 2));
-            this.gameLogAction = this.gameLog.gameLogText('special')
+            this.gameLogAction = this.gameLog.gameLogText('enemySpecial') // might need to change for better flavor text
             this.updateView();
           }
         break;
@@ -94,7 +94,7 @@ export default class extends Controller {
     if (this.enemy.health > 0 && this.player.health > 0){
       // enemy takes damage
       this.enemy.playerAttack(this.player.damage + Math.floor(Math.random() * 6));
-      this.gameLogAction = this.gameLog.gameLogText('attack')
+      this.gameLogAction = this.gameLog.gameLogText('playerAttack');
       this.updateView();
       // checks if the enemy is still alive or not
       if (this.enemy.health > 0 ){
@@ -116,8 +116,8 @@ export default class extends Controller {
   }
 
   playerSpecial() {
-    this.player.abilityAction(this.specialValue.name, this.specialValue.ability_cost);
-    this.gameLogAction = this.gameLog.gameLogText('special')
+    // this.player.abilityAction(this.specialValue.name, this.specialValue.ability_cost);
+    this.gameLogAction = this.player.abilityAction(this.specialValue.name, this.specialValue.ability_cost);
     this.updateView();
     if (this.enemy.health > 0 ){
       // Attacks the player if the previous condition is true
@@ -139,7 +139,9 @@ export default class extends Controller {
     // Player view update
     this.playerHealthPercentTarget.innerText = `${((this.player.health * 100) / this.player.maxHealth)}%`;
     this.playerHealthTarget.value = this.player.health;
+    this.playerHealthTarget.max = this.player.maxHealth;
     this.playerEnergyPercentTarget.innerText = `${Math.floor((this.player.energy * 100) /this.player.maxEnergy)}%`;
+    this.playerEnergyTarget.max = this.player.maxEnergy;
     this.playerEnergyTarget.value = this.player.energy;
     // Enemy view update
     this.enemyNameTarget.innerText = this.enemy.name
