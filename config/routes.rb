@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get '/about', to: 'pages#about'
   get '/team', to: 'pages#team'
   get '/donate', to: 'pages#donate'
-  get 'menu/:id', to: 'pages#next_room'
+  get 'menu/:id', to: 'pages#next_room', as: :next_room
 
   resources :characters
 

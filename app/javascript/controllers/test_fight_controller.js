@@ -4,20 +4,21 @@ import EnemyStatus from "../utils/enemy_status";
 import AdventuringText from "../utils/adventuring_text";
 import GameLog from "../utils/game_log";
 import { SVG } from "@svgdotjs/svg.js";
+
 // import sweet_alert_controller from "./sweet_alert_controller";
 
 // importing the JS Classes From Utils Folder for our Player and Enemy
 
 // Connects to data-controller="test-fight"
 export default class extends Controller {
-  static values = { enemy: Object, player: Object, disorder: Object, special: Object }
+  static values = { enemy: Object, player: Object, disorder: Object, special: Object, fightWin: String}
   static targets = ["enemyName", "enemyHealthPercent", "enemyHealth", "playerHealthPercent", "playerHealth", "playerEnergyPercent", "playerEnergy", "firstPicture", "gameLog"]
 
   connect() {
     // creates the instances of our Player and Enemy for JS with the given Object parameters
     this.player = new PlayerStatus(this.playerValue.health, this.playerValue.energy, this.playerValue.attack_damage);
     this.enemy = new EnemyStatus(this.enemyValue.name, this.enemyValue.health, this.enemyValue.energy, this.enemyValue.attack_damage, this.enemyValue.boss);
-    this.narrator = new AdventuringText;
+    // this.narrator = new AdventuringText;
     this.gameLog = new GameLog;
     //this.narrator.checkDialog(this.enemy.name);
     // this is used for the healthbar of the enemys
@@ -28,6 +29,9 @@ export default class extends Controller {
 
   // when the current enemy is defeated this reassigns the new enemy
 
+  sweetAlertController(){
+    return this.application.getControllerForElementAndIdentifier(this.element, 'sweet-alert')
+  }
   // Loads the svg pictures of our enemies
   pictureDisplay(picture) {
     /*const target = this.pictureTarget;
@@ -100,8 +104,14 @@ export default class extends Controller {
         }, 500);
       } else {
         // !this.fightWin()
+        if(this.enemy.boss){
+          window.location = this.fightWinValue
+        }else{
+          this.sweetAlertController().fightWin({player: this.player});
+        }
       }
     } else {
+      this.sweetAlertController().fightWin({player: this.player});
     }
   }
 
@@ -115,6 +125,7 @@ export default class extends Controller {
         this.attackPlayer()
       }, 500);
     } else {
+      this.sweetAlertController().fightWin({player: this.player});
     }
   }
 
@@ -137,5 +148,7 @@ export default class extends Controller {
     this.enemyHealthTarget.value = this.enemy.health;
     this.gameLogTarget.insertAdjacentHTML("beforeend", `<li>${this.gameLogAction}</li>`)
     // this.pictureTarget.innerText.remove();
+    const objDiv = document.querySelector(".game-log");
+    objDiv.scrollTop = objDiv.scrollHeight;
   }
 }
