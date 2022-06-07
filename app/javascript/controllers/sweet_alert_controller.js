@@ -110,8 +110,8 @@ export default class extends Controller {
   //Alert when "exit the game" is clicked during the game - redirects to homepage
   fightExit() {
     Swal.fire({
-      title: "<strong>Stay strong</strong>",
-      html: "Do not give up, take a break in a save environment and try again.",
+      title: "<strong>Are you sure?</strong>",
+      html: "<strong>Stay strong:</strong> Do not give up, take a break in a save environment and try again.",
       confirmButtonColor: "#85A9AB",
       showCancelButton: true,
       confirmButtonText: 'Okay'
