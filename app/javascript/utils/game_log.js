@@ -4,7 +4,7 @@ export default class GameLog {
     switch(method) {
       // Default text in game log upon opening the page
       case "connect":
-        return "Connection test";
+        return "";
       // Player actions
       case "playerAttack":
         return "<br><em><span style='color:#85A9AB'><strong>You: </strong>You attack and the enemy is suffering...</em></span>";
