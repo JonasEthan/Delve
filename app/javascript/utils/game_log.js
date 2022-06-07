@@ -7,17 +7,17 @@ export default class GameLog {
         return "Connection test";
       // Player actions
       case "playerAttack":
-        return "<br>Player attack!";
+        return "<br><em><span style='color:#85A9AB'><strong>You: </strong>You attack and the enemy is suffering...</em></span>";
       case "playerSpecial":
-        return "<br>Player Special...";
+        return "<br><em><span style='color:#85A9AB'><strong>You: </strong>You throw your special attack...</em></span>";
     // Enemy conditions
     case "enemyAttack":
-      return "<br>You attack and it hurts your conterpart...";
+      return "<br>The enemy attacks and is draining your health...";
     case "enemySpecial":
       return "<br>Special enemy text!";
     // Specific conditions
     case "energyLow":
-      return "<br>Your energy is too low";
+      return "<br><span style='color:#DE9B8C'><strong>Your energy level is too low</strong></span>";
     // Enemy communication
     case "The Witness":
       return "<br>Horrible Gaze!"
@@ -34,5 +34,6 @@ export default class GameLog {
     case "Hysteria":
     return "<br>Hysteric Explosion!";
     }
+
   }
 }
