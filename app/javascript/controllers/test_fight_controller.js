@@ -14,24 +14,25 @@ export default class extends Controller {
   static values = { enemy: Object, player: Object, disorder: Object, special: Object, fightWin: String}
   static targets = ["enemyName", "enemyHealthPercent", "enemyHealth", "playerHealthPercent", "playerHealth", "playerEnergyPercent", "playerEnergy", "firstPicture", "gameLog"]
 
+  sweetAlertController(){
+    return this.application.getControllerForElementAndIdentifier(this.element, 'sweet-alert')
+  }
+
   connect() {
     // creates the instances of our Player and Enemy for JS with the given Object parameters
     this.player = new PlayerStatus(this.playerValue.health, this.playerValue.energy, this.playerValue.attack_damage);
     this.enemy = new EnemyStatus(this.enemyValue.name, this.enemyValue.health, this.enemyValue.energy, this.enemyValue.attack_damage, this.enemyValue.boss);
-    // this.narrator = new AdventuringText;
+    this.narrator = new AdventuringText;
     this.gameLog = new GameLog;
-    //this.narrator.checkDialog(this.enemy.name);
     // this is used for the healthbar of the enemys
     this.enemyMaxhealth = this.enemy.health;
     this.gameLogAction = this.gameLog.gameLogText('connect')
+    this.sweetAlertController().fightStart(this.narrator.checkDialog(this.enemy.name));
     this.updateView();
   }
 
   // when the current enemy is defeated this reassigns the new enemy
 
-  sweetAlertController(){
-    return this.application.getControllerForElementAndIdentifier(this.element, 'sweet-alert')
-  }
   // Loads the svg pictures of our enemies
   pictureDisplay(picture) {
     /*const target = this.pictureTarget;
@@ -148,7 +149,7 @@ export default class extends Controller {
     this.enemyHealthPercentTarget.innerText = `${Math.floor((this.enemy.health * 100) /this.enemyMaxhealth)}%`;
     this.enemyHealthTarget.max = this.enemyMaxhealth;
     this.enemyHealthTarget.value = this.enemy.health;
-    this.gameLogTarget.insertAdjacentHTML("beforeend", `<li>${this.gameLogAction}</li>`)
+    this.gameLogTarget.insertAdjacentHTML("beforeend", this.gameLogAction)
     // this.pictureTarget.innerText.remove();
     const objDiv = document.querySelector(".game-log");
     objDiv.scrollTop = objDiv.scrollHeight;
