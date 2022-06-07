@@ -1,3 +1,5 @@
+import GameLog from "./game_log";
+
 export default class PlayerStatus {
   constructor(health, energy, damage) {
     this.maxHealth = 100;
@@ -5,6 +7,7 @@ export default class PlayerStatus {
     this.maxEnergy =  50;
     this.energy = energy;
     this.damage = damage;
+    this.gameLog = new GameLog;
   }
 
   // This is the attack of the Enemy so This here reduces the Health of the player
@@ -19,9 +22,10 @@ export default class PlayerStatus {
   }
 
   // This is run to check if the health of the player is above 0 the massage given to it is the disorder meltdown_text
-  checkHealth(message){
+  checkHealth() {
     if(this.health <= 0) {
-      alert(message);
+      // alert(message);
+      return this.gameLogAction = this.gameLog.gameLogText('energyLow');
     }
   }
 
@@ -38,9 +42,10 @@ export default class PlayerStatus {
           if(this.health > this.maxHealth){
             this.health = 100;
           }
-        }else{
+        } else {
           // For testing purposes for now
           alert("Not enough energy");
+          return this.gameLogAction = this.gameLog.gameLogText('energyLow');
         }
         break;
 
@@ -52,13 +57,13 @@ export default class PlayerStatus {
   }
 
   // this makes the Player lose a certain amount of their Energy
-  loseEnergy(lostEnergy){
+  loseEnergy(lostEnergy) {
     this.energy -= lostEnergy;
   }
 
   // This will check if the Energy of the Player is enough for a ability. (Just structure for now, not used yet)
   checkEnergy(energy){
-    if(this.energy >= energy){
+    if(this.energy >= energy) {
       return true;
     }else{
       return false;
