@@ -10,8 +10,14 @@ application.register("game-framework", GameFrameworkController)
 import HelloController from "./hello_controller.js"
 application.register("hello", HelloController)
 
-// import NavbarController from "./navbar_controller.js"
-// application.register("navbar", NavbarController)
+import LoadingController from "./loading_controller.js"
+application.register("loading", LoadingController)
+
+import LoadingTypedJsController from "./loading_typed_js_controller.js"
+application.register("loading-typed-js", LoadingTypedJsController)
+
+import NavbarController from "./navbar_controller.js"
+application.register("navbar", NavbarController)
 
 import SweetAlertController from "./sweet_alert_controller.js"
 application.register("sweet-alert", SweetAlertController)

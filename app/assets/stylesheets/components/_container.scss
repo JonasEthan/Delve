@@ -14,3 +14,22 @@
   display: flex;
   justify-content: space-between;
 }
+
+.blur {
+  filter: blur(50px);
+  transition: 10s !important;
+}
+
+.align-left {
+  display: flex;
+  text-align: left;
+  justify-content: left;
+  width: 30%;
+}
+
+#line-under-loading {
+  display: flex;
+  text-align: left;
+  justify-content: left;
+  width: 33%;
+}
