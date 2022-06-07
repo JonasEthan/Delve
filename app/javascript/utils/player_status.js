@@ -1,8 +1,8 @@
 export default class PlayerStatus {
   constructor(health, energy, damage) {
-    this.maxHealth = health;
+    this.maxHealth = 100;
     this.health = health;
-    this.maxEnergy =  energy;
+    this.maxEnergy =  50;
     this.energy = energy;
     this.damage = damage;
   }
@@ -32,7 +32,7 @@ export default class PlayerStatus {
       case "Healing":
         // checks if the energy is enough to use it
         if(this.checkEnergy(abilityCost)){
-          this.energy -= abilityCost;
+          this.loseEnergy(abilityCost);
           this.health += (10 + Math.floor(Math.random() * 11));
           // if the healing would result in more than 100 health it sets the health to 100. Currently hardcoded needs to be changed later
           if(this.health > this.maxHealth){
@@ -49,6 +49,10 @@ export default class PlayerStatus {
         alert("Something seems to have gone wrong");
         break;
     }
+  }
+
+  loseEnergy(lostEnergy){
+    this.energy -= lostEnergy;
   }
 
   // This will check if the Energy of the Player is enough for a ability. (Just structure for now, not used yet)
