@@ -39,12 +39,13 @@ export default class PlayerStatus {
           this.loseEnergy(abilityCost);
           this.health += (10 + Math.floor(Math.random() * 11));
           // if the healing would result in more than 100 health it sets the health to 100. Currently hardcoded needs to be changed later
+
           if(this.health > this.maxHealth){
             this.health = 100;
           }
+          return this.gameLog.gameLogText("playerSpecial");
         } else {
           // For testing purposes for now
-          alert("Not enough energy");
           return this.gameLogAction = this.gameLog.gameLogText('energyLow');
         }
         break;
