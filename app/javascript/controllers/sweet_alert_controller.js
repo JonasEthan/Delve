@@ -5,7 +5,6 @@ import AdventuringText from "../utils/adventuring_text"
 import Rails from "@rails/ujs"
 Rails.start()
 
-
 // Connects to data-controller="sweet-alert"
 export default class extends Controller {
   // Defining acceptable data-values for controller
@@ -21,9 +20,10 @@ export default class extends Controller {
     roomWin: String,
   }
   static targets = ["enemyHealth"]
+
   connect() {
-    this.narrator = new AdventuringText;
-    this.fightStart(this.narrator.checkDialog(this.enemyValue.name));
+    // this.narrator = new AdventuringText;
+    // this.fightStart(this.narrator.checkDialog(this.enemyValue.name));
   }
 
   // Alert for "Start new game" button
@@ -71,9 +71,9 @@ export default class extends Controller {
 
   // Alert for "Fight page" - uses Adventuring text based on enemy instance
   fightStart(fightMessage) {
-    // this.narrator = new AdventuringText;
-    // console.log(this.narrator)
-    // this.narrator.checkDialog(this.enemy.name);
+    this.narrator = new AdventuringText;
+    this.narrator.checkDialog(this.enemyValue.name);
+
     Swal.fire({
       title: '<strong>Attention!</strong>',
       html: `${fightMessage}`,
@@ -84,6 +84,7 @@ export default class extends Controller {
   }
 
   // Alert for "winning the fight" - redirects to journeys/completed path
+
   fightWin(options = {}) {
     Swal.fire({
       title: '<strong>Congratulations!</strong>',
