@@ -33,7 +33,9 @@
             <%  '(not found)'  %>
           <% end %>
           <div data-test-fight-target="firstPicture" class="enemyPicture"><%= svg(@enemys[0].name) %></div>
-          <div data-test-fight-target="secondPicture" class="hidden enemyPicture"><%= svg(@enemys[1].name) %></div>
+          <% if(@enemys.length > 1) %>
+            <div data-test-fight-target="secondPicture" class="hidden enemyPicture"><%= svg(@enemys[1].name) %></div>
+          <% end %>
         </div>
       </div>
 

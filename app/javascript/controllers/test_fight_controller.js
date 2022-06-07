@@ -84,9 +84,11 @@ export default class extends Controller {
       case 1:
         // checks if the enemy is a boss or not
           if(this.enemy.boss){
-           this.enemy.specialAbility(this.enemy.name, Math.floor(Math.random() * 2));
+           this.enemy.specialAbility(this.enemy.name, this.player, Math.floor(Math.random() * 2));
+           this.updateView();
           }else{
-            this.enemy.specialAbility(this.enemy.name, Math.floor(Math.random() * 2));
+            this.enemy.specialAbility(this.enemy.name, this.player, Math.floor(Math.random() * 2));
+            this.updateView();
           }
         break;
       default:

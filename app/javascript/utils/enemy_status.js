@@ -1,3 +1,5 @@
+import PlayerStatus from "./player_status";
+
 export default class EnemyStatus {
   constructor(name, health, energy, damage, boss) {
     this.name = name;
@@ -18,15 +20,131 @@ export default class EnemyStatus {
     }
   }
 
-  specialAbility(enemyName, number) {
+  specialAbility(enemyName, player, number) {
     switch (enemyName) {
       case "The Witness":
+        if(this.checkEnergy(5)){
         alert("Horrible Gaze!");
         this.energy -= 5;
+        player.loseEnergy(10);
+        }else{
+          alert("Not enough energy")
+        }
         break;
       case "The Stalker":
-        alert("Horrible Gaze!");
-        this.energy -= 5;
+        switch (number) {
+          case 0:
+            if(this.checkEnergy(5)){
+              alert("Horrible Gaze!");
+              this.energy -= 5;
+              player.loseEnergy(10);
+              }else{
+                alert("Not enough energy")
+              }
+            break;
+          case 1:
+            if(this.checkEnergy(10)){
+              alert("Trailing Gaze!");
+              this.energy -= 10;
+              }else{
+                alert("Not enough energy")
+              }
+            break;
+          default:
+            alert("Something went wrong");
+            break;
+        }
+        break;
+      case "The Chain":
+        if(this.checkEnergy(10)){
+          alert("Dragging Constraints!");
+          this.energy -= 10;
+          player.enemyAttack((this.damage + (Math.floor(Math.random() * 11))));
+          player.loseEnergy(5);
+          }else{
+            alert("Not enough energy")
+          }
+        break;
+      case "The Abyss":
+        switch (number) {
+          case 0:
+            if(this.checkEnergy(10)){
+              alert("Dragging Constraints!");
+              this.energy -= 10;
+              player.enemyAttack((this.damage + (Math.floor(Math.random() * 11))));
+              player.loseEnergy(5);
+              }else{
+                alert("Not enough energy")
+              }
+            break;
+          case 1:
+            if(this.checkEnergy(15)){
+              alert("Haunting Darkness!");
+              this.energy -= 15;
+              const hautingDamage = (this.damage + (Math.floor(Math.random() * 11)));
+              player.enemyAttack(hautingDamage);
+              this.health += hautingDamage;
+              }else{
+                alert("Not enough energy")
+              }
+            break;
+          default:
+            alert("Something went wrong");
+            break;
+        }
+        break;
+      case "The Prosecutor":
+        if(this.checkEnergy(5)){
+          alert("Horrible Acusation!");
+          this.energy -= 5;
+          const energyLost = (Math.floor(Math.random() * 11))
+          player.loseEnergy(energyLost);
+          this.energy += energyLost;
+          }else{
+            alert("Not enough energy")
+          }
+        break;
+      case "The Mask":
+        switch (number) {
+          case 0:
+            if(this.checkEnergy(5)){
+              alert("Horrible Acusation!");
+              this.energy -= 5;
+              const energyLost = (Math.floor(Math.random() * 11))
+              player.loseEnergy(energyLost);
+              this.energy += energyLost;
+              }else{
+                alert("Not enough energy")
+              }
+            break;
+          case 1:
+            if(this.checkEnergy(20)){
+              alert("Hainous Laughter!");
+              this.energy -= 20;
+              const leechDamage = this.damage + (Math.floor(Math.random() * 16));
+              player.enemyAttack(leechDamage);
+              this.health += leechDamage;
+              }else{
+                alert("Not enough energy")
+              }
+            break;
+          default:
+            alert("Something went wrong");
+            break;
+        }
+        break;
+      case "Hysteria":
+        if(this.checkEnergy(10)){
+          alert("Hysteric Explosion!");
+          this.energy -= 10;
+          player.enemyAttack((this.damage + (Math.floor(Math.random() * 6))));
+          console.log(player);
+          player.enemyAttack((this.damage + (Math.floor(Math.random() * 6))));
+          player.enemyAttack((this.damage + (Math.floor(Math.random() * 6))));
+          console.log(player);
+          }else{
+            alert("Not enough energy")
+          }
         break;
       default:
         alert("Something went wrong");
