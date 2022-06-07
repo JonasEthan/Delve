@@ -16,9 +16,21 @@ export default class extends Controller {
     fightStart: String,
     fightWin: String,
     fightLoss: String,
-    fightExit: String
+    fightExit: String,
+    enemy: Array
   }
+  static targets = ["enemyHealth"]
   connect() {
+    this.n = 0;
+    this.narrator = new AdventuringText;
+    this.fightStart(this.narrator.checkDialog(this.enemyValue[this.n].name));
+  }
+
+  nextEnemy() {
+    this.n += 1;
+    if(this.n > 0){
+      this.fightStart(this.narrator.checkDialog(this.enemyValue[this.n].name));
+    }
   }
 
   // Alert for "Start new game" button
@@ -65,13 +77,14 @@ export default class extends Controller {
   }
 
   // Alert for "Fight page" - uses Adventuring text based on enemy instance
-  fightStart(name) {
+  fightStart(fightMessage) {
+    console.log(fightMessage);
     // this.narrator = new AdventuringText;
     // console.log(this.narrator)
     // this.narrator.checkDialog(this.enemy.name);
     Swal.fire({
       title: '<strong>Attention!</strong>',
-      html: `${name}`,
+      html: `${fightMessage}`,
       confirmButtonColor: "#85A9AB",
       showCancelButton: false,
       confirmButtonText: "Let's go!",
@@ -119,5 +132,12 @@ export default class extends Controller {
       if(inputValue.isConfirmed)
         window.location = this.fightExitValue
     })
+  }
+
+  checkState() {
+    if(this.enemyHealthTarget.value <= 0){
+      console.log("I am here");
+      this.nextEnemy();
+    }
   }
 }
