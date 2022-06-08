@@ -95,6 +95,14 @@
 .hidden {
   display: none;
 }
+
+// Sweetalert styling to make the background blurred
+body.swal2-shown > [aria-hidden="true"] {
+  transition: 0.1s filter;
+  filter: blur(10px);
+}
+
+
 // #exit-button {
 //   text-decoration: none;
 //   color: black;

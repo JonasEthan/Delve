@@ -33,9 +33,10 @@ export default class extends Controller {
     Swal.fire({
       title: '<strong>DISCLAIMER</strong>',
       icon: 'info',
-      confirmButtonColor: "#85A9AB",
       html:
       'This game evolves around the topic of mental disorders. It contains imagery that might be triggering or disturbing to some individuals. If you do not feel comfortable please do not play this game. While playing you can exit the game at any point in time.<br><br><strong>Thank you and enjoy Delve!</strong>',
+      confirmButtonColor: "#8E9AAB",
+      background: "#F5F5F6",
       showCancelButton: true,
       confirmButtonText: 'I understand and wish to continue',
       confirmButtonClass: "btn-ocean",
@@ -57,9 +58,10 @@ export default class extends Controller {
     Swal.fire({
       title: '<strong>DISCLAIMER</strong>',
       icon: 'info',
-      confirmButtonColor: "#85A9AB",
       html:
       '<strong>Reminder</strong>: This game evolves around the topic of mental disorders. It contains imagery that might be triggering or disturbing to some individuals. If you do not feel comfortable please do not play this game. While playing you can exit the game at any point in time.<br><br><strong>Thank you and enjoy Delve!</strong>',
+      confirmButtonColor: "#8E9AAB",
+      background: "#F5F5F6",
       showCancelButton: true,
       confirmButtonText: 'I understand and wish to continue',
     }).then((inputValue) => {
@@ -70,11 +72,11 @@ export default class extends Controller {
 
   // Alert for "Fight page" - uses Adventuring text based on enemy instance
   fightStart(fightMessage) {
-
     Swal.fire({
       title: '<strong>Attention!</strong>',
       html: `${fightMessage}`,
-      confirmButtonColor: "#85A9AB",
+      confirmButtonColor: "#8E9AAB",
+      background: "#F5F5F6",
       showCancelButton: false,
       confirmButtonText: "Let's go!",
     })
@@ -87,35 +89,40 @@ export default class extends Controller {
       title: '<strong>Congratulations!</strong>',
       icon: 'success',
       html: "You fought bravely",
-      confirmButtonColor: "#85A9AB",
+      confirmButtonColor: "#8E9AAB",
+      background: "#F5F5F6",
       showCancelButton: false,
       confirmButtonText: 'Continue',
+      allowOutsideClick: false,
     }).then((inputValue) => {
       if(inputValue.isConfirmed)
         window.location = `${this.roomWinValue}&${new URLSearchParams(options.player).toString()}`
     })
   }
 
-  // Alert for "losing the fight" - redirects to journeys/repeat path
+  // Alert for "losing the fight" - redirects to journeys/repeat
   fightLoss() {
     Swal.fire({
       title: '<strong>Too bad!</strong>',
       html: "You fought bravely and this time it wasn't enough. But don't give up!",
-      confirmButtonColor: "#85A9AB",
+      confirmButtonColor: "#8E9AAB",
+      background: "#F5F5F6",
       showCancelButton: false,
-      confirmButtonText: 'Continue',
+      confirmButtonText: 'Okay',
+      allowOutsideClick: false,
     }).then((inputValue) => {
       if(inputValue.isConfirmed)
         window.location = this.fightLossValue // = journeys_repeat_path
     })
   }
 
-  //Alert when "exit the game" is clicked during the game - redirects to homepage
+  // Alert when "exit the game" is clicked during the game - redirects to homepage
   fightExit() {
     Swal.fire({
       title: "<strong>Are you sure?</strong>",
       html: "<strong>Stay strong:</strong> Do not give up, take a break in a save environment and try again.",
-      confirmButtonColor: "#85A9AB",
+      confirmButtonColor: "#8E9AAB",
+      background: "#F5F5F6",
       showCancelButton: true,
       confirmButtonText: 'Okay'
     }).then((inputValue) => {
@@ -124,17 +131,18 @@ export default class extends Controller {
     })
   }
 
-  // Alert when player energy level is too low
-  lowEnergy() {
-    e.preventDefault()
+  // ! Alert when player energy level is too low - currently not in use
+  // lowEnergy() {
+  //   e.preventDefault()
 
-    Swal.fire({
-      title: "<strong>Attention</strong>",
-      icon: "info",
-      html: "Your energy level is too low! You cannot execute your special move right now.",
-      confirmButtonColor: "#85A9AB",
-      showCancelButton: false,
-      confirmButtonText: 'Okay'
-    })
-  }
+  //   Swal.fire({
+  //     title: "<strong>Attention</strong>",
+  //     icon: "info",
+  //     html: "Your energy level is too low! You cannot execute your special move right now.",
+  //     confirmButtonColor: "#8E9AAB",
+  //     background: "#F5F5F6",
+  //     showCancelButton: false,
+  //     confirmButtonText: 'Okay'
+  //   })
+  // }
 }
