@@ -9,9 +9,9 @@ class JourneysController < ApplicationController
 
   def create
     # This create action creates the run, the journeys and the journey_runs connecting the journeys to the current run.
-
+    @player = current_user.present? ? current_user.id : User.first.id
     # To create the current run, first look for the user_character associated with the current user...
-    array_current_user_character = UserCharacter.where(user_id: current_user.id) #array of 1
+    array_current_user_character = UserCharacter.where(user_id: @player) #array of 1
     current_user_character = array_current_user_character.first
 
     # ... then we can select the game whose stored character_id is the same as the id of the character associated with

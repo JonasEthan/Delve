@@ -4,13 +4,13 @@ class RoomsController < ApplicationController
   def new
     # Creating the instance of Room needed for the form on view page rooms/new
     @room = Room.new
-
+    @player = current_user.present? ? current_user.id : User.first.id
     # For the form on the view page rooms/new, we want to give as options the journeys that the user has selected
     # before on the journeys/new page.
 
     # (ALMOST) SAME CODE AS IN JOURNEYS CONTROLLER:
     # Starting from the current user all the way until we have our current run ...
-    array_current_user_character = UserCharacter.where(user_id: current_user.id) #array of 1
+    array_current_user_character = UserCharacter.where(user_id: @player) #array of 1
     current_user_character = array_current_user_character.first
     game_array = Game.where(character_id: current_user_character.character_id) # array of 1
     current_game = game_array.last
