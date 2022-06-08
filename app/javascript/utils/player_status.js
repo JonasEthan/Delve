@@ -30,7 +30,7 @@ export default class PlayerStatus {
   }
 
   // This will be the collection of our Special Abilities for the player
-  abilityAction(abilityName, abilityCost){
+  abilityAction(abilityName, enemy, abilityCost){
     // Checks the name and then does certain cases
     switch (abilityName) {
       case "Healing":
@@ -49,7 +49,39 @@ export default class PlayerStatus {
           return this.gameLogAction = this.gameLog.gameLogText('energyLow');
         }
         break;
+      case "Heavy Strike":
+        if(this.checkEnergy(abilityCost)){
+          this.loseEnergy(abilityCost);
+          enemy.palyerAttack((this.damage + (Math.floor(Math.random() * 11))));
+          // if the healing would result in more than 100 health it sets the health to 100. Currently hardcoded needs to be changed later
 
+          if(this.health > this.maxHealth){
+            this.health = 100;
+          }
+          return this.gameLog.gameLogText("playerSpecial");
+        } else {
+          // For testing purposes for now
+          return this.gameLogAction = this.gameLog.gameLogText('energyLow');
+        }
+        break;
+        case "Reckless Attack":
+          if(this.checkEnergy(abilityCost)){
+            this.loseEnergy(abilityCost);
+            const selfDamage = Math.floor(Math.random() * 101);
+            enemy.palyerAttack((this.damage + (Math.floor(Math.random() * 11))));
+            enemy.palyerAttack((this.damage + (Math.floor(Math.random() * 11))));
+            // if the healing would result in more than 100 health it sets the health to 100. Currently hardcoded needs to be changed later
+            if(this.health > this.maxHealth){
+              this.health = 100;
+            }else if(selfDamage % 10 === 0){
+              this.health -= (this.damage + (Math.floor(Math.random() * 11)));
+            }
+            return this.gameLog.gameLogText("playerSpecial");
+          } else {
+            // For testing purposes for now
+            return this.gameLogAction = this.gameLog.gameLogText('energyLow');
+          }
+          break;
       default:
         // if the action does not exists or is not being recognised. Check spelling!
         alert("Something seems to have gone wrong");
@@ -71,4 +103,3 @@ export default class PlayerStatus {
     }
   }
 }
- 
