@@ -106,7 +106,7 @@ export default class extends Controller {
       confirmButtonText: 'Continue',
     }).then((inputValue) => {
       if(inputValue.isConfirmed)
-        window.location = this.fightLossValue
+        window.location = this.fightLossValue // = journeys_repeat_path
     })
   }
 
@@ -120,7 +120,7 @@ export default class extends Controller {
       confirmButtonText: 'Okay'
     }).then((inputValue) => {
       if(inputValue.isConfirmed)
-        window.location = this.fightExitValue
+        window.location = this.fightExitValue // = root_path
     })
   }
 }
