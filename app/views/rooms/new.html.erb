@@ -12,7 +12,7 @@
   </div>
 
   <div class="text-center">
-    <div class="selection-form">
+    <div class="selection-form" data-controller="rooms">
       <%= simple_form_for(@room) do |f| %>
       <%= f.input :journey_id,
                   as: :radio_buttons,
@@ -20,13 +20,12 @@
                   collection_wrapper_tag: 'div',
                   collection_wrapper_class: 'category-wrapper',
                   item_wrapper_class: 'category-item',
-                  input_html: { class: 'category-selector' },
+                  input_html: { class: 'category-selector', data: { rooms_target: "room", action: "click->rooms#activate" } },
                   collection: @journeys.each { |journey_id| journey_id },
                   class: "mt-2",
                   include_hidden: false %>
-        <%= f.submit "Delve in", class: "btn btn-ocean mt-2" %>
+        <%= f.submit "Delve in", class: "btn btn-ocean mt-2", data: { rooms_target: "button" } %>
       <% end %>
     </div>
   </div>
 </div>
- 
