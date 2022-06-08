@@ -53,9 +53,7 @@
   border-radius: 10px;
   border: 2px solid #B7E8EB;
   padding: 8px 12px;
-  overflow: scroll;
-  // display: flex;
-  // justify-content: flex-end;
+  overflow-y: scroll;
 }
 
 .game-log:hover {
@@ -106,4 +104,3 @@
 //   text-decoration: none;
 //   color: white;
 // }
- 
