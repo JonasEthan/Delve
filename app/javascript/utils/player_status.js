@@ -35,7 +35,7 @@ export default class PlayerStatus {
     switch (abilityName) {
       case "Healing":
         // checks if the energy is enough to use it
-        if(this.checkEnergy(abilityCost)){
+        if(this.checkEnergy(abilityCost)) {
           this.loseEnergy(abilityCost);
           this.health += (10 + Math.floor(Math.random() * 11));
           // if the healing would result in more than 100 health it sets the health to 100. Currently hardcoded needs to be changed later
@@ -52,7 +52,7 @@ export default class PlayerStatus {
       case "Heavy Strike":
         if(this.checkEnergy(abilityCost)){
           this.loseEnergy(abilityCost);
-          enemy.palyerAttack((this.damage + (Math.floor(Math.random() * 11))));
+          enemy.playerAttack((this.damage + (Math.floor(Math.random() * 11))));
           // if the healing would result in more than 100 health it sets the health to 100. Currently hardcoded needs to be changed later
 
           if(this.health > this.maxHealth){
@@ -68,8 +68,8 @@ export default class PlayerStatus {
           if(this.checkEnergy(abilityCost)){
             this.loseEnergy(abilityCost);
             const selfDamage = Math.floor(Math.random() * 101);
-            enemy.palyerAttack((this.damage + (Math.floor(Math.random() * 11))));
-            enemy.palyerAttack((this.damage + (Math.floor(Math.random() * 11))));
+            enemy.playerAttack((this.damage + (Math.floor(Math.random() * 11))));
+            enemy.playerAttack((this.damage + (Math.floor(Math.random() * 11))));
             // if the healing would result in more than 100 health it sets the health to 100. Currently hardcoded needs to be changed later
             if(this.health > this.maxHealth){
               this.health = 100;
@@ -79,6 +79,7 @@ export default class PlayerStatus {
             return this.gameLog.gameLogText("playerSpecial");
           } else {
             // For testing purposes for now
+
             return this.gameLogAction = this.gameLog.gameLogText('energyLow');
           }
           break;
@@ -98,7 +99,7 @@ export default class PlayerStatus {
   checkEnergy(energy){
     if(this.energy >= energy) {
       return true;
-    }else{
+    } else {
       return false;
     }
   }

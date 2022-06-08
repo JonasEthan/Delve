@@ -123,4 +123,18 @@ export default class extends Controller {
         window.location = this.fightExitValue // = root_path
     })
   }
+
+  // Alert when player energy level is too low
+  lowEnergy() {
+    e.preventDefault()
+
+    Swal.fire({
+      title: "<strong>Attention</strong>",
+      icon: "info",
+      html: "Your energy level is too low! You cannot execute your special move right now.",
+      confirmButtonColor: "#85A9AB",
+      showCancelButton: false,
+      confirmButtonText: 'Okay'
+    })
+  }
 }
