@@ -6,22 +6,27 @@ class PagesController < ApplicationController
   end
 
   def test_fight
+    @a_moment_respite = AMomentsRespite.find(params[:respite_id]) if params[:respite_id].present?
+    @journey = Journey.find(params[:journey_id]) if params[:journey_id].present? # find the journey that is connected
     if params[:rooms_id].present?
-      @a_moment_respite = AMomentsRespite.where(run_id: params[:run_id])
-      @room_ids = params[:rooms_id]
-      @db_rooms = Room.where(id: @room_ids)
+      # checks if the params exists
+      @room_ids = params[:rooms_id] # asignes all the parsed ids to the variable
+      @db_rooms = Room.where(id: @room_ids) # query for those id in the Rooms table
       @enemys = []
-      @db_rooms.each { |room| @enemys << Enemy.find(room.enemy_id) }
-      @enemys.map do |enemy|
+      @db_rooms.each { |room| @enemys << Enemy.find(room.enemy_id) } # finds the enemies from the Enemies table and then pushes them into an array
+      @enemys.map do |enemy| # randomizes the stats of the existing enemies
         enemy.health += rand(-10..10)
         enemy.energy += rand(-5..5)
       end
-      @disorder = Disorder.find(@enemys[0].disorder_id)
-      @character = Character.first
+      @disorder = Disorder.find(@enemys[0].disorder_id) # gets the coresponding disorder
+      @player = current_user.present? ? current_user.id : Character.first.id
+      @character = Character.find(@player)
       @character.health = params[:health] if params[:health].present?
       @character.energy = params[:energy] if params[:energy].present?
       @player_ability = PlayerAbility.find(UserAbility.first.player_ability_id)
     else
+      @journey.completed = true
+      @journey.save
       redirect_to journeys_completed_path
     end
     # @rooms = []

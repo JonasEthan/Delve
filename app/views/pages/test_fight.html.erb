@@ -7,6 +7,8 @@
   </div>
 
   <div class="controller mt-4 mb-2"
+
+
     id="game-controller"
     data-controller="sweet-alert test-fight"
     data-test-fight-enemy-value="<%= @enemys.first.to_json %>" data-test-fight-player-value="<%= @character.to_json %>" data-test-fight-disorder-value="<%= @disorder.to_json %>"
@@ -27,13 +29,17 @@
         <progress class="health-bar" value="" data-test-fight-target="enemyHealth" max="" data-sweet-alert-target="enemyHealth"></progress>
       </div>
 
-      <div class="shake shake-constant shake-constant--hover">
+      <div class="" data-controller="animation" data-animation-enemy-value="<%= @enemys.first.name%>" class="enemyPicture">
           <% def svg(name) %>
             <% file_path = "#{Rails.root}/app/assets/images/#{name}.svg"  %>
-            <% return File.read(file_path).html_safe, data:{animation_target: "svg"} if File.exists?(file_path)  %>
+            <% return File.read(file_path).html_safe if File.exists?(file_path)  %>
             <%  '(not found)'  %>
           <% end %>
-          <div data-controller="animation" data-test-fight-target="firstPicture" class="enemyPicture"><%= svg(@enemys.first.name) %></div>
+          <div data-test-fight-target="firstPicture" >
+            <canvas data-animation-target="svg" height="300">
+              <%= svg(@enemys.first.name) %>
+            </canvas>
+          </div>
       </div>
 
       <div class="fight-stats mt-3">
