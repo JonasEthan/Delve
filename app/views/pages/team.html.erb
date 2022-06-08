@@ -4,23 +4,33 @@
   <% end %></p>
 
   <div class="center-container">
-    <div class="container-content">
+    <div class="container-content text-center">
       <h1>Contributors to this project</h1>
       <%= render "shared/underline" %>
-      <div class="row mt-3">
-        <img src="https://kitt.lewagon.com/placeholder/users/jonasethan" alt="contributor jonas" class="avatar-large">
-        <%# <p>Jonas</p> %>
+    </div>
+  </div>
+  <div class="center-container">
+    <div class="container-content">
+      <div class="contributors row mt-5">
+        <div class="contributor-detail">
+          <img src="https://kitt.lewagon.com/placeholder/users/jonasethan" alt="contributor jonas" class="avatar-large">
+          <p class="contributor-name">Jonas</p>
+        </div>
+        <div class="contributor-detail">
+          <img src="https://kitt.lewagon.com/placeholder/users/hapalochlena" alt="contributor lena" class="avatar-large">
+          <p class="contributor-name">Lena</p>
+        </div>
+        <div class="contributor-detail">
+          <img src="https://kitt.lewagon.com/placeholder/users/lbiehl" alt="contributor lukas" class="avatar-large">
+          <p class="contributor-name">Lukas</p>
+        </div>
       </div>
-      <div class="row">
-        <img src="https://kitt.lewagon.com/placeholder/users/hapalochlena" alt="contributor lena" class="avatar-large">
-        <%# <p>Lena</p> %>
+      <div class="row mt-3 text-center">
+        <p>Artwork provided by the talented The Janitor</p>
       </div>
-      <div class="row">
-        <img src="https://kitt.lewagon.com/placeholder/users/lbiehl" alt="contributor lukas" class="avatar-large">
-        <%# <p>Lukas</p> %>
-      </div>
-      <div class="row">
-        <p>Art provided by the Talented The Janitor</p>
+      <div class="row mt-5">
+        <h5>Like what we're doing?</h5>
+        <p>Find out <%= link_to "here", donate_path, id: "donation-link" %> how you can help people who suffer from mental disorders.</p>
       </div>
     </div>
   </div>

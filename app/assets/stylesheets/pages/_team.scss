@@ -1,0 +1,26 @@
+.contributors {
+  display: flex;
+  justify-content: space-around;
+}
+
+.contributor-detail {
+  width: 150px;
+  margin: 0;
+}
+
+.contributor-name {
+  // position: absolute;
+  width: 150px;
+  text-align: center;
+  margin-top: 5px;
+}
+
+#donation-link {
+  color: $ocean;
+  font-style: bolder;
+}
+
+#donation-link:hover {
+  color: $ocean-hover;
+  font-style: bolder;
+}
