@@ -72,4 +72,7 @@ class PagesController < ApplicationController
 
   def donate
   end
+
+  def dashboard
+  end
 end

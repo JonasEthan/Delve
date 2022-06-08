@@ -1,0 +1,12 @@
+<div class="container mt-3 mb-3">
+  <p><%= link_to request.referer.present? ? request.referer : root_path do %>
+    <i class="fa-solid fa-backward"></i> Back
+  <% end %></p>
+  <div class="center-container">
+    <div class="container-content">
+      <h1>My dashboard</h1>
+      <%= render "shared/underline" %>
+      <p class="mt-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias provident iste laudantium perferendis animi autem mollitia nesciunt modi similique quisquam earum quasi nobis consequatur adipisci magnam molestias, ipsam consequuntur ea.</p>
+    </div>
+  </div>
+</div>
