@@ -57,14 +57,18 @@ export default class extends Controller {
           this.gameLogAction = this.gameLog.gameLogText('enemyAttack')
           this.updateView();
           // check the players health for loose conditon
-          this.player.checkHealth(this.disorderValue.meltdown_text);
+          if (this.player.health <= 0) {
+            this.sweetAlertController().fightLoss();
+          }
         } else {
           // Calls the PlayerStatus funtion for the player to take damage
           this.player.enemyAttack((this.enemy.damage + Math.floor(Math.random() * 3)));
           this.gameLogAction = this.gameLog.gameLogText('enemyAttack')
           this.updateView();
           // check the players health for loose conditon
-          this.player.checkHealth(this.disorderValue.meltdown_text);
+          if (this.player.health <= 0) {
+          this.sweetAlertController().fightLoss();
+          }
         }
         break;
       // This will handle the event of a special attack being used by the enemy
@@ -109,7 +113,9 @@ export default class extends Controller {
         }
       }
     } else {
-      this.sweetAlertController().fightWin({player: this.player});
+      // this.sweetAlertController().fightWin({player: this.player});
+      this.sweetAlertController().fightLoss();
+
     }
   }
 
@@ -125,7 +131,8 @@ export default class extends Controller {
     } else if (this.enemy.health > 0) {
         return this.gameLog.gameLogText('energyLow')
     } else {
-      this.sweetAlertController().fightWin({player: this.player});
+      // this.sweetAlertController().fightWin({player: this.player});
+      this.sweetAlertController().fightLoss()
     }
   }
 
