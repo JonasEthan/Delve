@@ -4,6 +4,9 @@
 
 import { application } from "./application"
 
+import AnimationController from "./animation_controller.js"
+application.register("animation", AnimationController)
+
 import GameFrameworkController from "./game_framework_controller.js"
 application.register("game-framework", GameFrameworkController)
 

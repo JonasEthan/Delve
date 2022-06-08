@@ -10,9 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_06_07_142904) do
+ActiveRecord::Schema[7.0].define(version: 2022_06_08_083732) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "a_moments_respites", force: :cascade do |t|
+    t.bigint "run_id", null: false
+    t.bigint "the_collapse_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["run_id"], name: "index_a_moments_respites_on_run_id"
+    t.index ["the_collapse_id"], name: "index_a_moments_respites_on_the_collapse_id"
+  end
 
   create_table "characters", force: :cascade do |t|
     t.integer "health"
@@ -109,6 +118,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_07_142904) do
     t.index ["game_id"], name: "index_runs_on_game_id"
   end
 
+  create_table "the_collapses", force: :cascade do |t|
+    t.string "name"
+    t.integer "health"
+    t.integer "energy"
+    t.integer "attack_damage"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "user_abilities", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "player_ability_id", null: false
@@ -140,6 +158,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_07_142904) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "a_moments_respites", "runs"
+  add_foreign_key "a_moments_respites", "the_collapses"
   add_foreign_key "enemies", "disorders"
   add_foreign_key "enemy_abilities", "enemies"
   add_foreign_key "games", "characters"

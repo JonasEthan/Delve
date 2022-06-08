@@ -30,10 +30,10 @@
       <div class="shake shake-constant shake-constant--hover">
           <% def svg(name) %>
             <% file_path = "#{Rails.root}/app/assets/images/#{name}.svg"  %>
-            <% return File.read(file_path).html_safe if File.exists?(file_path)  %>
+            <% return File.read(file_path).html_safe, data:{animation_target: "svg"} if File.exists?(file_path)  %>
             <%  '(not found)'  %>
           <% end %>
-          <div data-test-fight-target="firstPicture" class="enemyPicture"><%= svg(@enemys.first.name) %></div>
+          <div data-controller="animation" data-test-fight-target="firstPicture" class="enemyPicture"><%= svg(@enemys.first.name) %></div>
       </div>
 
       <div class="fight-stats mt-3">

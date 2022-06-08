@@ -1,0 +1,2 @@
+class TheCollapse < ApplicationRecord
+end

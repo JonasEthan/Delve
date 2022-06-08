@@ -7,6 +7,7 @@ class PagesController < ApplicationController
 
   def test_fight
     if params[:rooms_id].present?
+      @a_moment_respite = AMomentsRespite.where(run_id: params[:run_id])
       @room_ids = params[:rooms_id]
       @db_rooms = Room.where(id: @room_ids)
       @enemys = []
@@ -67,4 +68,3 @@ class PagesController < ApplicationController
   def donate
   end
 end
- 
