@@ -5,10 +5,18 @@
   <div class="center-container text-center">
     <div class="container-content">
 
-      <h1>Amygd's Crossing</h1>
+      <h1 class="special-font">Amygd's Crossing</h1>
       <%= render "shared/underline" %>
-      <p class="mt-3">Select where you want to delve in first...</p>
+
     </div>
+  </div>
+  <br>
+  <div class="container-content text-center">
+    <p>You find yourself in an darker place, how you wound up in this peculiar place is not known to me</p>
+    <p>But you are here for a reason and that reason alone will mostlikely guide you out of this place once again</p>
+    <p>You are <span class="">faced</span> with a few gates that lead deeper into this strange place</p>
+    <p>You do not feel alone here, you even feel some sort of familarity with this place</p>
+    <p class="mt-3">The only thing left to do it seems, is to choose behind what gate to <span class="special-font">delve</span> first...</p>
   </div>
 
   <div class="text-center">
@@ -24,7 +32,7 @@
                   collection: @journeys.each { |journey_id| journey_id },
                   class: "mt-2",
                   include_hidden: false %>
-        <%= f.submit "Delve in", class: "btn btn-ocean mt-2", data: { rooms_target: "button" } %>
+        <%= f.submit "Delve in", class: "btn btn-ocean mt-2 special-font", data: { rooms_target: "button" } %>
       <% end %>
     </div>
   </div>
