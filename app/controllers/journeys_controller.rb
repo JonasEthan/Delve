@@ -23,7 +23,8 @@ class JourneysController < ApplicationController
     # ... with the id of that game, we can create our current run.
     @run = Run.new(game_id: @current_game.id)
     @run.save
-
+    TheCollapse.create(name: "The Collapse", health: 50, energy: 10, attack_damage: 5)
+    AMomentsRespite.create(run_id: Run.last.id, the_collapse_id: TheCollapse.last.id)
     # The disorders chosen in the form on view page journeys/new are used to create journey instances.
     unless params[:journey].nil?
       params[:journey][:title].each do |disorder_id|
