@@ -155,3 +155,4 @@ export default class extends Controller {
     objDiv.scrollTop = objDiv.scrollHeight;
   }
 }
+ 
