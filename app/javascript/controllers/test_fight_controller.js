@@ -51,13 +51,12 @@ export default class extends Controller {
     // checks if our current enemy is a boss or not and then gives it a different damage range
     switch (Math.floor(Math.random() * 2)) {
       case 0:
-        if(this.enemy.boss){
+        if(this.enemy.boss) {
           // Calls the PlayerStatus funtion for the player to take damage
           this.player.enemyAttack((this.enemy.damage + Math.floor(Math.random() * 6)));
           this.gameLogAction = this.gameLog.gameLogText('enemyAttack')
           this.updateView();
           // check the players health for loose conditon
-          // !this.fightLoss()
           this.player.checkHealth(this.disorderValue.meltdown_text);
         } else {
           // Calls the PlayerStatus funtion for the player to take damage
@@ -65,18 +64,17 @@ export default class extends Controller {
           this.gameLogAction = this.gameLog.gameLogText('enemyAttack')
           this.updateView();
           // check the players health for loose conditon
-          // !this.fightLoss()
           this.player.checkHealth(this.disorderValue.meltdown_text);
         }
         break;
-      // This will handle the event of an special attack being used by the enemy
+      // This will handle the event of a special attack being used by the enemy
       case 1:
         // checks if the enemy is a boss or not
           if(this.enemy.boss){
            this.enemy.specialAbility(this.enemy.name, this.player, Math.floor(Math.random() * 2));
            this.gameLogAction = this.gameLog.gameLogText('enemySpecial') // might need to change for better flavor text
            this.updateView();
-          }else{
+          } else {
             this.enemy.specialAbility(this.enemy.name, this.player, Math.floor(Math.random() * 2));
             this.gameLogAction = this.gameLog.gameLogText('enemySpecial') // might need to change for better flavor text
             this.updateView();
@@ -92,22 +90,21 @@ export default class extends Controller {
   // Is called when player clicks the "Attack" button on the view
   attackEnemy(){
     // Checks if the win or loose conditions are met or not
-    if (this.enemy.health > 0 && this.player.health > 0){
+    if (this.enemy.health > 0 && this.player.health > 0) {
       // enemy takes damage
       this.enemy.playerAttack(this.player.damage + Math.floor(Math.random() * 6));
       this.gameLogAction = this.gameLog.gameLogText('playerAttack');
       this.updateView();
       // checks if the enemy is still alive or not
-      if (this.enemy.health > 0 ){
+      if (this.enemy.health > 0 ) {
         // Attacks the player if the previous condition is true
         setTimeout(() => {
           this.attackPlayer()
         }, 500);
       } else {
-        // !this.fightWin()
         if(this.enemy.boss){
           window.location = this.fightWinValue
-        }else{
+        } else {
           this.sweetAlertController().fightWin({player: this.player});
         }
       }
@@ -120,11 +117,13 @@ export default class extends Controller {
     // this.player.abilityAction(this.specialValue.name, this.specialValue.ability_cost);
     this.gameLogAction = this.player.abilityAction(this.specialValue.name, this.enemy, this.specialValue.ability_cost);
     this.updateView();
-    if (this.enemy.health > 0 ){
+    if (this.enemy.health > 0 && this.player.energy >= this.specialValue.ability_cost) {
       // Attacks the player if the previous condition is true
       setTimeout(() => {
         this.attackPlayer()
       }, 500);
+    } else if (this.enemy.health > 0) {
+        return this.gameLog.gameLogText('energyLow')
     } else {
       this.sweetAlertController().fightWin({player: this.player});
     }
@@ -138,19 +137,32 @@ export default class extends Controller {
   // Updates the entire HTML so that the View is dynamic
   updateView() {
     // Player view update
-    this.playerHealthPercentTarget.innerText = `${((this.player.health * 100) / this.player.maxHealth)}%`;
+    if (this.player.health > 0) {
+      this.playerHealthPercentTarget.innerText = `${((this.player.health * 100) / this.player.maxHealth)}%`;
+    } else {
+      this.playerHealthPercentTarget.innerText = "0%";
+    }
     this.playerHealthTarget.value = this.player.health;
     this.playerHealthTarget.max = this.player.maxHealth;
-    this.playerEnergyPercentTarget.innerText = `${Math.floor((this.player.energy * 100) /this.player.maxEnergy)}%`;
+    if (this.player.energy > 0) {
+      this.playerEnergyPercentTarget.innerText = `${Math.floor((this.player.energy * 100) /this.player.maxEnergy)}%`;
+    } else {
+      this.playerEnergyPercentTarget.innerText = "0%";
+    }
     this.playerEnergyTarget.max = this.player.maxEnergy;
     this.playerEnergyTarget.value = this.player.energy;
     // Enemy view update
     this.enemyNameTarget.innerText = this.enemy.name
-    this.enemyHealthPercentTarget.innerText = `${Math.floor((this.enemy.health * 100) /this.enemyMaxhealth)}%`;
+    if (this.enemy.health > 0) {
+      this.enemyHealthPercentTarget.innerText = `${Math.floor((this.enemy.health * 100) /this.enemyMaxhealth)}%`;
+    } else {
+      this.enemyHealthPercentTarget.innerText = "0%";
+    }
     this.enemyHealthTarget.max = this.enemyMaxhealth;
     this.enemyHealthTarget.value = this.enemy.health;
     this.gameLogTarget.insertAdjacentHTML("beforeend", this.gameLogAction)
-    // this.pictureTarget.innerText.remove();
+
+    // Automatically scrolls game log to bottom after injecting content
     const objDiv = document.querySelector(".game-log");
     objDiv.scrollTop = objDiv.scrollHeight;
   }
