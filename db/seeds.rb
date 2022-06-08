@@ -45,11 +45,23 @@ User.create(
 # puts "4 users created"
 puts User.first
 
-puts "Special Ability Nr. 1"
+puts "Special Ability Nr. 1-3"
 
 PlayerAbility.create(
   name: "Healing",
   description: "This special ability heals you for the cost of 5 energy from 10 to 20 HP",
+  ability_cost: 5
+)
+
+PlayerAbility.create(
+  name: "Heavy Strike",
+  description: "This ability damages your enemy more than a regular attack",
+  ability_cost: 10
+)
+
+PlayerAbility.create(
+  name: "Reckless Attack",
+  description: "Does more damage than the regular attack but has a change of damaging the user",
   ability_cost: 5
 )
 
@@ -58,6 +70,16 @@ puts "Ability created"
 UserAbility.create(
   user_id: 1,
   player_ability_id: 1
+)
+
+UserAbility.create(
+  user_id: 1,
+  player_ability_id: 2
+)
+
+UserAbility.create(
+  user_id: 1,
+  player_ability_id: 3
 )
 
 puts "Ability assigned"
@@ -107,7 +129,7 @@ puts "Depression Enemy"
 Enemy.create(
   name: "The Chain",
   health: 50,
-  energy: 15,
+  energy: 20,
   attack_damage: 5,
   disorder_id: 2,
   boss: false
@@ -116,7 +138,7 @@ Enemy.create(
 Enemy.create(
   name: "The Abyss",
   health: 75,
-  energy: 40,
+  energy: 45,
   attack_damage: 5,
   disorder_id: 2,
   boss: true
@@ -147,7 +169,7 @@ Enemy.create(
 Enemy.create(
   name: "The Mask",
   health: 75,
-  energy: 40,
+  energy: 35,
   attack_damage: 5,
   disorder_id: 3,
   boss: true
@@ -176,13 +198,3 @@ Enemy.create(
 puts "Hysteria joined the Party"
 
 puts "Enemies are Special too"
-@i = 0
-7.times do
-  @i += 1
-  EnemyAbility.create(
-    name: "Test",
-    description: "This is just for test purposes",
-    ability_cost: 10,
-    enemy_id: @i
-  )
-end
