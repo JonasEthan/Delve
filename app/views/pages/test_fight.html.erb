@@ -19,7 +19,7 @@
       >
     <div class="d-flex justify-content-between">
       <div class="fight-stats mt-3">
-        <h3 class="mb-4" data-test-fight-target="enemyName"><%= @enemys.first.name %></h3>
+        <h3 class="mb-4 text-nowrap" data-test-fight-target="enemyName"><%= @enemys.first.name %></h3>
         <div class="progress-labels">
           <i class="fa-solid fa-heart-pulse"></i>
           <p data-test-fight-target="enemyHealthPercent" class="m-0">100%</p>
@@ -27,19 +27,17 @@
         <progress class="health-bar" value="" data-test-fight-target="enemyHealth" max="" data-sweet-alert-target="enemyHealth"></progress>
       </div>
 
-      <div class="enemy-shake shake-constant">
-        <div>
+      <div class="shake shake-constant">
           <% def svg(name) %>
             <% file_path = "#{Rails.root}/app/assets/images/#{name}.svg"  %>
             <% return File.read(file_path).html_safe if File.exists?(file_path)  %>
             <%  '(not found)'  %>
           <% end %>
           <div data-test-fight-target="firstPicture" class="enemyPicture"><%= svg(@enemys.first.name) %></div>
-        </div>
       </div>
 
       <div class="fight-stats mt-3">
-        <h3 class="mb-4"><%= current_user ? current_user.username : "Player" %></h3>
+        <h3 class="mb-4 text-nowrap"><%= current_user ? current_user.username : "Player" %></h3>
         <div class="progress-labels">
           <i class="fa-solid fa-heart-pulse"></i>
           <p data-test-fight-target="playerHealthPercent" class="m-0">100%</p>

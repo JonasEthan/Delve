@@ -1,5 +1,16 @@
+// ! Customized shake animation - right now not used as it gives us an error
+
 // .enemy-shake {
 //   @include do-shake(
-//     $dur: 1000ms,
+//     $name: "enemy-shake",
+//     $dur: 5000ms,
+//     $h: 5px, /*  {Number} is the max number for random to assign in x axis */
+//     $v: 5px, /* {Number} is the max number for random to assign in y axis */
+//     $r: 3deg, /* {Number} is the max number for random rotation */
+//     $precision: .02, /* {Number} is the precision of the keyframes animation. For example .02 generates keyframes each 2% and .1 each 10%. The calculation is $step: 100 * $precision; */
+//     $opacity: false,
+//     $q: infinite, /* {String} is the animation-iteration-count value */
+//     $t: ease-in-out, /* {String} animation-timing-function value */
+//     $delay: 500 /* {Number} animation-delay time value */
 //   );
 //   }
