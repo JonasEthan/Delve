@@ -1,23 +1,24 @@
 <div class="container mt-3 mb-3 ml-5 mr-5 ">
   <div class="center-container">
     <div class="text-center">
-      <h1><%= @disorder.name %></h1>
+      <h1 class="special-font gradient-title"><%= @disorder.name %></h1>
       <%= render "shared/underline" %>
     </div>
   </div>
 
   <div class="controller mt-4 mb-2"
-      id="game-controller"
-      data-controller="sweet-alert test-fight"
-      data-test-fight-enemy-value="<%= @enemys.first.to_json %>" data-test-fight-player-value="<%= @character.to_json %>" data-test-fight-disorder-value="<%= @disorder.to_json %>"
-      data-test-fight-special-value="<%= @player_ability.to_json %>" data-sweet-alert-enemy-value="<%= @enemys.first.to_json%>"
-      data-sweet-alert-fight-win-value='<%= journeys_completed_path %>'
-      data-test-fight-fight-win-value='<%= journeys_completed_path %>'
-      data-sweet-alert-room-win-value='<%= test_fight_path(rooms_id: @db_rooms.pluck(:id).drop(1), journey_id: @journey.id, respite_id: @a_moment_respite.id) %>'
-      data-sweet-alert-fight-loss-value='<%= journeys_repeat_path %>'
-      data-sweet-alert-fight-exit-value='<%= root_path %>'
-      >
-      <% @e_name = @enemys.first.name %>
+
+
+    id="game-controller"
+    data-controller="sweet-alert test-fight"
+    data-test-fight-enemy-value="<%= @enemys.first.to_json %>" data-test-fight-player-value="<%= @character.to_json %>" data-test-fight-disorder-value="<%= @disorder.to_json %>"
+    data-test-fight-special-value="<%= @player_ability.to_json %>" data-sweet-alert-enemy-value="<%= @enemys.first.to_json%>"
+    data-sweet-alert-fight-win-value='<%= journeys_completed_path %>'
+    data-test-fight-fight-win-value='<%= journeys_completed_path %>'
+    data-sweet-alert-room-win-value='<%= test_fight_path(rooms_id: @db_rooms.pluck(:id).drop(1)) %>'
+    data-sweet-alert-fight-loss-value='<%= journeys_repeat_path %>'
+    data-sweet-alert-fight-exit-value='<%= root_path %>'
+    >
     <div class="d-flex justify-content-between">
       <div class="fight-stats mt-3">
         <h3 class="mb-4 text-nowrap" data-test-fight-target="enemyName"><%= @enemys.first.name %></h3>
@@ -57,16 +58,15 @@
       </div>
     </div>
 
-    <div class="game-info mt-3">
-      <div class="game-controls">
+    <div class="game-info row mt-3">
+      <div class="game-controls col-sm-12 col-lg-4">
         <p class="btn btn-melon" data-action="click->test-fight#attackEnemy">Attack</p>
         <p class="btn btn-ocean" data-action="click->test-fight#playerSpecial" data-action="click->sweet-alert#checkState">Special</p>
         <p class="btn btn-blue" data-action="click->sweet-alert#fightExit">Exit game</p>
-        <%# <%= link_to "Exit game", root_path, class:"btn btn-gray", data: { action:"click->test-fight#playerOptOut" } %>
       </div>
 
-      <div class="game-log" data-test-fight-target="gameLog">
-        <p class="typewriter" style="color:#42475B"><strong>Brace yourself ... and see what happens when you start attacking</strong></p>
+      <div class="game-log col-sm-12 col-lg-7" data-test-fight-target="gameLog">
+          <p class="typewriter" style="color:#42475B"><strong>Brace yourself ... and see what happens when you start attacking</strong></p>
       </div>
     </div>
   </div>

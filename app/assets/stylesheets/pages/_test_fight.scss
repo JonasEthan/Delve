@@ -35,21 +35,23 @@
 
 .game-info {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  overflow: wrap;
 }
 
 .game-controls {
-  width: 30vw;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
 }
 
 .game-log {
+  margin: 0px 2px;
   background: $first-gray;
   color: $background;
+  font-size: 18px;
   height: 110px;
-  width: 40vw;
+  // width: 40vw;
   border-radius: 10px;
   border: 2px solid #B7E8EB;
   padding: 8px 12px;
@@ -100,6 +102,14 @@
 .hidden {
   display: none;
 }
+
+// Sweetalert styling to make the background blurred
+body.swal2-shown > [aria-hidden="true"] {
+  transition: 0.1s filter;
+  filter: blur(10px);
+}
+
+
 // #exit-button {
 //   text-decoration: none;
 //   color: black;

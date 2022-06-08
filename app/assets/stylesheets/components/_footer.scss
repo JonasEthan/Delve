@@ -1,28 +1,45 @@
 .footer {
+  // background: $background-hover;
+  border-image: linear-gradient(90deg, $ocean, $melon) 1;
+  border-top: 0.2px solid $second-gray;
   display: flex;
   align-items: center;
   justify-content: space-between;
   height: 50px;
   padding: 0px 50px;
-  color: rgba(0,0,0,0.3);
+  color: $second-gray;
 }
+
+.footer-copyright {
+  width: 30vw;
+  text-align: center;
+}
+
+.footer-info {
+  width: 30vw;
+}
+
+.footer-info a {
+  text-decoration: none;
+  padding: 0px 10px;
+  color: $second-gray;
+}
+
 .footer-links {
   display: flex;
+  justify-content: flex-end;
   align-items: center;
+  width: 30vw;
 }
+
 .footer-links a {
   text-decoration: none;
   font-size: 24px;
   padding: 0px 10px;
-  color: rgba(0,0,0,0.3);
+  color: $second-gray;
 }
-.footer-info a {
-  text-decoration: none;
-  padding: 0px 10px;
-  color: rgba(0,0,0,0.3);
-}
+
 .footer-links a:hover, .footer-info a:hover {
   opacity: 1;
   color: $ocean;
-  // text-shadow: 0px 0px 20px 25px $ocean-shadow;
 }
