@@ -30,4 +30,5 @@ Rails.application.routes.draw do
   get '/team', to: 'pages#team'
 
   get '/loading', to: 'pages#loading'
+  get '/dashboard', to: 'pages#dashboard'
 end
