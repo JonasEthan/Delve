@@ -1,4 +1,4 @@
-.btn-ocean {
+.btn-ocean, .btn-ocean-start {
   background: $ocean;
   color: $background;
   padding: 8px 20px;
@@ -7,14 +7,19 @@
   text-decoration: none;
 }
 
-.btn-ocean:hover {
+.btn-ocean-start {
+  width: 17vw;
+  overflow: wrap;
+}
+
+.btn-ocean:hover, .btn-ocean-start:hover {
   background: $ocean-hover;
   font-style: bolder;
   color: white;
   box-shadow: 0px 0px 10px 4px $ocean-shadow;
 }
 
-.btn-blue {
+.btn-blue, .btn-blue-start {
   background: $light-blue;
   color: $background;
   padding: 8px 20px;
@@ -23,7 +28,12 @@
   text-decoration: none;
 }
 
-.btn-blue:hover {
+.btn-blue-start {
+  width: 17vw;
+  overflow: wrap;
+}
+
+.btn-blue:hover, .btn-blue-start:hover {
   background: $light-blue-hover;
   font-style: bolder;
   color: white;
