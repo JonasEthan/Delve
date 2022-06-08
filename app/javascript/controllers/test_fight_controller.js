@@ -118,7 +118,7 @@ export default class extends Controller {
 
   playerSpecial() {
     // this.player.abilityAction(this.specialValue.name, this.specialValue.ability_cost);
-    this.gameLogAction = this.player.abilityAction(this.specialValue.name, this.specialValue.ability_cost);
+    this.gameLogAction = this.player.abilityAction(this.specialValue.name, this.enemy, this.specialValue.ability_cost);
     this.updateView();
     if (this.enemy.health > 0 ){
       // Attacks the player if the previous condition is true
@@ -155,4 +155,3 @@ export default class extends Controller {
     objDiv.scrollTop = objDiv.scrollHeight;
   }
 }
- 
