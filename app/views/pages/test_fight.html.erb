@@ -13,10 +13,11 @@
       data-test-fight-special-value="<%= @player_ability.to_json %>" data-sweet-alert-enemy-value="<%= @enemys.first.to_json%>"
       data-sweet-alert-fight-win-value='<%= journeys_completed_path %>'
       data-test-fight-fight-win-value='<%= journeys_completed_path %>'
-      data-sweet-alert-room-win-value='<%= test_fight_path(rooms_id: @db_rooms.pluck(:id).drop(1)) %>'
+      data-sweet-alert-room-win-value='<%= test_fight_path(rooms_id: @db_rooms.pluck(:id).drop(1), journey_id: @journey.id, respite_id: @a_moment_respite.id) %>'
       data-sweet-alert-fight-loss-value='<%= journeys_repeat_path %>'
       data-sweet-alert-fight-exit-value='<%= root_path %>'
       >
+      <% @e_name = @enemys.first.name %>
     <div class="d-flex justify-content-between">
       <div class="fight-stats mt-3">
         <h3 class="mb-4 text-nowrap" data-test-fight-target="enemyName"><%= @enemys.first.name %></h3>
@@ -27,13 +28,17 @@
         <progress class="health-bar" value="" data-test-fight-target="enemyHealth" max="" data-sweet-alert-target="enemyHealth"></progress>
       </div>
 
-      <div class="shake shake-constant shake-constant--hover">
+      <div class="" data-controller="animation" data-animation-enemy-value="<%= @enemys.first.name%>" class="enemyPicture">
           <% def svg(name) %>
             <% file_path = "#{Rails.root}/app/assets/images/#{name}.svg"  %>
-            <% return File.read(file_path).html_safe, data:{animation_target: "svg"} if File.exists?(file_path)  %>
+            <% return File.read(file_path).html_safe if File.exists?(file_path)  %>
             <%  '(not found)'  %>
           <% end %>
-          <div data-controller="animation" data-test-fight-target="firstPicture" class="enemyPicture"><%= svg(@enemys.first.name) %></div>
+          <div data-test-fight-target="firstPicture" >
+            <canvas data-animation-target="svg" height="300">
+              <%= svg(@enemys.first.name) %>
+            </canvas>
+          </div>
       </div>
 
       <div class="fight-stats mt-3">

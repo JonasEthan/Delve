@@ -11,12 +11,12 @@ class JourneysController < ApplicationController
     # This create action creates the run, the journeys and the journey_runs connecting the journeys to the current run.
     @player = current_user.present? ? current_user.id : User.first.id
     # To create the current run, first look for the user_character associated with the current user...
-    array_current_user_character = UserCharacter.where(user_id: @player) #array of 1
+    array_current_user_character = UserCharacter.where(user_id: @player) # array of 1
     current_user_character = array_current_user_character.first
 
     # ... then we can select the game whose stored character_id is the same as the id of the character associated with
     # our user_character from the step before ...
-    game_array = Game.where(character_id: current_user_character.character_id) #array of 1
+    game_array = Game.where(character_id: current_user_character.character_id) # array of 1
     @current_game = game_array.first
     # @current_game.save ? is it helpful/important to save it?
 

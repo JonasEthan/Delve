@@ -47,7 +47,8 @@ class RoomsController < ApplicationController
     Room.create(journey_id: @journey.id, enemy_id: @enemies.first.id)
     Room.create(journey_id: @journey.id, enemy_id: 7)
     Room.create(journey_id: @journey.id, enemy_id: @enemies.last.id)
-    redirect_to test_fight_path(rooms_id: @journey.room_ids, run_id: @journey.runs.first.id) # room_path(@array_of_journey_rooms[0][:id])
+    @respite = AMomentsRespite.where(run_id: @journey.runs.first.id).last
+    redirect_to test_fight_path(rooms_id: @journey.room_ids, respite_id: @respite.id, journey_id: @journey.id) # room_path(@array_of_journey_rooms[0][:id])
     # .sort to make sure last room/enemy is always boss etc.
   end
 
