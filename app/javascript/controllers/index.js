@@ -22,6 +22,9 @@ application.register("loading-typed-js", LoadingTypedJsController)
 import NavbarController from "./navbar_controller.js"
 application.register("navbar", NavbarController)
 
+import RoomsController from "./rooms_controller.js"
+application.register("rooms", RoomsController)
+
 import SweetAlertController from "./sweet_alert_controller.js"
 application.register("sweet-alert", SweetAlertController)
 
