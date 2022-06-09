@@ -110,7 +110,6 @@ export default class extends Controller {
 
   // Is called when player clicks the "Attack" button on the view
   attackEnemy(){
-    this.sweetAlertController().fightWin({player: this.player, enemy: this.enemy, disorder: this.disorderValue});
     // Checks if the win or loose conditions are met or not
     if (this.player.health > 0) {
       // enemy takes damage
