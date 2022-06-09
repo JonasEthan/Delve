@@ -17,17 +17,17 @@
 
   <div class="journey-selection mt-5">
     <h5 class="mt-3">Select these <span class="special-font gradient-title">journeys</span> wisely ... <br>you never know what you could find or what could find you on the other side<span class="">...</span></h5>
-    <div class="selection-form text-center">
+    <div class="selection-form text-center mt-4" data-controller="journeys">
       <%= simple_form_for(@journey) do |f| %>
         <%= f.input :title,
                     label: "",
                     collection: @disorders.each { |disorder| disorder.name },
                     as: :check_boxes,
-                    input_html: {class: "tag-selector" },
+                    input_html: {class: "tag-selector", data: { journeys_target: "journey", action: "click->journeys#activate" } },
                     item_wrapper_class: "tag-item",
                     class: "mt-2",
                     include_hidden: false %>
-        <%= f.submit "Embark", class: "btn btn-ocean mt-2 special-font" %>
+        <%= f.submit "Embark", class: "btn btn-ocean mt-2 special-font", data: { journeys_target: "button" } %>
       <% end %>
     </div>
   </div>

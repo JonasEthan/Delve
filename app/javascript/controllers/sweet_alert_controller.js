@@ -58,8 +58,7 @@ export default class extends Controller {
     Swal.fire({
       title: '<strong>DISCLAIMER</strong>',
       icon: 'info',
-      html:
-      '<strong>Reminder</strong>: This game evolves around the topic of mental disorders. It contains imagery that might be triggering or disturbing to some individuals. If you do not feel comfortable please do not play this game. While playing you can exit the game at any point in time.<br><br><strong>Thank you and enjoy Delve!</strong>',
+      html: '<strong>Reminder</strong>: This game evolves around the topic of mental disorders. It contains imagery that might be triggering or disturbing to some individuals. If you do not feel comfortable please do not play this game. While playing you can exit the game at any point in time.<br><br><strong>Thank you and enjoy Delve!</strong>',
       confirmButtonColor: "#8E9AAB",
       background: "#F5F5F6",
       showCancelButton: true,
@@ -73,7 +72,7 @@ export default class extends Controller {
   // Alert for "Fight page" - uses Adventuring text based on enemy instance
   fightStart(fightMessage) {
     Swal.fire({
-      title: '<strong>Attention!</strong>',
+      title: '<strong>Get ready</strong>',
       html: `${fightMessage}`,
       confirmButtonColor: "#8E9AAB",
       background: "#F5F5F6",
