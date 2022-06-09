@@ -8,9 +8,9 @@ export default class extends Controller {
   connect() {
 
   //this.sandbox = new GlslCanvas(this)
-    const name = this.enemyValue
-    console.log(this.rootValue)
-    const sandbox = new GlslCanvas(this.svgTarget)
+    const name = this.enemyValue;
+    console.log(this.rootValue);
+    const sandbox = new GlslCanvas(this.svgTarget);
     const frag = `
     #ifdef GL_ES
     precision highp float;
@@ -63,11 +63,11 @@ export default class extends Controller {
     {
         vec2 uv =  v_texcoord;
 
-        float strength = smoothstep(0.6, 0.11, uv.y);
+        float strength = smoothstep(0.4, 0.11, uv.y);
 
         vec2 surface = strength * vec2(
-        mix(-0.3, 0.3, fbm(5.0 * uv + 0.5 *  u_time)),
-        mix(-0.3, 0.3, fbm(5.0 * uv + 0.5 *  u_time))
+        mix(-0.3, 0.3, fbm(1.5 * uv + u_time)),
+        mix(-0.3, 0.3, fbm(5.0 * uv - u_time))
         );
 
         uv += refract(vec2(0.0, 0.0), surface, 1.0 / 1.333);
@@ -77,7 +77,7 @@ export default class extends Controller {
 
         gl_FragColor = color;
     }
-    `
+    `;
     sandbox.load(frag);
     sandbox.setUniform("image", this.rootValue)
     // /app/views/svgs/_svg.html.erb

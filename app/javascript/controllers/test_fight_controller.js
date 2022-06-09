@@ -110,8 +110,9 @@ export default class extends Controller {
 
   // Is called when player clicks the "Attack" button on the view
   attackEnemy(){
+    this.sweetAlertController().fightWin({player: this.player, enemy: this.enemy, disorder: this.disorderValue});
     // Checks if the win or loose conditions are met or not
-    if (this.enemy.health > 0 && this.player.health > 0) {
+    if (this.player.health > 0) {
       // enemy takes damage
       this.enemy.playerAttack(this.player.damage + Math.floor(Math.random() * 6));
       this.gameLogAction = this.gameLog.gameLogText('playerAttack');
@@ -124,14 +125,14 @@ export default class extends Controller {
         }, 500);
       } else {
         if(this.enemy.boss) {
-          window.location = this.fightWinValue
+          this.sweetAlertController().fightWin({player: this.player, enemy: this.enemy, disorder: this.disorderValue});
         } else {
           this.sweetAlertController().fightWin({player: this.player});
         }
       }
-    } else {
+    } else{
       // this.sweetAlertController().fightWin({player: this.player});
-      this.sweetAlertController().fightLoss();
+      // this.sweetAlertController().fightLoss();
 
     }
     this.deactivate()
@@ -150,9 +151,15 @@ export default class extends Controller {
       }, 500);
     } else if (this.enemy.health > 0) {
         return this.gameLog.gameLogText('energyLow')
-    } else {
+    } else if(this.player.health <= 0){
       // this.sweetAlertController().fightWin({player: this.player});
       this.sweetAlertController().fightLoss()
+    }else{
+      if(this.enemy.boss){
+        this.sweetAlertController().fightWin({player: this.player, enemy: this.enemy, disorder: this.disorderValue});
+      }else{
+        this.sweetAlertController().fightWin({player: this.player});
+      }
     }
     this.deactivate()
   }

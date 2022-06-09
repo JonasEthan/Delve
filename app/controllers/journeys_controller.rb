@@ -50,6 +50,9 @@ class JourneysController < ApplicationController
   end
 
   def completed
+    @disorder = Disorder.find(params[:id])
+    @enemies = Enemy.where(disorder_id: params[:id])
+    @enemy = @enemies.last
   end
 
   def repeat
