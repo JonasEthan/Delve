@@ -88,7 +88,7 @@ puts "Paranoia"
 
 Disorder.create(
   name: "Paranoia",
-  description: "Lorem Ipsum",
+  description: "Paranoia is not a diagnosis itself, but a symptom of three different mental health conditions: ",
   success_text: "You have overcome a step of your Journey",
   meltdown_text: "Do not give up, take a break in an save enviorment"
 )
