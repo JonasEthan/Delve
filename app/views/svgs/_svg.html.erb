@@ -1,5 +1,5 @@
 <% def svg(name) %>
-  <% file_path = "#{Rails.root}#{image_path(name)}.svg"  %>
+  <% file_path = "#{image_path(name)}"  %>
   <% return File.read(file_path).html_safe if File.exists?(file_path)  %>
   <%  '(not found)'  %>
 <% end %>
