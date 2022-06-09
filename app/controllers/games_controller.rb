@@ -9,7 +9,8 @@ class GamesController < ApplicationController
     # Triggering creation of UserCharacter instance when clicking 'Start Game' on homepage
     # UserCharacter is the table connecting our new character instance to the current user
     # (necessary in order to access the current user later)
-    @user_character = UserCharacter.new(character_id: @character.id, user_id: current_user.id)
+    @player = current_user.present? ? current_user.id : User.first.id
+    @user_character = UserCharacter.new(character_id: @character.id, user_id: @player)
     @user_character.save
 
     # Triggering creation of Game instance when clicking 'Start Game' on homepage.
