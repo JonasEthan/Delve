@@ -23,7 +23,7 @@ class PagesController < ApplicationController
       @character = Character.find(@player)
       @character.health = params[:health] if params[:health].present?
       @character.energy = params[:energy] if params[:energy].present?
-      @player_ability = PlayerAbility.find(UserAbility.first.player_ability_id)
+      @player_abilitys = PlayerAbility.all
     else
       @journey.completed = true
       @journey.save
