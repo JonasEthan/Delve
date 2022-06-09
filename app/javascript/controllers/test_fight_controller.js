@@ -123,6 +123,7 @@ export default class extends Controller {
       this.sweetAlertController().fightLoss();
 
     }
+    this.deactivate()
   }
 
   playerSpecial() {
@@ -140,6 +141,7 @@ export default class extends Controller {
       // this.sweetAlertController().fightWin({player: this.player});
       this.sweetAlertController().fightLoss()
     }
+    this.deactivate()
   }
 
   // gets triggered when the player clicks the button "Opt Out" - replaced by sweetalert button
@@ -181,10 +183,15 @@ export default class extends Controller {
   }
 
   deactivate() {
-    const button = document.getElementById("fight-button")
-    button.setAttribute("disabled", "");
+    const attackButton = document.getElementById("attack-button")
+    attackButton.setAttribute("disabled", "");
+    console.log(attackButton)
+    const specialButton = document.getElementById("special-button")
+    specialButton.setAttribute("disabled", "");
+    console.log(specialButton);
     setTimeout(() => {
-      button.removeAttribute("disabled", "")
+      attackButton.removeAttribute("disabled", "")
+      specialButton.removeAttribute("disabled", "")
     }, 1000);
   }
 }
