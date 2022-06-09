@@ -89,8 +89,8 @@ puts "Paranoia"
 Disorder.create(
   name: "Paranoia",
   description: "Lorem Ipsum",
-  success_text: "You have overcome a step of your Journey",
-  meltdown_text: "Do not give up, take a break in an save enviorment"
+  success_text: "You have overcome a step of your journey",
+  meltdown_text: "Do not give up, take a break in an save environment"
 )
 
 puts "Paranoia Enemy"
@@ -120,8 +120,8 @@ puts "Depression"
 Disorder.create(
   name: "Depression",
   description: "Lorem Ipsum",
-  success_text: "You have overcome a step of your Journey",
-  meltdown_text: "Do not give up, take a break in an save enviorment"
+  success_text: "You have overcome a step of your journey",
+  meltdown_text: "Do not give up, take a break in an save environment"
 )
 
 puts "Depression Enemy"
@@ -151,8 +151,8 @@ puts "Imposter Sydrom"
 Disorder.create(
   name: "Imposter Syndrome",
   description: "Lorem Ipsum",
-  success_text: "You have overcome a step of your Journey",
-  meltdown_text: "Do not give up, take a break in an save enviorment"
+  success_text: "You have overcome a step of your journey",
+  meltdown_text: "Do not give up, take a break in an save environment"
 )
 
 puts "Imposter Syndrom Enemy"
@@ -182,8 +182,8 @@ puts "Hysteria is now invited"
 Disorder.create(
   name: "Anxiety",
   description: "Lorem Ipsum",
-  success_text: "You have overcome a step of your Journey",
-  meltdown_text: "Do not give up, take a break in an save enviorment"
+  success_text: "You have overcome a step of your journey",
+  meltdown_text: "Do not give up, take a break in an save environment"
 )
 
 Enemy.create(
