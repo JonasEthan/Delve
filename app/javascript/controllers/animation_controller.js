@@ -82,5 +82,6 @@ export default class extends Controller {
 2
     sandbox.load(frag);
     sandbox.setUniform("image", `${this.rootValue}assets/${this.enemyValue}.svg`)
+    // /app/views/svgs/_svg.html.erb
   }
 }
