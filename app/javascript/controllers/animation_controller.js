@@ -79,7 +79,7 @@ export default class extends Controller {
         gl_FragColor = color;
     }
     `
-    sandbox.setUniform("image")
+    sandbox.setUniform("image", this.enemyValue)
     sandbox.load(frag);
     // /app/views/svgs/_svg.html.erb
   }
