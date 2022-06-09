@@ -63,12 +63,11 @@ export default class extends Controller {
     {
         vec2 uv =  v_texcoord;
 
-
-        float strength = smoothstep(0.5, 0.12, uv.y);
+        float strength = smoothstep(0.6, 0.11, uv.y);
 
         vec2 surface = strength * vec2(
-        mix(-0.3, 0.3, fbm(5.0 * uv + 0.3 *  u_time)),
-        mix(-0.3, 0.3, fbm(5.0 * uv + 0.5 *  u_time))
+        mix(-0.3, 0.3, fbm(5.0 * uv + 0.5 *  u_time)),
+        mix(-0.3, 0.3, fbm(10.0 * uv + 0.5 *  u_time))
         );
 
         uv += refract(vec2(0.0, 0.0), surface, 1.0 / 1.333);
@@ -79,8 +78,8 @@ export default class extends Controller {
         gl_FragColor = color;
     }
     `
-    sandbox.setUniform("image", this.rootValue)
     sandbox.load(frag);
+    sandbox.setUniform("image", this.rootValue)
     // /app/views/svgs/_svg.html.erb
   }
 }
