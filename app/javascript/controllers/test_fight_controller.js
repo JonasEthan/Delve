@@ -179,4 +179,12 @@ export default class extends Controller {
     const objDiv = document.querySelector(".game-log");
     objDiv.scrollTop = objDiv.scrollHeight;
   }
+
+  deactivate() {
+    const button = document.getElementById("fight-button")
+    button.setAttribute("disabled", "");
+    setTimeout(() => {
+      button.removeAttribute("disabled", "")
+    }, 1000);
+  }
 }
