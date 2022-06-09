@@ -24,11 +24,11 @@ export default class GameLog {
       return "<br><style='color:#42475B>–––<br><span style='color:#DE9B8C'><strong>Your energy level is too low!</strong></span>";
     // Enemy communication
     case "The Witness":
-      return "<br>The Witness casts a <span class=special-font>Horrible Gaze</span> at you!<br> You feel your energy depleeting";
+      return "<br>The Witness casts a <span class=special-font>Horrible Gaze</span> at you!<br> You feel your energy depleting...";
     case "The Stalker1":
-      return "<br>The Stalker casts a <span class=special-font>Horrible Gaze</span> at you!<br> You feel your energy depleeting";
+      return "<br>The Stalker casts a <span class=special-font>Horrible Gaze</span> at you!<br> You feel your energy depleting...";
     case "The Stalker2":
-      return "<br>With a <span class=special-font>Tailing Gaze</span>, follows this creature your every move <br> You feel your energy and health depleeting";
+      return "<br>With a <span class=special-font>Tailing Gaze</span>, follows this creature your every move <br> You feel your energy and health depleting...";
     case "The Chain":
       return "<br><span class=special-font>Dragging Constraints</span>!";
     case "The Abyss1":
