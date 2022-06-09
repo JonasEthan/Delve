@@ -81,6 +81,6 @@ export default class extends Controller {
     `
 
     sandbox.load(frag);
-    sandbox.setUniform("image", `${this.rootValue}assets/${this.enemyValue}`)
+    sandbox.setUniform("image", `${this.rootValue}assets/${this.enemyValue}.svg`)
   }
 }
