@@ -180,7 +180,7 @@ puts "Imposter Syndrom done"
 puts "Hysteria is now invited"
 
 Disorder.create(
-  name: "Testing",
+  name: "Anxiety",
   description: "Lorem Ipsum",
   success_text: "You have overcome a step of your Journey",
   meltdown_text: "Do not give up, take a break in an save enviorment"
