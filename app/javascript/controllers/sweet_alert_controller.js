@@ -84,19 +84,36 @@ export default class extends Controller {
   // Alert for "winning the fight" - redirects to journeys/completed path
 
   fightWin(options = {}) {
-    Swal.fire({
-      title: '<strong>Congratulations!</strong>',
-      icon: 'success',
-      html: "You fought bravely",
-      confirmButtonColor: "#8E9AAB",
-      background: "#F5F5F6",
-      showCancelButton: false,
-      confirmButtonText: 'Continue',
-      allowOutsideClick: false,
-    }).then((inputValue) => {
-      if(inputValue.isConfirmed)
-        window.location = `${this.roomWinValue}&${new URLSearchParams(options.player).toString()}`
-    })
+    console.log(options.enemy.name);
+    if(options.enemy.boss === true){
+      Swal.fire({
+        title: '<strong>You have overcome this great Adversary!</strong>',
+        icon: 'success',
+        html: `You have overcome ${options.enemy.name} gatekeeper of ${options.disorder.name}`,
+        confirmButtonColor: "#8E9AAB",
+        background: "#F5F5F6",
+        showCancelButton: false,
+        confirmButtonText: 'Continue',
+        allowOutsideClick: false,
+      }).then((inputValue) => {
+        if(inputValue.isConfirmed)
+          window.location = `journeys/completed?${new URLSearchParams(options.player).toString()}&${new URLSearchParams(options.enemy).toString()}&${new URLSearchParams(options.disorder).toString()}`
+      })
+    }else{
+      Swal.fire({
+        title: '<strong>Congratulations!</strong>',
+        icon: 'success',
+        html: "You fought bravely",
+        confirmButtonColor: "#8E9AAB",
+        background: "#F5F5F6",
+        showCancelButton: false,
+        confirmButtonText: 'Continue',
+        allowOutsideClick: false,
+      }).then((inputValue) => {
+        if(inputValue.isConfirmed)
+          window.location = `${this.roomWinValue}&${new URLSearchParams(options.player).toString()}`
+      })
+    }
   }
 
   // Alert for "losing the fight" - redirects to journeys/repeat
