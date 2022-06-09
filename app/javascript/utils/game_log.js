@@ -7,34 +7,32 @@ export default class GameLog {
         return "";
       // Player actions
       case "playerAttack":
-        return "<br><em><span style='color:#85A9AB'><strong>You: </strong>You attack and the enemy is suffering...</em></span>";
+        return "<br><style='color:#85A9AB'>–––<br><em><span style='color:#85A9AB'><strong>You: </strong>You attack and the enemy is suffering...</em>";
       case "playerSpecial":
         return "<br><em><span style='color:#85A9AB'><strong>You: </strong>You throw your special attack...</em></span>";
-    // Enemy conditions
-    case "enemyAttack":
-      return "<br>The enemy attacks and is draining your health...";
-    case "enemySpecial":
-      return "<br>Special enemy text!";
-    // Specific conditions
-    case "energyLow":
-      return "<br><span style='color:#DE9B8C'><strong>Your energy level is too low</strong></span>";
-    // Enemy communication
-    case "The Witness":
-      return "<br>Horrible Gaze!"
-    case "The Stalker":
-      return "<br>Horrible Gaze!"
-    case "The Chain":
-      return "<br>Dragging Constraints!"
-    case "The Abyss":
-      return "<br>Dragging Constraints!"
-    case "The Prosecutor":
-      return "<br>Horrible Acusation!";
-    case "The Mask":
-      return "<br>Hainous Laugther!";
-    case "Hysteria":
-    return "<br>Hysteric Explosion!";
+      // Enemy conditions
+      case "enemyAttack":
+        return "<br>The enemy attacks and is draining your health...";
+      case "enemySpecial":
+        return "<br>Special enemy text!";
+      // Specific conditions
+      case "energyLow":
+        return "<br><span style='color:#DE9B8C'><strong>Your energy level is too low</strong></span>";
+      // Enemy communication
+      case "The Witness":
+        return "<br>Horrible Gaze!"
+      case "The Stalker":
+        return "<br>Horrible Gaze!"
+      case "The Chain":
+        return "<br>Dragging Constraints!"
+      case "The Abyss":
+        return "<br>Dragging Constraints!"
+      case "The Prosecutor":
+        return "<br>Horrible Acusation!";
+      case "The Mask":
+        return "<br>Hainous Laugther!";
+      case "Hysteria":
+      return "<br>Hysteric Explosion!";
     }
-
   }
 }
- 
