@@ -15,13 +15,13 @@
 #   energy: 50,
 #   attack_damage: 5
 # )
-# puts "1 character created"
+puts "1 character created"
 
 puts "Create users..."
 User.create(
   username: "Dummy",
   email: "test@dummy.com",
-  password: "123456"
+  password: "123456",
   # character_id: 1
 )
 # User.create(
