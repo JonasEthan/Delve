@@ -11,7 +11,7 @@ import { SVG } from "@svgdotjs/svg.js";
 
 // Connects to data-controller="test-fight"
 export default class extends Controller {
-  static values = { enemy: Object, player: Object, disorder: Object, special: Object, fightWin: String}
+  static values = { enemy: Object, player: Object, disorder: Object, special: Array, fightWin: String}
   static targets = ["enemyName", "enemyHealthPercent", "enemyHealth", "playerHealthPercent", "playerHealth", "playerEnergyPercent", "playerEnergy", "firstPicture", "gameLog"]
 
   sweetAlertController(){
@@ -96,6 +96,17 @@ export default class extends Controller {
     }
   }
 
+  specialHealing(){
+    this.playerSpecial(0)
+  }
+
+  specialHeavy(){
+    this.playerSpecial(1);
+  }
+
+  specialReckless(){
+    this.playerSpecial(2);
+  }
 
   // Is called when player clicks the "Attack" button on the view
   attackEnemy(){
@@ -126,11 +137,13 @@ export default class extends Controller {
     this.deactivate()
   }
 
-  playerSpecial() {
+
+
+  playerSpecial(n) {
     // this.player.abilityAction(this.specialValue.name, this.specialValue.ability_cost);
-    this.gameLogAction = this.player.abilityAction(this.specialValue.name, this.enemy, this.specialValue.ability_cost);
+    this.gameLogAction = this.player.abilityAction(this.specialValue[n].name, this.enemy, this.specialValue[n].ability_cost);
     this.updateView();
-    if (this.enemy.health > 0 && this.player.energy >= this.specialValue.ability_cost) {
+    if (this.enemy.health > 0 && this.player.energy >= this.specialValue[n].ability_cost) {
       // Attacks the player if the previous condition is true
       setTimeout(() => {
         this.attackPlayer()
@@ -185,7 +198,7 @@ export default class extends Controller {
   deactivate() {
     const attackButton = document.getElementById("attack-button")
     attackButton.setAttribute("disabled", "");
-    console.log(attackButton)
+    //console.log(attackButton)
     const specialButton = document.getElementById("special-button")
     specialButton.setAttribute("disabled", "");
     console.log(specialButton);

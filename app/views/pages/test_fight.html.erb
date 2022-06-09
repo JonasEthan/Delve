@@ -5,14 +5,11 @@
       <%= render "shared/underline" %>
     </div>
   </div>
-
   <div class="controller mt-4 mb-2"
-
-
     id="game-controller"
     data-controller="sweet-alert test-fight"
     data-test-fight-enemy-value="<%= @enemys.first.to_json %>" data-test-fight-player-value="<%= @character.to_json %>" data-test-fight-disorder-value="<%= @disorder.to_json %>"
-    data-test-fight-special-value="<%= @player_ability.to_json %>" data-sweet-alert-enemy-value="<%= @enemys.first.to_json%>"
+    data-test-fight-special-value="<%= @player_abilitys.to_json %>" data-sweet-alert-enemy-value="<%= @enemys.first.to_json%>"
     data-sweet-alert-fight-win-value='<%= journeys_completed_path %>'
     data-test-fight-fight-win-value='<%= journeys_completed_path %>'
     data-sweet-alert-room-win-value='<%= test_fight_path(rooms_id: @db_rooms.pluck(:id).drop(1)) %>'
@@ -56,10 +53,10 @@
     <div class="game-info row mt-3">
       <div class="game-controls mb-3 col-sm-12 col-lg-4">
         <button class="btn btn-melon" data-action="click->test-fight#attackEnemy" id="attack-button">Attack</button>
-        <button class="btn btn-ocean" data-action="click->test-fight#playerSpecial" data-action="click->sweet-alert#checkState" id="special-button">Special</button>
-        <button>Heavy strike</button>
-        <button>Reckless attack</button>
-        <button>Healing</button>
+        <button class="btn btn-ocean" id="special-button" data-action="click->test-fight#specialHeavy">Special</button>
+        <button class="btn btn-ocean">Heavy strike</button>
+        <button class="btn btn-ocean" data-action="click->test-fight#specialReckless">Reckless attack</button>
+        <button class="btn btn-ocean" data-action="click->test-fight#specialHealing">Healing</button>
         <button class="btn btn-blue" data-action="click->sweet-alert#fightExit">Exit game</button>
       </div>
 
