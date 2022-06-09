@@ -78,10 +78,16 @@ export default class extends Controller {
            this.enemy.specialAbility(this.enemy.name, this.player, Math.floor(Math.random() * 2));
            this.gameLogAction = this.gameLog.gameLogText('enemySpecial') // might need to change for better flavor text
            this.updateView();
+           if (this.player.health <= 0) {
+            this.sweetAlertController().fightLoss();
+           }
           } else {
             this.enemy.specialAbility(this.enemy.name, this.player, Math.floor(Math.random() * 2));
             this.gameLogAction = this.gameLog.gameLogText('enemySpecial') // might need to change for better flavor text
             this.updateView();
+            if (this.player.health <= 0) {
+              this.sweetAlertController().fightLoss();
+             }
           }
         break;
       default:
@@ -106,7 +112,7 @@ export default class extends Controller {
           this.attackPlayer()
         }, 500);
       } else {
-        if(this.enemy.boss){
+        if(this.enemy.boss) {
           window.location = this.fightWinValue
         } else {
           this.sweetAlertController().fightWin({player: this.player});
