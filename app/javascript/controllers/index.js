@@ -28,6 +28,9 @@ application.register("navbar", NavbarController)
 import RoomsController from "./rooms_controller.js"
 application.register("rooms", RoomsController)
 
+import SoonAnimationController from "./soon_animation_controller.js"
+application.register("soon-animation", SoonAnimationController)
+
 import SweetAlertController from "./sweet_alert_controller.js"
 application.register("sweet-alert", SweetAlertController)
 
