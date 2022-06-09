@@ -13,6 +13,9 @@ application.register("game-framework", GameFrameworkController)
 import HelloController from "./hello_controller.js"
 application.register("hello", HelloController)
 
+import JourneysController from "./journeys_controller.js"
+application.register("journeys", JourneysController)
+
 import LoadingController from "./loading_controller.js"
 application.register("loading", LoadingController)
 
