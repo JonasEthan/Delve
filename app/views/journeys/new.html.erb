@@ -2,8 +2,8 @@
   <p><%= link_to request.referer.present? ? request.referer : root_path do %>
     <i class="fa-solid fa-backward"></i> Back
   <% end %></p>
-  <div class="center-container text-center">
-    <div class="container-content">
+
+    <div class="container-content text-center">
         <h1>Choose what <span class="special-font">Journeys</span> you want to embark on</h1>
       <%= render "shared/underline" %>
       <div>
@@ -23,6 +23,5 @@
           <%= f.submit "Embark!", class: "btn btn-ocean mt-2 special-font" %>
         <% end %>
       </div>
-    </div>
   </div>
 </div>
