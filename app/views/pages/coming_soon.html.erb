@@ -1,19 +1,27 @@
-<h1 class="text-center special-font">Coming Soon ...</h1>
-<br>
-<div data-controller="animation" data-animation-root-value="<%= image_url("The Collapse.png")%>" class="d-flex justify-content-center">
-  <div class="flex-item">
-    <canvas data-animation-target="svg" class="teaser" height="600" width="250"></canvas>
+<div class="container mt-3 mb-3">
+  <p><%= link_to request.referer.present? ? request.referer : root_path do %>
+    <i class="fa-solid fa-backward"></i> Back
+  <% end %></p>
+
+  <div class="center-container">
+    <div class="container-content">
+      <h1 class="text-center special-font">Coming soon ...</h1>
+      <%= render "shared/underline"%>
+    </div>
   </div>
-  <div class="m-1">
-    <h4>Hello my <span class="special-font">friend</span> ...</h4>
-    <p>We will <span class="special-font">soon</span> meet, I asume</p>
-    <p>Though I have met and know of <span class="special-font">you</span></p>
-    <p>Sadly you were not able to <span class="special-font">meet me</span></p>
-    <p>But for now that is enough of pleasantries</p>
-    <p>Proper introductions must sadly wait for a later time ...</p>
-    <p>But I do wish you a lot of fun with <span class="special-font">Delve</span></p>
-    <div class="d-flex justify-content-center">
-      <%= link_to "Back", root_path, class:"btn btn-blue-start special-font" %>
+  <br>
+  <div data-controller="animation" data-animation-root-value="<%= image_url("The Collapse.png")%>" class="d-flex justify-content-center">
+    <div class="flex-item">
+      <canvas data-animation-target="svg" class="teaser" style="margin-right: 30px" height="600" width="250"></canvas>
+    </div>
+    <div class="mt-3">
+      <h4>Hello my friend,</h4>
+      <p>I am sure we will meet very <span class="special-font">soon</span>!</p>
+      <p>Though I know who you are and have already closely monitored your endeavors my identity will remain a <span class="special-font">secret</span> for now.</p>
+      <p>Sadly you were not able to <span class="special-font">meet me yet</span>.</p>
+      <p>But enough pleasantries: <span class="special-font">Come back shortly</span> for a formal introduction and many more things to discover!</p>
+      <p>In the meantime, I do wish you a lot of fun with</p>
+      <h2 class="special-title gradient-title">Delve</h2>
     </div>
   </div>
 </div>

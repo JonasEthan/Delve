@@ -14,7 +14,7 @@
       <p></p>
 
       <p>Want to find out more?
-      <a href="">Click here!</a></p>
+      <p><%= link_to "Click here", about_path %></p>
       <br>
       <% if current_user.present? %>
       <%= link_to "Continue", new_journey_path, class: "btn btn-ocean" %>
