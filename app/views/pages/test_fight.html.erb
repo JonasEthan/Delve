@@ -53,10 +53,18 @@
     <div class="game-info row mt-3">
       <div class="game-controls mb-3 col-sm-12 col-lg-4">
         <button class="btn btn-melon" data-action="click->test-fight#attackEnemy" id="attack-button">Attack</button>
-        <button class="btn btn-ocean" id="special-button">Special</button>
-        <button  class="btn btn-ocean" data-action="click->test-fight#specialHeavy">Heavy strike</button>
-        <button class="btn btn-ocean" data-action="click->test-fight#specialReckless">Reckless attack</button>
-        <button class="btn btn-ocean" data-action="click->test-fight#specialHealing">Healing</button>
+        <!-- Default dropup button -->
+        <div class="btn-group dropup">
+          <button type="button" id="special-button" class="btn btn-ocean dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+            Special
+          </button>
+          <ul class="dropdown-menu dropdown-menu-dark">
+            <!-- Dropdown menu links -->
+            <li class="dropdown-item" data-action="click->test-fight#specialHeavy">Heavy strike</li>
+            <li class="dropdown-item" data-action="click->test-fight#specialReckless">Reckless attack</li>
+            <li class="dropdown-item" data-action="click->test-fight#specialHealing">Healing</li>
+          </ul>
+        </div>
         <button class="btn btn-blue" data-action="click->sweet-alert#fightExit">Exit game</button>
       </div>
 
