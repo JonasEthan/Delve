@@ -39,14 +39,13 @@ export default class PlayerStatus {
           this.loseEnergy(abilityCost);
           this.health += (10 + Math.floor(Math.random() * 11));
           // if the healing would result in more than 100 health it sets the health to 100. Currently hardcoded needs to be changed later
-
           if(this.health > this.maxHealth){
             this.health = 100;
           }
-          return this.gameLog.gameLogText("playerSpecial");
+          return "Healing1";
         } else {
           // For testing purposes for now
-          return this.gameLogAction = this.gameLog.gameLogText('energyLow');
+          return 'energyLow';
         }
         break;
       case "Heavy Strike":
@@ -54,14 +53,10 @@ export default class PlayerStatus {
           this.loseEnergy(abilityCost);
           enemy.playerAttack((this.damage + (Math.floor(Math.random() * 11))));
           // if the healing would result in more than 100 health it sets the health to 100. Currently hardcoded needs to be changed later
-
-          if(this.health > this.maxHealth){
-            this.health = 100;
-          }
-          return this.gameLog.gameLogText("playerSpecial");
+          return "Heavy Attack";
         } else {
           // For testing purposes for now
-          return this.gameLogAction = this.gameLog.gameLogText('energyLow');
+          return 'energyLow';
         }
         break;
         case "Reckless Attack":
@@ -75,12 +70,13 @@ export default class PlayerStatus {
               this.health = 100;
             }else if(selfDamage % 10 === 0){
               this.health -= (this.damage + (Math.floor(Math.random() * 11)));
+              return "Reckless Attack2";
             }
-            return this.gameLog.gameLogText("playerSpecial");
+            return "Reckless Attack1";
           } else {
             // For testing purposes for now
 
-            return this.gameLogAction = this.gameLog.gameLogText('energyLow');
+            return 'energyLow';
           }
           break;
       default:
