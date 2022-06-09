@@ -138,7 +138,7 @@ export default class EnemyStatus {
             break;
           case 1:
             if(this.checkEnergy(20)){
-              alert("Hainous Laughter!");
+              // alert("Hainous Laughter!");
               this.energy -= 20;
               const leechDamage = this.damage + (Math.floor(Math.random() * 16));
               player.enemyAttack(leechDamage);
