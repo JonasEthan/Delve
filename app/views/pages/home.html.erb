@@ -1,5 +1,5 @@
 <div class="container text-center mt-3 mb-3 ">
-  <%= image_tag"Delve Logo.gif", class: "logo text-center" %>
+   <%= image_tag"Delve Logo.gif", class: "logo text-center" %>
   <h2><span data-controller="typed-js"></span></h2>
 
   <div data-controller="sweet-alert"
@@ -22,6 +22,9 @@
           <%= link_to "Log in", new_user_session_path, class: "btn btn-blue-start" %>
         </div>
       <% end %>
+      <div>
+        <%= link_to "Coming soon", soon_path, class:"btn btn-blue-start special-font" %>
+      </div>
     </div>
   </div>
 </div>
