@@ -3,7 +3,7 @@ class JourneysController < ApplicationController
 
   def new
     # Creating the instances of Disorder and Journey needed for the form on view page journeys/new
-    @disorders = Disorder.all
+    @disorders = Disorder.where("name != 'Testing'")
     @journey = Journey.new
   end
 
