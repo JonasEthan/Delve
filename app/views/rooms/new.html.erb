@@ -2,19 +2,23 @@
   <p><%= link_to request.referer.present? ? request.referer : root_path do %>
     <i class="fa-solid fa-backward"></i> Back
   <% end %></p>
-  <div class="text-center">
-    <h1 class="special-font">Amygd's Crossing</h1>
-    <%= render "shared/underline" %>
+  <div class="center-container">
+    <div class="container-content">
+      <h1 class="special-font text-center">Amygd's Crossing</h1>
+      <%= render "shared/underline" %>
+    </div>
   </div>
 
-  <div class="mt-4">
-    <p>You find yourself in a dark place... How you ended up in this peculiar place is not known but you are here for a reason, and this reason alone will guide you out of here again</p>
-    <p>You are facing a few gates that will lead you deeper into this strange place. You do not feel alone, you can even feel some sort of familarity with this place.</p>
-    <h6 class="mt-3 mb-3">The only thing that's left to do for you is to choose the gate you want to <span class="special-font gradient-title">delve into</span> first ...</h6>
+  <div class="mt-3 mb-3">
+    <h4>You find yourself in an obscure environment...</h4>
+    <p>How you ended up in this peculiar place is not known but you are here for a reason. And this reason alone will guide you out of here!</p>
+
+    <p>You are standing in front of a series of gates that will lead you deeper into this strange place. You do not feel alone, you can even feel a sort of familarity with this place.</p>
   </div>
 
-  <div class="text-center">
-    <div class="selection-form" data-controller="rooms">
+  <div class="mt-5">
+    <h5 class="mt-3 mb-3">Now, the only thing that's left to do for you is to choose the gate you want to <span class="special-font gradient-title">delve into</span> first ...</h5>
+    <div class="selection-form text-center" data-controller="rooms">
       <%= simple_form_for(@room) do |f| %>
       <%= f.input :journey_id,
                   as: :radio_buttons,
