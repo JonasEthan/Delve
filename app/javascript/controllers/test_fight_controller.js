@@ -14,9 +14,6 @@ export default class extends Controller {
   static values = { enemy: Object, player: Object, disorder: Object, special: Array, fightWin: String}
   static targets = ["enemyName", "enemyHealthPercent", "enemyHealth", "playerHealthPercent", "playerHealth", "playerEnergyPercent", "playerEnergy", "firstPicture", "gameLog"]
 
-  sweetAlertController(){
-    return this.application.getControllerForElementAndIdentifier(this.element, 'sweet-alert')
-  }
 
   connect() {
     // creates the instances of our Player and Enemy for JS with the given Object parameters
@@ -31,6 +28,9 @@ export default class extends Controller {
     this.updateView();
   }
 
+  sweetAlertController(){
+    return this.application.getControllerForElementAndIdentifier(this.element, 'sweet-alert')
+  }
   // when the current enemy is defeated this reassigns the new enemy
 
   // Loads the svg pictures of our enemies
@@ -76,14 +76,14 @@ export default class extends Controller {
         // checks if the enemy is a boss or not
           if(this.enemy.boss){
            this.enemy.specialAbility(this.enemy.name, this.player, Math.floor(Math.random() * 2));
-           this.gameLogAction = this.gameLog.gameLogText('enemySpecial') // might need to change for better flavor text
+           this.gameLogAction = this.gameLog.gameLogText(this.enemy.specialAbility(this.enemy.name, this.player, Math.floor(Math.random() * 2)));// might need to change for better flavor text
            this.updateView();
            if (this.player.health <= 0) {
             this.sweetAlertController().fightLoss();
            }
           } else {
-            this.enemy.specialAbility(this.enemy.name, this.player, Math.floor(Math.random() * 2));
-            this.gameLogAction = this.gameLog.gameLogText('enemySpecial') // might need to change for better flavor text
+            //this.enemy.specialAbility(this.enemy.name, this.player, Math.floor(Math.random() * 2));
+            this.gameLogAction = this.gameLog.gameLogText(this.enemy.specialAbility(this.enemy.name, this.player, Math.floor(Math.random() * 2))); // might need to change for better flavor text
             this.updateView();
             if (this.player.health <= 0) {
               this.sweetAlertController().fightLoss();
@@ -126,7 +126,7 @@ export default class extends Controller {
         if(this.enemy.boss) {
           this.sweetAlertController().fightWin({player: this.player, enemy: this.enemy, disorder: this.disorderValue});
         } else {
-          this.sweetAlertController().fightWin({player: this.player});
+          this.sweetAlertController().fightWin({player: this.player, enemy: this.enemy});
         }
       }
     } else{
@@ -148,16 +148,13 @@ export default class extends Controller {
       setTimeout(() => {
         this.attackPlayer()
       }, 500);
-    } else if (this.enemy.health > 0) {
+    } else if (this.player.energy < this.specialValue[n].ability_cost) {
         return this.gameLog.gameLogText('energyLow')
-    } else if(this.player.health <= 0){
-      // this.sweetAlertController().fightWin({player: this.player});
-      this.sweetAlertController().fightLoss()
     }else{
       if(this.enemy.boss){
         this.sweetAlertController().fightWin({player: this.player, enemy: this.enemy, disorder: this.disorderValue});
       }else{
-        this.sweetAlertController().fightWin({player: this.player});
+        this.sweetAlertController().fightWin({player: this.player, enemy: this.enemy});
       }
     }
     this.deactivate()
@@ -207,7 +204,7 @@ export default class extends Controller {
     //console.log(attackButton)
     const specialButton = document.getElementById("special-button")
     specialButton.setAttribute("disabled", "");
-    console.log(specialButton);
+    // console.log(specialButton);
     setTimeout(() => {
       attackButton.removeAttribute("disabled", "")
       specialButton.removeAttribute("disabled", "")

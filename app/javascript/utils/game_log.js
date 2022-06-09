@@ -7,36 +7,42 @@ export default class GameLog {
         return "";
       // Player actions
       case "playerAttack":
-        return "<br><style='color:#85A9AB'>–––<br><em><span style='color:#85A9AB'><strong>You: </strong>You attack and the enemy is suffering...</em>";
+        return "<br><style='color:#42475B'>–––<br><em><span style='color:#85A9AB'>You attack and the enemy is suffering...</em></span>";
       case "playerSpecial":
-        return "<br><em><span style='color:#85A9AB'>–––<br><strong>You: </strong>You throw your special attack...</em></span>";
+        return "<br><em><style='color:#42475B'>–––<br><span style='color:#85A9AB'>You throw your special attack...</em></span>";
     // Enemy conditions
     case "enemyAttack":
-      setTimeout(() => {
+      // setTimeout(() => {
         return "<br>The enemy attacks and is draining your health...";
-      }, 500);
+      // }, 500);
     case "enemySpecial":
-      setTimeout(() => {
-        return "<br>Special enemy text!";
-      }, 500);
+      // setTimeout(() => {
+        return "<br>The enemy attacks you with its special move...";
+      // }, 500);
     // Specific conditions
     case "energyLow":
-      return "<br><span style='color:#DE9B8C'><strong>Your energy level is too low</strong></span>";
+      return "<br><style='color:#42475B>–––<br><span style='color:#DE9B8C'><strong>Your energy level is too low!</strong></span>";
     // Enemy communication
     case "The Witness":
-      return "<br>Horrible Gaze!"
-    case "The Stalker":
-      return "<br>Horrible Gaze!"
+      return "<br>The Witness casts a <span class=special-font>Horrible Gaze</span> at you!<br> You feel your energy depleeting";
+    case "The Stalker1":
+      return "<br>The Stalker casts a <span class=special-font>Horrible Gaze</span> at you!<br> You feel your energy depleeting";
+    case "The Stalker2":
+      return "<br>With a <span class=special-font>Tailing Gaze</span>, follows this creature your every move <br> You feel your energy and health depleeting";
     case "The Chain":
-      return "<br>Dragging Constraints!"
-    case "The Abyss":
-      return "<br>Dragging Constraints!"
+      return "<br><span class=special-font>Dragging Constraints</span>!";
+    case "The Abyss1":
+      return "<br><span class=special-font>Dragging Constraints</span>";
+    case "The Abyss2":
+      return "<br><span class=special-font>Hauting Darkness</span>";
     case "The Prosecutor":
       return "<br>Horrible Acusation!";
-    case "The Mask":
-      return "<br>Hainous Laugther!";
+    case "The Mask1":
+      return "<br>Horrible Acusation!";
+    case "The Mask2":
+      return "<br>Hainous Laugther!"
     case "Hysteria":
-    return "<br>Hysteric Explosion!";
+      return "<br><span class=special-font>Hysteric Explosion</span>!";
     }
   }
 }
