@@ -33,7 +33,7 @@ export default class EnemyStatus {
           return 'The Witness';
         } else {
           // alert("Not enough energy")
-          return this.gameLog.gameLogText('energyLow')
+          return 'energyLowEnemy';
         }
         break;
       case "The Stalker":
@@ -46,7 +46,7 @@ export default class EnemyStatus {
               return 'The Stalker1';
             } else {
                 // alert("Not enough energy")
-              return this.gameLog.gameLogText('energyLow')
+                return 'energyLowEnemy';
             }
             break;
           case 1:
@@ -58,7 +58,7 @@ export default class EnemyStatus {
               return 'The Stalker2';
             } else {
               // alert("Not enough energy")
-              return this.gameLog.gameLogText('energyLow')
+              return 'energyLowEnemy';
             }
             break;
           default:
@@ -74,7 +74,7 @@ export default class EnemyStatus {
           return 'The Chain';
           } else {
             // alert("Not enough energy")
-            return this.gameLog.gameLogText('energyLow')
+            return 'energyLowEnemy';
           }
         break;
       case "The Abyss":
@@ -88,7 +88,7 @@ export default class EnemyStatus {
               return 'The Abyss1';
               } else {
                 // alert("Not enough energy")
-                return this.gameLog.gameLogText('energyLow')
+                return 'energyLowEnemy';
               }
             break;
           case 1:
@@ -100,7 +100,7 @@ export default class EnemyStatus {
               return 'The Abyss2';
               } else {
                 // alert("Not enough energy")
-                return this.gameLog.gameLogText('energyLow')
+                return 'energyLowEnemy';
               }
             break;
           default:
@@ -118,7 +118,7 @@ export default class EnemyStatus {
           return 'The Prosecutor';
           } else {
             // alert("Not enough energy")
-            return this.gameLog.gameLogText('energyLow')
+            return 'energyLowEnemy';
           }
         break;
       case "The Mask":
@@ -133,7 +133,7 @@ export default class EnemyStatus {
               'The Mask1'
             } else {
                 // alert("Not enough energy")
-              return this.gameLog.gameLogText('energyLow')
+              return 'energyLowEnemy';
             }
             break;
           case 1:
@@ -146,7 +146,7 @@ export default class EnemyStatus {
               return 'The Mask2'
             } else {
                 // alert("Not enough energy")
-              return this.gameLog.gameLogText('energyLow')
+              return 'energyLowEnemy';
             }
             break;
           default:
@@ -168,7 +168,7 @@ export default class EnemyStatus {
           return 'Hysteria';
         } else {
           // alert("Not enough energy")
-            return this.gameLog.gameLogText('energyLow')
+            return 'energyLowEnemy';
           }
         break;
       default:

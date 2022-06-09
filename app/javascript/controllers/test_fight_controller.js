@@ -141,9 +141,9 @@ export default class extends Controller {
 
   playerSpecial(n) {
     // this.player.abilityAction(this.specialValue.name, this.specialValue.ability_cost);
-    this.gameLogAction = this.player.abilityAction(this.specialValue[n].name, this.enemy, this.specialValue[n].ability_cost);
-    this.updateView();
     if (this.enemy.health > 0 && this.player.energy >= this.specialValue[n].ability_cost) {
+      this.gameLogAction = this.gameLog.gameLogText(this.player.abilityAction(this.specialValue[n].name, this.enemy, this.specialValue[n].ability_cost));
+      this.updateView();
       // Attacks the player if the previous condition is true
       setTimeout(() => {
         this.attackPlayer()
