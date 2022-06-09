@@ -7,14 +7,19 @@ export default class GameLog {
         return "";
       // Player actions
       case "playerAttack":
+
         return "<br><em><span style='color:#85A9AB'><strong>You: </strong>You attack and the enemy is suffering...</em></span>";
       case "playerSpecial":
         return "<br><em><span style='color:#85A9AB'><strong>You: </strong>You throw your special attack...</em></span>";
     // Enemy conditions
     case "enemyAttack":
-      return "<br>The enemy attacks and is draining your health...";
+      setTimeout(() => {
+        return "<br>The enemy attacks and is draining your health...";
+      }, 500);
     case "enemySpecial":
-      return "<br>Special enemy text!";
+      setTimeout(() => {
+        return "<br>Special enemy text!";
+      }, 500);
     // Specific conditions
     case "energyLow":
       return "<br><span style='color:#DE9B8C'><strong>Your energy level is too low</strong></span>";
@@ -37,4 +42,3 @@ export default class GameLog {
 
   }
 }
- 
