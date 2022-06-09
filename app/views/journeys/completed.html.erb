@@ -5,13 +5,11 @@
       <h1>Congratulations</h1>
       <%= render "shared/underline" %>
 
-      <p class="mt-3">You successfully defended yourself and bravely stood up agains <%= @disorder.name %></p>
-      <% raise %>
+      <p class="mt-3">You successfully defended yourself and bravely stood up against the enemies %></p>
       <div data-controller="animation" data-animation-enemy-value="<%= @enemy.name%>" data-animation-root-value="<%= image_url("#{@enemy.name}.png").html_safe %>"class="enemyPicture">
         <canvas data-animation-target="svg" class="teaser" height="600" width="400"></canvas>
       </div>
-
-      <h4>More about <%= @disorder.name %></h4>
+      <h4>More about the disorder</h4>
       <p>More info coming soon ...</p>
 
       <h4>Additional recommendations for you</h4>
