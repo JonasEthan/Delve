@@ -3,13 +3,13 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="animation"
 export default class extends Controller {
-  static values = { enemy: String }
+  static values = { enemy: String, root: String }
   static targets = ["svg"]
   connect() {
 
   //this.sandbox = new GlslCanvas(this)
     const name = this.enemyValue
-    console.log(name)
+    console.log(this.rootValue)
     const sandbox = new GlslCanvas(this.svgTarget)
     const frag = `
     #ifdef GL_ES
@@ -64,7 +64,7 @@ export default class extends Controller {
         vec2 uv =  v_texcoord;
 
 
-        float strength = smoothstep(0.5, 0.11, uv.y);
+        float strength = smoothstep(0.5, 0.12, uv.y);
 
         vec2 surface = strength * vec2(
         mix(-0.3, 0.3, fbm(5.0 * uv + 0.3 *  u_time)),
@@ -81,6 +81,6 @@ export default class extends Controller {
     `
 
     sandbox.load(frag);
-    sandbox.setUniform("image", `/assets/${this.enemyValue}`)
+    sandbox.setUniform("image", `${this.rootValue}assets/${this.enemyValue}`)
   }
 }
