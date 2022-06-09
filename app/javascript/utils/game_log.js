@@ -7,10 +7,9 @@ export default class GameLog {
         return "";
       // Player actions
       case "playerAttack":
-
-        return "<br><em><span style='color:#85A9AB'><strong>You: </strong>You attack and the enemy is suffering...</em></span>";
+        return return "<br><style='color:#85A9AB'>–––<br><em><span style='color:#85A9AB'><strong>You: </strong>You attack and the enemy is suffering...</em>";
       case "playerSpecial":
-        return "<br><em><span style='color:#85A9AB'><strong>You: </strong>You throw your special attack...</em></span>";
+        return "<br><em><span style='color:#85A9AB'>–––<br><strong>You: </strong>You throw your special attack...</em></span>";
     // Enemy conditions
     case "enemyAttack":
       setTimeout(() => {
@@ -39,6 +38,5 @@ export default class GameLog {
     case "Hysteria":
     return "<br>Hysteric Explosion!";
     }
-
   }
 }
