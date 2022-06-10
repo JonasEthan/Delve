@@ -2,21 +2,29 @@
 
   <div class="center-container">
     <div class="container-content">
-      <h1>Congratulations</h1>
+      <h1 class="special-font">Congratulations</h1>
       <%= render "shared/underline" %>
 
-      <p class="mt-3">You successfully defended yourself and bravely stood up against the enemies %></p>
-      <div data-controller="animation" data-animation-enemy-value="<%= @enemy.name%>" data-animation-root-value="<%= image_url("#{@enemy.name}.png").html_safe %>"class="enemyPicture">
-        <canvas data-animation-target="svg" class="teaser" height="600" width="400"></canvas>
-      </div>
-      <h4>More about the disorder</h4>
-      <p>More info coming soon ...</p>
+      <h4 class="mt-3">You successfully defended yourself against <strong class="special-font" id="enemy-completed"> <%= @enemy.name %> </strong></h4>
 
-      <h4>Additional recommendations for you</h4>
-      <p>More info coming soon ...</p>
+      <p> </p>
+      <p> Life's journey is not a straight path, and for every three steps forward, you might take one step back.
+      Today, you have fought bravely. Take a moment to be proud of yourself!
+      On your way forward, let this knowledge guide you ... </p>
 
-      <p>Want to find out more?
-      <p><%= link_to "Click here", about_path %></p>
+      <h4>About <%= @disorder.name %> </h4>
+      <p> <%= @disorder.description %> </p>
+
+      <small><em><strong>Medical Details</strong></em></small><br>
+      <small><em> <%= @disorder.success_text %> </em></small>
+
+      <p> </p>
+      <h4>Fighting <%= @disorder.name %> in Real Life</h4>
+      <p> <%= @disorder.meltdown_text %> </p>
+
+      <div class="hline"></div>
+      <p> </p>
+      <p>Want to find out more about Delve? <%= link_to "Click here", about_path %></p>
       <br>
       <% if current_user.present? %>
       <%= link_to "Continue", new_journey_path, class: "btn btn-ocean" %>
@@ -27,6 +35,10 @@
         <p class="mt-5">You like the game? Register now!</p>
         <%= link_to "Sign up", new_user_registration_path, class: "btn btn-melon" %>
       <% end %>
+    </div>
+
+    <div data-controller="animation" data-animation-enemy-value="<%= @enemy.name%>" data-animation-root-value="<%= image_url("#{@enemy.name}.png").html_safe %>"class="enemyPicture">
+      <canvas data-animation-target="svg" class="teaser" height="600" width="400"></canvas>
     </div>
   </div>
 </div>
