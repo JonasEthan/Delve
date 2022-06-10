@@ -7,6 +7,7 @@
 
       <h4 class="mt-3">You successfully defended yourself against <strong class="special-font" id="enemy-completed"> <%= @enemy.name %> </strong></h4>
 
+      <p> </p>
       <p> Life's journey is not a straight path, and for every three steps forward, you might take one step back.
       Today, you have fought bravely. Take a moment to be proud of yourself!
       On your way forward, let this knowledge guide you ... </p>
@@ -14,16 +15,16 @@
       <h4>About <%= @disorder.name %> </h4>
       <p> <%= @disorder.description %> </p>
 
-      <small>Medical Details</small><br>
-      <small> <%= @disorder.success_text %> </small>
+      <small><em><strong>Medical Details</strong></em></small><br>
+      <small><em> <%= @disorder.success_text %> </em></small>
 
-      <br>
+      <p> </p>
       <h4>Fighting <%= @disorder.name %> in Real Life</h4>
       <p> <%= @disorder.meltdown_text %> </p>
 
       <div class="hline"></div>
-      <p>Want to find out more about Delve?
-      <p><%= link_to "Click here", about_path %></p>
+      <p> </p>
+      <p>Want to find out more about Delve? <%= link_to "Click here", about_path %></p>
       <br>
       <% if current_user.present? %>
       <%= link_to "Continue", new_journey_path, class: "btn btn-ocean" %>
@@ -35,9 +36,9 @@
         <%= link_to "Sign up", new_user_registration_path, class: "btn btn-melon" %>
       <% end %>
     </div>
-  </div>
 
-        <div data-controller="animation" data-animation-enemy-value="<%= @enemy.name%>" data-animation-root-value="<%= image_url("#{@enemy.name}.png").html_safe %>"class="enemyPicture">
-        <canvas data-animation-target="svg" class="teaser" height="600" width="400"></canvas>
-      </div>
+    <div data-controller="animation" data-animation-enemy-value="<%= @enemy.name%>" data-animation-root-value="<%= image_url("#{@enemy.name}.png").html_safe %>"class="enemyPicture">
+      <canvas data-animation-target="svg" class="teaser" height="600" width="400"></canvas>
+    </div>
+  </div>
 </div>

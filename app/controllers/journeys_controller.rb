@@ -50,8 +50,8 @@ class JourneysController < ApplicationController
   end
 
   def completed
-    @disorder = Disorder.find(1) # hard-coded for now, to be able to access journeys/completed directly; instead of the number it should be: params[:id]
-    @enemies = Enemy.where(disorder_id: 1) # hard-coded for now, to be able to access journeys/completed directly; instead of the number it should be: params[:id]
+    @disorder = Disorder.find(3) # hard-coded for now, to be able to access journeys/completed directly; instead of the number it should be: params[:id]
+    @enemies = Enemy.where(disorder_id: 3) # hard-coded for now, to be able to access journeys/completed directly; instead of the number it should be: params[:id]
     @enemy = @enemies.last
   end
 
