@@ -20,9 +20,9 @@ export default class GameLog {
     case "Reckless Attack2":
       return "<br>You throw caution to the wind and strike without remorse!<br>But in the scuffle you also <span class=special-font>harm yourself</span>";
     case "enemyAttack":
-      setTimeout(() => {
+      //setTimeout(() => {
         return "<br>The opponent's dark forces drain your health!";
-      }, 500);
+      //}, 500);
     case "enemySpecial":
       // setTimeout(() => {
         return "<br>The opponent attacks you with its special move...";
