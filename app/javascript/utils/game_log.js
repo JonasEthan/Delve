@@ -7,13 +7,13 @@ export default class GameLog {
         return "";
       // Player actions
       case "playerAttack":
-        return "<br><style='color:#85A9AB'>–––<br><em><span style='color:#85A9AB'><strong>You: </strong>You attack and the enemy is suffering...</em>";
+        return "<br><style='color:#85A9AB'>–––<br><em><span style='color:#85A9AB'>You gather your strength and strike!</em>";
       case "playerSpecial":
-        return "<br><em><span style='color:#85A9AB'>–––<br><strong>You: </strong>You throw your special attack...</em></span>";
+        return "<br><em><span style='color:#85A9AB'>–––<br>You gather your energy for a special move...</em></span>";
     // Enemy conditions
     case "enemyAttack":
       setTimeout(() => {
-        return "<br>The enemy attacks and is draining your health...";
+        return "<br>The opponent's dark forces drain your health!";
       }, 500);
     case "enemySpecial":
       setTimeout(() => {
@@ -21,7 +21,7 @@ export default class GameLog {
       }, 500);
     // Specific conditions
     case "energyLow":
-      return "<br><span style='color:#DE9B8C'><strong>Your energy level is too low</strong></span>";
+      return "<br><span style='color:#DE9B8C'><strong>Your energy level is too low!</strong></span>";
     // Enemy communication
     case "The Witness":
       return "<br>Horrible Gaze!"

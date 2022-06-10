@@ -2,10 +2,10 @@ export default class AdventuringText {
   checkDialog(name) {
     switch(name){
       case "The Witness":
-        return "You hear the flapping of wings in the distance closing nearer to you by the second. Its gaze seems to be always fixed on you";
+        return "You hear the flapping of wings in the distance, drawing closer to you by the second. A haunting gaze seems to be always fixed on you...";
       break;
       case "The Stalker":
-        return "As you walk you feel a gaze upon you, seemingly from every direction. Out of the shadow steps something with its eyes fixed on you. This seems to be the last hurdle of this journey!";
+        return "As you proceed, you get a creeping feeling of being watched from every direction. Out of the shadow emerges something with its eyes fixed on you. This seems to be the last hurdle of this journey!";
       break;
       case "The Chain":
         return "As you carry on through the darkening surroundings you hear the ratteling of chains drawing closer and closer. Until at last out of the fabric of reality it bursts trying to attack you";
@@ -27,4 +27,3 @@ export default class AdventuringText {
     }
   }
 }
- 
