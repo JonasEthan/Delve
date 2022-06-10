@@ -119,7 +119,7 @@ export default class extends Controller {
   // Alert for "losing the fight" - redirects to journeys/repeat
   fightLoss() {
     Swal.fire({
-      title: '<strong>Too bad!</strong>',
+      title: '<strong>You can carry on no more!</strong>',
       html: "You fought bravely and this time it wasn't enough. But don't give up!",
       confirmButtonColor: "#8E9AAB",
       background: "#F5F5F6",
