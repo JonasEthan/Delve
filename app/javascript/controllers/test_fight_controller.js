@@ -141,16 +141,21 @@ export default class extends Controller {
 
   playerSpecial(n) {
     // this.player.abilityAction(this.specialValue.name, this.specialValue.ability_cost);
-    if (this.enemy.health > 0 && this.player.energy >= this.specialValue[n].ability_cost) {
-      this.gameLogAction = this.gameLog.gameLogText(this.player.abilityAction(this.specialValue[n].name, this.enemy, this.specialValue[n].ability_cost));
-      this.updateView();
+    this.gameLogAction = this.gameLog.gameLogText(this.player.abilityAction(this.specialValue[n].name, this.enemy, this.specialValue[n].ability_cost));
+    this.updateView();
       // Attacks the player if the previous condition is true
-      setTimeout(() => {
+    if(this.enemy.health > 0){
+        setTimeout(() => {
         this.attackPlayer()
       }, 500);
-    } else if (this.player.energy < this.specialValue[n].ability_cost) {
-        return this.gameLog.gameLogText('energyLow')
     }else{
+      if(this.enemy.boss){
+        this.sweetAlertController().fightWin({player: this.player, enemy: this.enemy, disorder: this.disorderValue});
+      }else{
+        this.sweetAlertController().fightWin({player: this.player, enemy: this.enemy});
+      }
+    }
+    if(this.enemy.health <= 0){
       if(this.enemy.boss){
         this.sweetAlertController().fightWin({player: this.player, enemy: this.enemy, disorder: this.disorderValue});
       }else{

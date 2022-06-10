@@ -45,7 +45,7 @@ export default class PlayerStatus {
           return "Healing1";
         } else {
           // For testing purposes for now
-          return 'energyLow';
+          return "energyLow";
         }
         break;
       case "Heavy Strike":
@@ -56,7 +56,7 @@ export default class PlayerStatus {
           return "Heavy Attack";
         } else {
           // For testing purposes for now
-          return 'energyLow';
+          return "energyLow";
         }
         break;
         case "Reckless Attack":
@@ -76,7 +76,7 @@ export default class PlayerStatus {
           } else {
             // For testing purposes for now
 
-            return 'energyLow';
+            return "energyLow";
           }
           break;
       default:
