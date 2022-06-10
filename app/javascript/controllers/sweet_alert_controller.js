@@ -84,7 +84,7 @@ export default class extends Controller {
   // Alert for "winning the fight" - redirects to journeys/completed path
 
   fightWin(options = {}) {
-    console.log(options.enemy.name);
+    console.log(options.player);
     if(options.enemy.boss === true){
       Swal.fire({
         title: '<strong>You have overcome this great adversary!</strong>',

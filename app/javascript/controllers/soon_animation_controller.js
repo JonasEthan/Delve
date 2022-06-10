@@ -1,7 +1,6 @@
 import { Controller } from "@hotwired/stimulus"
 
-
-// Connects to data-controller="animation"
+// Connects to data-controller="soon-animation"
 export default class extends Controller {
   static values = { enemy: String, root: String }
   static targets = ["svg"]
@@ -63,11 +62,11 @@ export default class extends Controller {
     {
         vec2 uv =  v_texcoord;
 
-        float strength = smoothstep(0.4, 0.11, uv.y);
+        float strength = smoothstep(0.86, 0.9, uv.y);
 
         vec2 surface = strength * vec2(
-        mix(-0.3, 0.3, fbm(5.5 * uv - u_time)),
-        mix(-0.3, 0.3, fbm(2.5 * uv - u_time))
+        mix(-0.3, 0.3, fbm(2.5 * uv - 0.5 * u_time)),
+        mix(-0.3, 0.3, fbm(2.5 * uv + 0.5 *  u_time))
         );
 
         uv += refract(vec2(0.0, 0.0), surface, 1.0 / 1.333);

@@ -2,7 +2,7 @@
 
   <div class="center-container">
     <div class="container-content">
-      <h1>Dont' give up</h1>
+      <h1 class="text-center">Never give up</h1>
       <%= render "shared/underline" %>
 
       <h5 class="mt-3">This time didn't work out for you... <%= %></h5>
@@ -16,6 +16,8 @@
       <h4>Reasons why not to give up</h4>
       <p>Lorem ipsum</p>
 
+      <h5>More about taking a rest</h5>
+      <p>More info coming soon ...</p>
       <br>
 
       <% if current_user.present? %>
@@ -24,8 +26,8 @@
       <% else %>
         <%= link_to "Try again", new_journey_path, class: "btn btn-ocean" %>
         <%= link_to "Exit", root_path, class: "btn btn-blue" %>
-        <p class="mt-5">You like the game? Register now!</p>
-        <%= link_to "Sign up", new_user_registration_path, class: "btn btn-melon" %>
+        <p class="mt-5">You like the game? <strong>Register now!</strong></p>
+        <%= link_to "Sign up", new_user_registration_path, class: "btn btn-melon text-center" %>
       <% end %>
     </div>
   </div>

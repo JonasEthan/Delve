@@ -20,7 +20,7 @@ export default class AdventuringText {
         return "As you walk these dark winding corridors your journey is brought to an abrupt hold. The Prosecuter has stoped you in your tracks and seems like she seems to bring judgment upon you";
       break;
       case "The Mask":
-        return "Still needs text";
+        return "Beware, something is approaching you.";
       break;
       default:
         return "The surrounding Chaos reforms into an algamation. It is blocking your way forward.";

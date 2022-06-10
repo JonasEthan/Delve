@@ -16,9 +16,9 @@ export default class EnemyStatus {
     // This statement is to see if the Player crits
     if((Math.floor(Math.random() * 101)) % 10 === 0){
       // alert("Player CRIT!");
-      return this.health -= Math.floor(attackDamage * 1.5);
+      this.health -= Math.floor(attackDamage * 1.5);
     } else {
-      return this.health -= attackDamage;
+      this.health -= attackDamage;
     }
   }
 
@@ -30,10 +30,10 @@ export default class EnemyStatus {
           this.energy -= 5;
           player.loseEnergy(10);
           // alert("Horrible Gaze!");
-          return this.gameLog.gameLogText('The Witness');
+          return 'The Witness';
         } else {
           // alert("Not enough energy")
-          return this.gameLog.gameLogText('energyLow')
+          return 'energyLowEnemy';
         }
         break;
       case "The Stalker":
@@ -43,21 +43,23 @@ export default class EnemyStatus {
               // alert("Horrible Gaze!");
               this.energy -= 5;
               player.loseEnergy(10);
-              return this.gameLog.gameLogText('The Stalker');
-              } else {
+              return 'The Stalker1';
+            } else {
                 // alert("Not enough energy")
-                return this.gameLog.gameLogText('energyLow')
-              }
+                return 'energyLowEnemy';
+            }
             break;
           case 1:
             if(this.checkEnergy(10)){
               // alert("Trailing Gaze!");
               this.energy -= 10;
-              return this.gameLog.gameLogText('The Stalker');
-              } else {
-                // alert("Not enough energy")
-                return this.gameLog.gameLogText('energyLow')
-              }
+              player.enemyAttack((this.damage + (Math.floor(Math.random() * 6))));
+              player.loseEnergy(5);
+              return 'The Stalker2';
+            } else {
+              // alert("Not enough energy")
+              return 'energyLowEnemy';
+            }
             break;
           default:
             alert("Something went wrong");
@@ -69,10 +71,10 @@ export default class EnemyStatus {
           this.energy -= 10;
           player.enemyAttack((this.damage + (Math.floor(Math.random() * 11))));
           player.loseEnergy(5);
-          return this.gameLog.gameLogText('The Chain');
+          return 'The Chain';
           } else {
             // alert("Not enough energy")
-            return this.gameLog.gameLogText('energyLow')
+            return 'energyLowEnemy';
           }
         break;
       case "The Abyss":
@@ -83,10 +85,10 @@ export default class EnemyStatus {
               this.energy -= 10;
               player.enemyAttack((this.damage + (Math.floor(Math.random() * 11))));
               player.loseEnergy(5);
-              return this.gameLog.gameLogText('The Abyss');
+              return 'The Abyss1';
               } else {
                 // alert("Not enough energy")
-                return this.gameLog.gameLogText('energyLow')
+                return 'energyLowEnemy';
               }
             break;
           case 1:
@@ -95,10 +97,10 @@ export default class EnemyStatus {
               const hautingDamage = (this.damage + (Math.floor(Math.random() * 11)));
               player.enemyAttack(hautingDamage);
               this.health += hautingDamage;
-              return this.gameLog.gameLogText('The Abyss');
+              return 'The Abyss2';
               } else {
                 // alert("Not enough energy")
-                return this.gameLog.gameLogText('energyLow')
+                return 'energyLowEnemy';
               }
             break;
           default:
@@ -113,10 +115,10 @@ export default class EnemyStatus {
           const energyLost = (Math.floor(Math.random() * 11))
           player.loseEnergy(energyLost);
           this.energy += energyLost;
-          return this.gameLog.gameLogText('The Prosecutor');
+          return 'The Prosecutor';
           } else {
             // alert("Not enough energy")
-            return this.gameLog.gameLogText('energyLow')
+            return 'energyLowEnemy';
           }
         break;
       case "The Mask":
@@ -128,23 +130,24 @@ export default class EnemyStatus {
               player.loseEnergy(energyLost);
               this.energy += energyLost;
               // alert("Horrible Acusation!");
-              return this.gameLog.gameLogText('The Mask')
-              } else {
+              'The Mask1'
+            } else {
                 // alert("Not enough energy")
-                return this.gameLog.gameLogText('energyLow')
-              }
+              return 'energyLowEnemy';
+            }
             break;
           case 1:
             if(this.checkEnergy(20)){
-              alert("Hainous Laughter!");
+              // alert("Hainous Laughter!");
               this.energy -= 20;
               const leechDamage = this.damage + (Math.floor(Math.random() * 16));
               player.enemyAttack(leechDamage);
               this.health += leechDamage;
-              } else {
+              return 'The Mask2'
+            } else {
                 // alert("Not enough energy")
-                return this.gameLog.gameLogText('energyLow')
-              }
+              return 'energyLowEnemy';
+            }
             break;
           default:
             alert("Something went wrong");
@@ -160,13 +163,12 @@ export default class EnemyStatus {
           player.enemyAttack((this.damage + (Math.floor(Math.random() * 6))));
           player.enemyAttack((this.damage + (Math.floor(Math.random() * 6))));
           if (selfHarm % 20 === 0) {
-            console.log("It seems to also have harmed itself");
             this.health /= 2;
-            return this.gameLog.gameLogText('Hysteria');
           }
+          return 'Hysteria';
         } else {
           // alert("Not enough energy")
-            return this.gameLog.gameLogText('energyLow')
+            return 'energyLowEnemy';
           }
         break;
       default:

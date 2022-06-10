@@ -4,9 +4,22 @@
   <% end %></p>
   <div class="center-container">
     <div class="container-content">
-      <h1>My dashboard</h1>
+      <h1>Overview</h1>
       <%= render "shared/underline" %>
-      <p class="mt-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias provident iste laudantium perferendis animi autem mollitia nesciunt modi similique quisquam earum quasi nobis consequatur adipisci magnam molestias, ipsam consequuntur ea.</p>
+      <h2 class="mt-3">My games</h2>
+      <h5>Games</h5>
+      <p>Games played: <%= %><br>
+      Games completed: <%= %></p>
+      <h5>Journeys</h5>
+      <p>Journeys played: <%=  %><br>
+      Journeys completed: <%=  %></p>
+      <h2 class=mt-3>Personal information</h2>
+      <p>Player: <strong><%= current_user.username %></strong> (<strong>#<%= current_user.id %></strong> out of <%= pluralize(User.count, "player") %>)</p>
+      <p>Member since <%= current_user.created_at.strftime("%d.%m.%Y") %></p>
+      <div class="control-buttons mt-3 text-center">
+        <%= link_to "Start new game", new_journey_path, class: "btn btn-ocean" %>
+        <%= link_to "Exit", root_path, class: "btn btn-blue" %>
+      </div>
     </div>
   </div>
 </div>
