@@ -6,14 +6,14 @@
       <%= render "shared/underline" %>
 
       <h5 class="mt-3">You successfully defended yourself against <strong class="special-font"> <%= @enemy.name %> </strong></h5>
-            <p>#</p>
-      <p> Life's journey is not a straight path, and for every three steps forward, you might take one step back.</p>
-      <br><p>Today, you have fought bravely. Take a moment to be proud of yourself! </p>
-      <br><p>On your way forward, let this knowledge guide you ... </p>
-            <p>#</p>
+
+      <p> Life's journey is not a straight path, and for every three steps forward, you might take one step back.
+      Today, you have fought bravely. Take a moment to be proud of yourself!
+      On your way forward, let this knowledge guide you ... </p>
 
       <h4>About <%= @disorder.name %> </h4>
-      <p> <%= @disorder.description %> </p>
+      <%= raise %>
+      <p> <%= @disorder[:description][:key_one] %> </p>
 
       <h4>Additional recommendations for you</h4>
       <p>More info coming soon ...</p>

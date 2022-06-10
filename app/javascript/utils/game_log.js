@@ -42,13 +42,13 @@ export default class GameLog {
     case "The Chain":
       return "<br><span class=special-font>Dragging Constraints</span>!";
     case "The Abyss1":
-      return "<br><span class=special-font>Dragging Constraints</span>";
+      return "<br><span class=special-font>Dragging Constraints</span>!";
     case "The Abyss2":
-      return "<br><span class=special-font>Hauting Darkness</span>";
+      return "<br><span class=special-font>Hauting Darkness</span>!";
     case "The Prosecutor":
-      return "<br>Horrible Acusation!";
+      return "<br>Horrible Accusation!";
     case "The Mask1":
-      return "<br>Horrible Acusation!";
+      return "<br>Horrible Accusation!";
     case "The Mask2":
       return "<br>Heinous Laugther!"
     case "Hysteria":
