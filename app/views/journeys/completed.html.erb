@@ -5,7 +5,7 @@
       <h1>Congratulations</h1>
       <%= render "shared/underline" %>
 
-      <h5 class="mt-3">You successfully defended yourself against <strong class="special-font"> <%= @enemy.name %> </strong></h5>
+      <h4 class="mt-3">You successfully defended yourself against <strong class="special-font" id="enemy-completed"> <%= @enemy.name %> </strong></h4>
 
       <p> Life's journey is not a straight path, and for every three steps forward, you might take one step back.
       Today, you have fought bravely. Take a moment to be proud of yourself!
@@ -21,7 +21,8 @@
       <h4>Fighting <%= @disorder.name %> in Real Life</h4>
       <p> <%= @disorder.meltdown_text %> </p>
 
-      <p>Want to find out more?
+      <div class="hline"></div>
+      <p>Want to find out more about Delve?
       <p><%= link_to "Click here", about_path %></p>
       <br>
       <% if current_user.present? %>
