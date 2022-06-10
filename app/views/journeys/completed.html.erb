@@ -12,11 +12,14 @@
       On your way forward, let this knowledge guide you ... </p>
 
       <h4>About <%= @disorder.name %> </h4>
-      <%= raise %>
-      <p> <%= @disorder[:description][:key_one] %> </p>
+      <p> <%= @disorder.description %> </p>
 
-      <h4>Additional recommendations for you</h4>
-      <p>More info coming soon ...</p>
+      <small>Medical Details</small><br>
+      <small> <%= @disorder.success_text %> </small>
+
+      <br>
+      <h4>Fighting <%= @disorder.name %> in Real Life</h4>
+      <p> <%= @disorder.meltdown_text %> </p>
 
       <p>Want to find out more?
       <p><%= link_to "Click here", about_path %></p>
