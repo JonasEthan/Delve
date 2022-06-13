@@ -10,7 +10,7 @@ class RoomsController < ApplicationController
 
     # (ALMOST) SAME CODE AS IN JOURNEYS CONTROLLER:
     # Starting from the current user all the way until we have our current run ...
-    array_current_user_character = UserCharacter.where(user_id: @player) #array of 1
+    array_current_user_character = UserCharacter.where(user_id: @player) # array of 1
     current_user_character = array_current_user_character.first
     game_array = Game.where(character_id: current_user_character.character_id) # array of 1
     current_game = game_array.last
@@ -48,6 +48,7 @@ class RoomsController < ApplicationController
     Room.create(journey_id: @journey.id, enemy_id: 7)
     Room.create(journey_id: @journey.id, enemy_id: @enemies.last.id)
     @respite = AMomentsRespite.where(run_id: @journey.runs.first.id).last
+    # This parses our params of rooms_id(which is an array of room ids) respite_id and journey_id to our test_fight page
     redirect_to test_fight_path(rooms_id: @journey.room_ids, respite_id: @respite.id, journey_id: @journey.id) # room_path(@array_of_journey_rooms[0][:id])
     # .sort to make sure last room/enemy is always boss etc.
   end

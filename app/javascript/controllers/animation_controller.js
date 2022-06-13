@@ -7,10 +7,13 @@ export default class extends Controller {
   static targets = ["svg"]
   connect() {
 
-  //this.sandbox = new GlslCanvas(this)
+    // on connection play animation
+    // this.sandbox = new GlslCanvas(this)
     const name = this.enemyValue;
     console.log(this.rootValue);
+    // Our targetet canvas as a variable
     const sandbox = new GlslCanvas(this.svgTarget);
+    // frag is the animation algorythm itself
     const frag = `
     #ifdef GL_ES
     precision highp float;
@@ -78,7 +81,9 @@ export default class extends Controller {
         gl_FragColor = color;
     }
     `;
+    // our canvas loads our animation framework frag
     sandbox.load(frag);
+    // our canvas now has our png as the loaded background
     sandbox.setUniform("image", this.rootValue)
     // /app/views/svgs/_svg.html.erb
   }
