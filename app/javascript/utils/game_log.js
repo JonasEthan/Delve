@@ -40,17 +40,17 @@ export default class GameLog {
     case "The Stalker2":
       return "<br>With a <span class=special-font>Tailing Gaze</span>, this creature follows your every move <br> You feel your energy and health depleting...";
     case "The Chain":
-      return "<br><span class=special-font>Dragging Constraints</span>!";
+      return "<br>The Chain lunges itself at you and casts <span class=special-font>Dragging Constraints</span>!<br>You feel your energy and health depleting as it drages you back into the darkness...";
     case "The Abyss1":
-      return "<br><span class=special-font>Dragging Constraints</span>!";
+      return "<br>The Abyss lunges its chains at you and casts <span class=special-font>Dragging Constraints</span>!<br>You feel your energy and health depleting as it drages you back into the darkness...";
     case "The Abyss2":
-      return "<br><span class=special-font>Hauting Darkness</span>!";
+      return "<br>The Abyss shrouds you into an <span class=special-font>Hauting Darkness</span>! You fell it leeches of your health and energy...";
     case "The Prosecutor":
-      return "<br>Horrible Accusation!";
+      return "<br><span class=special-font>Horrible Accusation</span>!";
     case "The Mask1":
-      return "<br>Horrible Accusation!";
+      return "<br><span class=special-font>Horrible Accusation</span>!";
     case "The Mask2":
-      return "<br>Heinous Laugther!"
+      return "<br><span class=special-font>Heinous Laugther</span>!"
     case "Hysteria":
       return "<br><span class=special-font>Hysteric Explosion</span>!";
     }
