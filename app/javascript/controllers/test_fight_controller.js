@@ -28,12 +28,13 @@ export default class extends Controller {
     this.updateView();
   }
 
+  // calls our SweetAlertController from our SweetAlert JS file. With this we can all SweetAlert functions in this Controller
   sweetAlertController(){
     return this.application.getControllerForElementAndIdentifier(this.element, 'sweet-alert')
   }
   // when the current enemy is defeated this reassigns the new enemy
 
-  // Loads the svg pictures of our enemies
+  // Loads the svg pictures of our enemies (No longer in use but might see use in later versions)
   pictureDisplay(picture) {
     /*const target = this.pictureTarget;
     var draw = SVG();
@@ -75,19 +76,24 @@ export default class extends Controller {
       case 1:
         // checks if the enemy is a boss or not
           if(this.enemy.boss){
-           this.enemy.specialAbility(this.enemy.name, this.player, Math.floor(Math.random() * 2));
-           this.gameLogAction = this.gameLog.gameLogText(this.enemy.specialAbility(this.enemy.name, this.player, Math.floor(Math.random() * 2)));// might need to change for better flavor text
-           this.updateView();
-           if (this.player.health <= 0) {
-            this.sweetAlertController().fightLoss();
-           }
+            // Calls our specialAbility function of our enemy object. Gives it the name of the enemy and the player object aswell as a random number between 0 and 1
+            // this.enemy.specialAbility(this.enemy.name, this.player, Math.floor(Math.random() * 2));
+            // this sets the gameLogAction value to the return value of our enemy.specialAbility function
+            this.gameLogAction = this.gameLog.gameLogText(this.enemy.specialAbility(this.enemy.name, this.player, Math.floor(Math.random() * 2)));// might need to change for better flavor text
+            // this realtime updates the pages look without reloading the page
+            this.updateView();
+            if (this.player.health <= 0) {
+              // If the players health is below or equal to 0 call the SweetAlert function fighLoss()
+              this.sweetAlertController().fightLoss();
+            }
           } else {
             //this.enemy.specialAbility(this.enemy.name, this.player, Math.floor(Math.random() * 2));
             this.gameLogAction = this.gameLog.gameLogText(this.enemy.specialAbility(this.enemy.name, this.player, Math.floor(Math.random() * 2))); // might need to change for better flavor text
             this.updateView();
             if (this.player.health <= 0) {
+              // If the players health is below or equal to 0 call the SweetAlert function fighLoss()
               this.sweetAlertController().fightLoss();
-             }
+            }
           }
         break;
       default:
@@ -96,15 +102,21 @@ export default class extends Controller {
     }
   }
 
+  // the function for the healing special of the player
   specialHealing(){
+    // calls our main special abilitly function of our Controller and parses it a value
     this.playerSpecial(0)
   }
 
+  // the function for the heavy attack special of the player
   specialHeavy(){
+    // calls our main special abilitly function of our Controller and parses it a value
     this.playerSpecial(1);
   }
 
+  // the function of the reckless attack for the player
   specialReckless(){
+    // calls our main special abilitly function of our Controller and parses it a value
     this.playerSpecial(2);
   }
 
@@ -134,13 +146,15 @@ export default class extends Controller {
       // this.sweetAlertController().fightLoss();
 
     }
+    // calls the function deactivate() so that the player cannot spam the buttons
     this.deactivate()
   }
 
 
-
+  // crefactored function for the handling of the event of an player special attack
   playerSpecial(n) {
     // this.player.abilityAction(this.specialValue.name, this.specialValue.ability_cost);
+    // this gives our given n and selects the name of the Array of the specialValue Array and parses it also the currrent enemy object and the cost of our ability at the poation n
     this.gameLogAction = this.gameLog.gameLogText(this.player.abilityAction(this.specialValue[n].name, this.enemy, this.specialValue[n].ability_cost));
     this.updateView();
       // Attacks the player if the previous condition is true
@@ -162,6 +176,7 @@ export default class extends Controller {
         this.sweetAlertController().fightWin({player: this.player, enemy: this.enemy});
       }
     }
+    // calls the function deactivate() so that the player cannot spam the buttons
     this.deactivate()
   }
 
@@ -203,6 +218,7 @@ export default class extends Controller {
     objDiv.scrollTop = objDiv.scrollHeight;
   }
 
+  // deactiveates the button of the player for a short duration to avoid spamming
   deactivate() {
     const attackButton = document.getElementById("attack-button")
     attackButton.setAttribute("disabled", "");

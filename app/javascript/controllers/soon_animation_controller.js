@@ -5,7 +5,7 @@ export default class extends Controller {
   static values = { enemy: String, root: String }
   static targets = ["svg"]
   connect() {
-
+    // on connecting play the animations
   //this.sandbox = new GlslCanvas(this)
     const name = this.enemyValue;
     console.log(this.rootValue);
