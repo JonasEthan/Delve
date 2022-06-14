@@ -8,9 +8,6 @@ export default class extends Controller {
   connect() {
 
     // on connection play animation
-    // this.sandbox = new GlslCanvas(this)
-    const name = this.enemyValue;
-    console.log(this.rootValue);
     // Our targetet canvas as a variable
     const sandbox = new GlslCanvas(this.svgTarget);
     // frag is the animation algorythm itself
@@ -69,8 +66,8 @@ export default class extends Controller {
         float strength = smoothstep(0.4, 0.11, uv.y);
 
         vec2 surface = strength * vec2(
-        mix(-0.3, 0.3, fbm(5.5 * uv - u_time)),
-        mix(-0.3, 0.3, fbm(2.5 * uv - u_time))
+        mix(-0.3, 0.3, fbm(5.5 * uv + u_time)),
+        mix(-0.3, 0.3, fbm(5.5 * uv + u_time))
         );
 
         uv += refract(vec2(0.0, 0.0), surface, 1.0 / 1.333);

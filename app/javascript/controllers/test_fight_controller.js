@@ -180,11 +180,6 @@ export default class extends Controller {
     this.deactivate()
   }
 
-  // gets triggered when the player clicks the button "Opt Out" - replaced by sweetalert button
-  // playerOptOut(){
-  //   alert(this.disorderValue.meltdown_text);
-  // }
-
   // Updates the entire HTML so that the View is dynamic
   updateView() {
     // Player view update
