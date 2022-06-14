@@ -1,6 +1,7 @@
 import { Controller } from "@hotwired/stimulus"
 import Swal from "sweetalert2"
 import AdventuringText from "../utils/adventuring_text"
+import GameLog from "../utils/game_log";
 // Allowing to use Rails code from html.erb files
 import Rails from "@rails/ujs"
 Rails.start()
@@ -23,6 +24,7 @@ export default class extends Controller {
 
   connect() {
     this.narrator = new AdventuringText;
+    this.gameLog = new GameLog;
   }
 
   // Alert for "Start new game" button
@@ -93,7 +95,7 @@ export default class extends Controller {
         confirmButtonColor: "#8E9AAB",
         background: "#F5F5F6",
         showCancelButton: false,
-        confirmButtonText: 'Continue',
+        confirmButtonText: '<span class=special-font>Continue</span>',
         allowOutsideClick: false,
       }).then((inputValue) => {
         if(inputValue.isConfirmed)
@@ -103,11 +105,11 @@ export default class extends Controller {
       Swal.fire({
         title: '<strong>Congratulations!</strong>',
         icon: 'success',
-        html: "You fought bravely",
+        html: `${this.gameLog.gameLogWin(options.enemy.name)}`,
         confirmButtonColor: "#8E9AAB",
         background: "#F5F5F6",
         showCancelButton: false,
-        confirmButtonText: 'Continue',
+        confirmButtonText: '<span class=special-font>Continue</span>',
         allowOutsideClick: false,
       }).then((inputValue) => {
         if(inputValue.isConfirmed)
