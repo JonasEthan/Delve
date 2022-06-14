@@ -26,4 +26,25 @@ export default class AdventuringText {
         return "The surrounding Chaos reforms into an algamation. It is blocking your way forward.";
     }
   }
+
+  // this displays a more personalized victory message
+  winDialog(name){
+    switch (name) {
+      case "The Chain":
+        return "With one last strike you break <span class>The Chain</span> in two and you continue your journey as it dissipates into the surrounding darkness...";
+        break;
+      case "Hysteria":
+        return "You strike the algamation one last time and with almost a sigh of relief this <span class=special-font>Hysteria</span> dissipates into nothing...";
+        break;
+      case "The Witness":
+        return "After your struggle with <span class=special-font>The Witness</span> you look up to see its bulbous eye closed as it dissipates, it takes a moment for you to be able to shrugg of this encounter, but you continue on never the less...";
+        break;
+      case "The Prosecutor":
+        return "As you look up from your last attack you see <span class=special-font>The Prosecutor</span> dissipating into nothing, you rest for a while to shake her accusations, but you carry on non the less...";
+        break;
+      default:
+        return "As you strike your enemy one last time it dissipates into nothing. After a quick break you carry on with your Journey...";
+        break;
+    }
+  }
 }
