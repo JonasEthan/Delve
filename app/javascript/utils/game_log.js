@@ -31,7 +31,7 @@ export default class GameLog {
     case "energyLow":
       return "<br><style='color:#42475B>–––<br><span style='color:#DE9B8C'><strong>Your energy level is too low!</strong></span>";
     case "energyLowEnemy":
-      return "<br>Your foe tries to gather their strength, but fails..."
+      return "<br>Your foe tries to gather their strength, but <span class=special-font>fails</span>..."
     // Enemy communication
     case "The Witness":
       return "<br>The Witness casts a <span class=special-font>Horrible Gaze</span> at you!<br> You feel your energy depleting...";
@@ -46,13 +46,13 @@ export default class GameLog {
     case "The Abyss2":
       return "<br>The Abyss shrouds you into an <span class=special-font>Hauting Darkness</span>! You fell it leeches of your health and energy...";
     case "The Prosecutor":
-      return "<br><span class=special-font>Horrible Accusation</span>!";
+      return "<br>The Prosecuter cries out a <span class=special-font>Horrible Accusation</span> at you!<br> You feel you energy depleting...";
     case "The Mask1":
-      return "<br><span class=special-font>Horrible Accusation</span>!";
+      return "<br>The Mask cries a <span class=special-font>Horrible Accusation</span> at you!<br> You feel you energy depleting...";
     case "The Mask2":
-      return "<br><span class=special-font>Heinous Laugther</span>!"
+      return "<br>The Mask tells you with <span class=special-font>Heinous Laugther</span> that you need them, but not vise versa!<br> You feel your health being sucked from you...";
     case "Hysteria":
-      return "<br><span class=special-font>Hysteric Explosion</span>!";
+      return "<br>This algemation seems to grow more unstable as it erupts into an <span class=special-font>Hysteric Explosion</span>!<br> You feel you health draining trying to stand against this chaotic tide...";
     }
   }
 }
