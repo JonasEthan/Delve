@@ -41,6 +41,10 @@ class PagesController < ApplicationController
     # end
   end
 
+  def respite_room
+    # raise
+  end
+
   def next_room
     @room = Room.find(params[:id])
 

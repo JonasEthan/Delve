@@ -1,0 +1,24 @@
+<div class="container mt-3 mb-3">
+  <p><%= link_to request.referer.present? ? request.referer : root_path do %>
+  <% end %></p>
+
+  <div class="center-container">
+    <div class="container-content">
+      <h1 class="text-center special-font">A moments respite</h1>
+      <%= render "shared/underline"%>
+    </div>
+  </div>
+  <br>
+  <div data-controller="soon-animation" data-soon-animation-root-value="<%= image_url("The Collapse.png")%>" class="d-flex justify-content-center">
+    <div class="flex-item">
+      <canvas data-soon-animation-target="svg" class="teaser" style="margin-right: 30px" height="550" width="250"></canvas>
+    </div>
+    <div class="mt-3 flex-item">
+      <div class="respite-log" data-test-fight-target="gameLog">
+          <p style="color:#42475B"><span data-controller="typed-js" data-typed-js-message-value="Well hello there...<br>Fancy meeting you here"></span></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= link_to "Continue", root_path %>
