@@ -66,8 +66,8 @@ export default class extends Controller {
         float strength = smoothstep(0.4, 0.11, uv.y);
 
         vec2 surface = strength * vec2(
-        mix(-0.3, 0.3, fbm(5.5 * uv + u_time)),
-        mix(-0.3, 0.3, fbm(5.5 * uv + u_time))
+        mix(-0.3, 0.3, fbm(5.5 * uv + 0.5 * u_time)),
+        mix(-0.3, 0.3, fbm(5.5 * uv + 1.5 * u_time))
         );
 
         uv += refract(vec2(0.0, 0.0), surface, 1.0 / 1.333);

@@ -34,18 +34,24 @@ export default class PlayerStatus {
     // Checks the name and then does certain cases
     switch (abilityName) {
       case "Healing":
+        // Checks if the Health is already full
+        if(this.health === this.maxHealth){
+          return "Healing3";
+        }else{
         // checks if the energy is enough to use it
-        if(this.checkEnergy(abilityCost)) {
-          this.loseEnergy(abilityCost);
-          this.health += (10 + Math.floor(Math.random() * 11));
-          // if the healing would result in more than 100 health it sets the health to 100. Currently hardcoded needs to be changed later
-          if(this.health > this.maxHealth){
-            this.health = 100;
+          if(this.checkEnergy(abilityCost)) {
+            this.loseEnergy(abilityCost);
+            this.health += (10 + Math.floor(Math.random() * 11));
+            // if the healing would result in more than 100 health it sets the health to 100. Currently hardcoded needs to be changed later
+            if(this.health > this.maxHealth){
+              this.health = 100;
+              return "Healing2";
+            }
+            return "Healing1";
+          } else {
+            // For testing purposes for now
+            return "energyLow";
           }
-          return "Healing1";
-        } else {
-          // For testing purposes for now
-          return "energyLow";
         }
         break;
       case "Heavy Strike":

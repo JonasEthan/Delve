@@ -101,7 +101,7 @@ export default class extends Controller {
       })
     }else{
       Swal.fire({
-        title: '<strong>Congratulations!</strong>',
+        title: '<strong>You have overcome this foe!</strong>',
         icon: 'success',
         html: `${this.narrator.winDialog(options.enemy.name)}`,
         confirmButtonColor: "#8E9AAB",
