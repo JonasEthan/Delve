@@ -10,7 +10,7 @@ export default class extends Controller {
     console.log(message)
     new Typed(this.element, {
       strings: [message],
-      typeSpeed: 25,
+      typeSpeed: 30,
       loop: false,
       showCursor: false
     })
