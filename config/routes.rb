@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get '/donate', to: 'pages#donate'
   get 'menu/:id', to: 'pages#next_room', as: :next_room
   get 'soon', to: 'pages#coming_soon', as: :soon
+  get 'respite', to: 'pages#respite_room', as: :respite_room
 
   resources :characters
 
