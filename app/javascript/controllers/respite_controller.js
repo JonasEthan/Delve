@@ -20,7 +20,7 @@ export default class extends Controller {
   playerRest(){
     this.player.health = this.player.maxHealth;
     this.player.energy = this.player.maxEnergy;
-    this.gameLogAction = this.typedCall.gameLogTyped(this.diaLog.respiteLog("Healing"));
+    this.gameLogAction = this.diaLog.respiteLog("Healing");
     this.awnser();
   }
 
