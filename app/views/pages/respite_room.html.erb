@@ -21,4 +21,4 @@
   </div>
 </div>
 
-<%= link_to "Continue", root_path %>
+<%= link_to "Continue", test_fight_path(rooms_id: @room_ids, health: @character.health, energy: @character.energy, respite_id: @respite.id) %>

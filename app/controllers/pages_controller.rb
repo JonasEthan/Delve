@@ -18,7 +18,7 @@ class PagesController < ApplicationController
         enemy.health += rand(-10..10)
         enemy.energy += rand(-5..5)
       end
-      @disorder = Disorder.find(@enemys[0].disorder_id) # gets the coresponding disorder
+      @disorder = Disorder.find(@enemys[-1].disorder_id) # gets the coresponding disorder
       @player = current_user.present? ? current_user.id : Character.first.id
       @character = Character.find(@player)
       @character.health = params[:health] if params[:health].present?
@@ -42,11 +42,18 @@ class PagesController < ApplicationController
   end
 
   def respite_room
+    @room_ids = params[:rooms_id]
+    @disorder = Disorder.find(params[:disorder_id])
+    @respite = AMomentsRespite.find(params[:respite_id])
+    @player = current_user.present? ? current_user.id : Character.first.id
+    @character = Character.find(@player)
+    @character.health = params[:health] if params[:health].present?
+    @character.energy = params[:energy] if params[:energy].present?
     # raise
   end
 
   def next_room
-    @room = Room.find(params[:id])
+    @room_ids = params[:rooms_id]
 
     @disorder = params[:disorder]
     @character = params[:character]

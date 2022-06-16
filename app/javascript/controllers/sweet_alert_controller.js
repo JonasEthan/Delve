@@ -16,6 +16,7 @@ export default class extends Controller {
     fightWin: String,
     fightLoss: String,
     fightExit: String,
+    respite: String,
     enemy: Object,
     roomWin: String,
   }
@@ -98,6 +99,20 @@ export default class extends Controller {
       }).then((inputValue) => {
         if(inputValue.isConfirmed)
           window.location = `journeys/completed?${new URLSearchParams(options.player).toString()}&${new URLSearchParams(options.enemy).toString()}&${new URLSearchParams(options.disorder).toString()}`
+      })
+    }else if(options.enemy.name === "Hysteria"){
+      Swal.fire({
+        title: '<strong>You have overcome this foe!</strong>',
+        icon: 'success',
+        html: `${this.narrator.winDialog(options.enemy.name)}`,
+        confirmButtonColor: "#8E9AAB",
+        background: "#F5F5F6",
+        showCancelButton: false,
+        confirmButtonText: '<span class=special-font>Continue</span>',
+        allowOutsideClick: false,
+      }).then((inputValue) => {
+        if(inputValue.isConfirmed)
+          window.location = `${this.respiteValue}&${new URLSearchParams(options.player).toString()}`
       })
     }else{
       Swal.fire({
