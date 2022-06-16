@@ -55,4 +55,16 @@ export default class GameLog {
         return "<br>This algemation seems to grow more unstable as it erupts into an <span class=special-font>Hysteric Explosion</span>!<br> You feel you health draining trying to stand against this chaotic tide...";
     }
   }
+
+  // This returns the response from the respite entity, will be expanded upon
+  respiteLog(action) {
+    switch (action) {
+      case "Healing":
+        return "<br>Well you seem to be a bit worse for wear, so how about <span class=special-font>you</span> take a short rest<br>Do not worry nothing can get you as long as I am here....";
+        break;
+
+      default:
+        break;
+    }
+  }
 }
