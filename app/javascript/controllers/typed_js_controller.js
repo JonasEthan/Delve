@@ -15,6 +15,16 @@ export default class extends Controller {
     })
   }
 
+  // does not work yet know a possible solution but is not pressing at the moment.
+  gameLogTyped(string){
+    new Typed(this.element, {
+      strings: [string],
+      typeSpeed: 30,
+      loop: false,
+      showCursor: false
+    })
+  }
+
   // gameLog() {
   //   new Typed(this.element, {
   //     strings: ["You are encountering an enemy ..."],
