@@ -25,6 +25,9 @@ application.register("loading-typed-js", LoadingTypedJsController)
 import NavbarController from "./navbar_controller.js"
 application.register("navbar", NavbarController)
 
+import RespiteController from "./respite_controller.js"
+application.register("respite", RespiteController)
+
 import RoomsController from "./rooms_controller.js"
 application.register("rooms", RoomsController)
 

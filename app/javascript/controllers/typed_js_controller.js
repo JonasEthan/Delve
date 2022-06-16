@@ -7,7 +7,6 @@ export default class extends Controller {
 
   connect() {
     const message = this.messageValue;
-    console.log(message)
     new Typed(this.element, {
       strings: [message],
       typeSpeed: 30,
