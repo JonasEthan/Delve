@@ -60,9 +60,11 @@ export default class GameLog {
   respiteLog(action) {
     switch (action) {
       case "Healing":
-        return "<br>Well you seem to be a bit worse for wear, so how about <span class=special-font>you</span> take a short rest<br>Do not worry nothing can get you as long as I am here....";
+        return "<br>---<br>Well you seem to be a bit worse for wear, so how about <span class=special-font>you</span> take a short rest<br>Do not worry nothing can get you as long as I am here....";
         break;
-
+      case "Who?":
+        return "<br>---<br>Well I am a part of <span class=special-font>you</span> or atleast from your mind.<br>But enough about me for now my <span class=special-font>friend</span>...."
+        break;
       default:
         break;
     }

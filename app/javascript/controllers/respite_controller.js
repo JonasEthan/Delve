@@ -24,6 +24,17 @@ export default class extends Controller {
     this.awnser();
   }
 
+  // Ask the entity for who he is
+  whoQ(){
+    this.interaction("Who?");
+  }
+
+  // generates the answer regarding what button was prest
+  interaction(message){
+    this.gameLogAction = this.diaLog.respiteLog(message);
+    this.awnser();
+  }
+
   // player loads next fight
   embarkJourney(){
     window.location = `${this.leaveValue}&${new URLSearchParams(this.player).toString()}`
