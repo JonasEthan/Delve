@@ -52,19 +52,6 @@ class PagesController < ApplicationController
     # raise
   end
 
-  def next_room
-    @room_ids = params[:rooms_id]
-
-    @disorder = params[:disorder]
-    @character = params[:character]
-    @player_ability = params[:player_ability]
-    if @rooms.length.positive?
-      render :next_room
-    else
-      redirect_to new_room_path
-    end
-  end
-
   # this does not neceserraly work it is just for a reminder how the save action should work
   def update
     # @character = Character.find(current_user.character_id)
