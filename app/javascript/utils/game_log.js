@@ -66,6 +66,7 @@ export default class GameLog {
         return "<br>---<br>Well I am a part of <span class=special-font>you</span> or atleast from your mind.<br>But enough about me for now my <span class=special-font>friend</span>...."
         break;
       default:
+        return "<br>---<br>This is not to be shown, an error has occured or something has not yet been implemented";
         break;
     }
   }

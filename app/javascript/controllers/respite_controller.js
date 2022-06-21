@@ -40,6 +40,11 @@ export default class extends Controller {
     window.location = `${this.leaveValue}&${new URLSearchParams(this.player).toString()}`
   }
 
+  //start of the interaction frame work
+  doSomething(){
+    this.gameLogAction = this.diaLog.respiteLog();
+  }
+
   // Updates the gameLog in the respite room
   awnser() {
     this.gameLogTarget.insertAdjacentHTML("beforeend", this.gameLogAction)
