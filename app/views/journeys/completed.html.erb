@@ -27,10 +27,10 @@
       <p>Want to find out more about Delve? <%= link_to "Click here", about_path %></p>
       <br>
       <% if current_user.present? %>
-      <%= link_to "Continue", new_journey_path, class: "btn btn-ocean" %>
+      <%= link_to "Continue", new_room_path, class: "btn btn-ocean" %>
       <%= link_to "Exit", dashboard_path, class: "btn btn-blue" %>
       <% else %>
-        <%= link_to "Continue", new_journey_path, class: "btn btn-ocean" %>
+        <%= link_to "Continue", new_room_path, class: "btn btn-ocean" %>
         <%= link_to "Exit", root_path, class: "btn btn-blue" %>
         <p class="mt-5">You like the game? Register now!</p>
         <%= link_to "Sign up", new_user_registration_path, class: "btn btn-melon" %>

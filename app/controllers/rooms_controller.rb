@@ -12,7 +12,8 @@ class RoomsController < ApplicationController
     # Starting from the current user all the way until we have our current run ...
     current_user_character = UserCharacter.find_by(user_id: @player)
     current_game = Game.find_by(character_id: current_user_character.character_id)
-    current_run = Run.find_by(game_id: current_game.id)
+    run_array = Run.where(game_id: current_game.id) # array of 1
+    current_run = run_array.last
 
     # ... then selecting all the journey_runs associated with our current run.
     journey_runs = JourneyRun.where(run_id: current_run.id)
@@ -23,7 +24,7 @@ class RoomsController < ApplicationController
     journey_runs.each do |journey_run|
       journey_id = journey_run.journey_id
       journey = Journey.find(journey_id)
-      @journeys << journey # => array of 2 journeys !!!
+      @journeys << journey
     end
   end
 
