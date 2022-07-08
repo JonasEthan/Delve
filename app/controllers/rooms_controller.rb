@@ -10,15 +10,13 @@ class RoomsController < ApplicationController
 
     # (ALMOST) SAME CODE AS IN JOURNEYS CONTROLLER:
     # Starting from the current user all the way until we have our current run ...
-    array_current_user_character = UserCharacter.where(user_id: @player) # array of 1
-    current_user_character = array_current_user_character.first
-    game_array = Game.where(character_id: current_user_character.character_id) # array of 1
-    current_game = game_array.last
+    current_user_character = UserCharacter.find_by(user_id: @player)
+    current_game = Game.find_by(character_id: current_user_character.character_id)
     run_array = Run.where(game_id: current_game.id) # array of 1
     current_run = run_array.last
 
     # ... then selecting all the journey_runs associated with our current run.
-    journey_runs = JourneyRun.where(run_id: current_run.id) # = array OF SEVERAL !!!
+    journey_runs = JourneyRun.where(run_id: current_run.id)
 
     # Iterating over the journey_runs to find their associated journeys (= the user selection) and storing them into
     # an array which is given to the form on the view page.
@@ -26,7 +24,7 @@ class RoomsController < ApplicationController
     journey_runs.each do |journey_run|
       journey_id = journey_run.journey_id
       journey = Journey.find(journey_id)
-      @journeys << journey # => array of 2 journeys !!!
+      @journeys << journey
     end
   end
 
@@ -34,7 +32,7 @@ class RoomsController < ApplicationController
     # The form on the view page gives us the journey the user has selected.
     # Accordingly, we select the enemies associated to that journey via the disorder id shared by enemy and journey.
     @journey = Journey.find(params[:room][:journey_id])
-    @enemies = Enemy.where(disorder_id: @journey.disorder_id) # => array because of "where"
+    @enemies = Enemy.where(disorder_id: @journey.disorder_id)
 
     # For each enemy associated with that journey(/disorder), we create a room.
     # @array_of_journey_rooms = []

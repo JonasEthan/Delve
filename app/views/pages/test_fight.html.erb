@@ -27,7 +27,7 @@
         <progress class="health-bar" value="" data-test-fight-target="enemyHealth" max="" data-sweet-alert-target="enemyHealth"></progress>
       </div>
 
-      <div class="" data-controller="animation" data-animation-enemy-value="<%= @enemys.first.name%>" data-animation-root-value="<%= image_url("#{@enemys.first.name}.png").html_safe %>"class="enemyPicture">
+      <div class="enemyPicture" data-controller="animation" data-animation-enemy-value="<%= @enemys.first.name%>" data-animation-root-value="<%= image_url("#{@enemys.first.name}.png").html_safe %>">
           <div data-test-fight-target="firstPicture" >
             <canvas data-animation-target="svg" height="300" class="c-border">
               <%= inline_svg("#{@enemys.first.name}.svg")%>
